@@ -3,22 +3,22 @@ import Base from "../layouts/Base.astro";
 import NewsletterForm from "../components/NewsletterForm.astro";
 
 // Hub de links (como um « link na bio »). Cada grupo é uma lista de botões.
-// Para acrescentar um link, copiar uma linha. Links com url vazio não aparecem.
+// Textos do site em francês. Para acrescentar um link, copiar uma linha. Links com url vazio não aparecem.
 const groups = [
   {
     title: "Work",
     links: [
-      { name: "Techonni", text: "Guias de GTA 6 em francês", url: "https://techonni.com" },
-      { name: "Zunrel", text: "Guias de Leadpages, HTML Pub e Shopify", url: "https://zunrel.com" },
-      { name: "Pieceworth", text: "Guias para comprar luxo com cuidado", url: "https://pieceworth.com" },
+      { name: "Techonni", text: "Guides GTA 6 en français", url: "https://techonni.com" },
+      { name: "Zunrel", text: "Guides Leadpages, HTML Pub et Shopify", url: "https://zunrel.com" },
+      { name: "Pieceworth", text: "Guides pour bien acheter le luxe", url: "https://pieceworth.com" },
     ],
   },
   {
-    title: "Jogos",
-    links: [{ name: "Jogo", text: "Para jogar no navegador", url: "https://game.zunrel.com" }],
+    title: "Jeux",
+    links: [{ name: "Jeu", text: "À jouer dans le navigateur", url: "https://game.zunrel.com" }],
   },
   {
-    title: "Redes",
+    title: "Réseaux",
     links: [
       { name: "X", text: "@zunrel", url: "https://x.com/zunrel" },
     ],
@@ -30,7 +30,7 @@ const groups = [
 const host = (url: string) => (url.startsWith("mailto:") ? url.slice(7) : new URL(url).host);
 ---
 
-<Base title="Dário Pinheiro" description="Dário Pinheiro: todos os meus links num só sítio.">
+<Base title="Dário Pinheiro" description="Dário Pinheiro : tous mes sites et mes liens au même endroit.">
   <div class="hub">
     <h1>Dário Pinheiro</h1>
     <p class="lead">I make stuff on the internet.</p>

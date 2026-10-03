@@ -8,22 +8,22 @@ const formUrl = "";
 const honeypot = "";
 
 const messages = {
-  send: "A enviar…",
-  button: "Inscrever-me",
-  thanks: "Obrigado!",
-  confirm: "Último passo: abra o e-mail enviado para {email} e clique no botão para confirmar.",
-  already: "Já está inscrito.",
-  alreadyText: "Obrigado! As próximas novidades chegam ao seu e-mail.",
-  invalid: "Escreva um e-mail válido, por exemplo voce@exemplo.com.",
-  tooMany: "Muitas tentativas com este e-mail. Tente daqui a alguns minutos.",
-  failed: "Não foi possível inscrever este e-mail. Verifique-o e tente de novo.",
+  send: "Envoi…",
+  button: "S'inscrire",
+  thanks: "Merci !",
+  confirm: "Dernière étape : ouvrez l'e-mail envoyé à {email} et cliquez sur le bouton pour confirmer.",
+  already: "Vous êtes déjà inscrit.",
+  alreadyText: "Merci ! Les prochaines nouveautés arrivent dans votre boîte mail.",
+  invalid: "Entrez une adresse e-mail valide, par exemple vous@exemple.com.",
+  tooMany: "Trop de tentatives avec cette adresse. Réessayez dans quelques minutes.",
+  failed: "Cette adresse n'a pas pu être inscrite. Vérifiez-la et réessayez.",
 };
 ---
 
 <section data-newsletter-block data-messages={JSON.stringify(messages)} class="newsletter">
   <div data-newsletter-intro>
     <h2 class="nl-title">Newsletter</h2>
-    <p class="nl-text">As novidades dos meus sites por e-mail. Sem spam, desinscrição num clique.</p>
+    <p class="nl-text">Les nouveautés de mes sites par e-mail. Pas de spam, désinscription en un clic.</p>
     <form action={formUrl || undefined} method="post" target="dp-newsletter-frame" novalidate data-newsletter={formUrl ? "" : undefined} class="nl-form">
       <label for="newsletter-email" class="sr-only">E-mail</label>
       <input
@@ -33,7 +33,7 @@ const messages = {
         required
         autocomplete="email"
         inputmode="email"
-        placeholder="voce@exemplo.com"
+        placeholder="vous@exemple.com"
         aria-describedby="newsletter-help"
         class="nl-input"
       />
@@ -48,7 +48,7 @@ const messages = {
       </button>
     </form>
     <p id="newsletter-help" data-newsletter-message aria-live="polite" class="nl-help">
-      {formUrl ? "Vai receber um e-mail para confirmar a inscrição." : <span class="todo">[a preencher: link do formulário Mailchimp]</span>}
+      {formUrl ? "Vous recevrez un e-mail pour confirmer votre inscription." : <span class="todo">[à compléter : lien du formulaire Mailchimp]</span>}
     </p>
   </div>
 
@@ -64,7 +64,7 @@ const messages = {
     </div>
   </div>
 
-  <iframe name="dp-newsletter-frame" title="Inscrição na newsletter" hidden tabindex="-1"></iframe>
+  <iframe name="dp-newsletter-frame" title="Inscription à la newsletter" hidden tabindex="-1"></iframe>
 </section>
 
 <style>
