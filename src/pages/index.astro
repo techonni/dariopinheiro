@@ -1,32 +1,28 @@
 ---
 import Base from "../layouts/Base.astro";
 
-// Projetos do Dário. Para acrescentar um, copiar uma linha.
-// "a preencher" = falta a informação certa.
-const projects = [
+// Os meus sites. Para acrescentar um, copiar um bloco.
+// url vazio = falta o link (aparece « a preencher »).
+const sites = [
   {
     name: "Techonni",
     url: "https://techonni.com",
-    host: "techonni.com",
     text: "Guias de GTA 6 em francês.",
   },
   {
     name: "Zunrel",
     url: "https://zunrel.com",
-    host: "zunrel.com",
     text: "Guias « como fazer » de Leadpages, HTML Pub e Shopify, em francês.",
-  },
-  {
-    name: "Jogo",
-    url: "https://game.zunrel.com",
-    host: "game.zunrel.com",
-    text: "Um jogo para jogar no navegador.",
   },
   {
     name: "Pieceworth",
     url: "",
-    host: "",
     text: "",
+  },
+  {
+    name: "Jogo",
+    url: "https://game.zunrel.com",
+    text: "Um jogo para jogar no navegador.",
   },
 ];
 
@@ -38,170 +34,46 @@ const links = [
   { name: "LinkedIn", url: "" },
 ].filter((l) => l.url);
 
-const year = new Date().getFullYear();
+const host = (url: string) => new URL(url).host;
 ---
 
-<Base
-  title="Dário Pinheiro"
-  description="Dário Pinheiro: sites, guias e jogos na internet."
->
-  <header id="top" class="top wrap">
-    <a class="mark" href="/">Dário Pinheiro</a>
-    <nav>
-      <a href="#projetos">Projetos</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
+<Base title="Dário Pinheiro" description="Dário Pinheiro: os meus sites e projetos na internet.">
+  <p class="eyebrow">Olá, eu sou o Dário.</p>
+  <h1>Crio sites, guias e jogos na internet.</h1>
+  <p class="lead todo">[a preencher: uma ou duas frases sobre quem é e o que faz]</p>
 
-  <main>
-    <section class="hero wrap">
-      <p class="eyebrow">Olá, eu sou o Dário.</p>
-      <h1>Crio sites, guias e jogos na internet.</h1>
-      <p class="intro todo">[a preencher: uma ou duas frases sobre quem é e o que faz]</p>
-    </section>
-
-    <section class="photo wrap" aria-label="Foto">
-      <div class="photo-box">
-        <span class="todo">[a preencher: foto]</span>
-      </div>
-    </section>
-
-    <section id="projetos" class="wrap block">
-      <h2>Projetos</h2>
-      <ul class="projects">
-        {projects.map((p) => (
-          <li>
-            {p.url ? (
-              <a class="card" href={p.url} target="_blank" rel="noopener">
-                <span class="name">{p.name}</span>
-                <span class="text">{p.text}</span>
-                <span class="host">{p.host} ↗</span>
-              </a>
-            ) : (
-              <div class="card">
-                <span class="name">{p.name}</span>
-                <span class="text todo">[a preencher: descrição e link]</span>
-              </div>
-            )}
-          </li>
-        ))}
-      </ul>
-    </section>
-
-    <section id="contacto" class="wrap block">
-      <h2>Contacto</h2>
-      {links.length ? (
-        <ul class="links">
-          {links.map((l) => (
-            <li><a href={l.url} target="_blank" rel="noopener">{l.name} ↗</a></li>
-          ))}
-        </ul>
-      ) : (
-        <p class="todo">[a preencher: e-mail e redes sociais]</p>
+  <section id="sites">
+    <h2 class="section-title">Os meus sites</h2>
+    <div class="rows">
+      {sites.map((s) =>
+        s.url ? (
+          <a class="row" href={s.url} target="_blank" rel="noopener">
+            <span class="row-title">{s.name} →</span>
+            <span class="row-text">{s.text}</span>
+            <span class="row-meta">{host(s.url)}</span>
+          </a>
+        ) : (
+          <div class="row">
+            <span class="row-title">{s.name}</span>
+            <span class="row-text todo">[a preencher: link e uma frase]</span>
+          </div>
+        )
       )}
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer class="wrap foot">
-    <span>© {year} Dário Pinheiro</span>
-    <a href="#top">Voltar ao topo ↑</a>
-  </footer>
+  <section id="contacto">
+    <h2 class="section-title">Contacto</h2>
+    {links.length ? (
+      <div class="rows">
+        {links.map((l) => (
+          <a class="row" href={l.url} target="_blank" rel="noopener">
+            <span class="row-title">{l.name} →</span>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="lead todo">[a preencher: e-mail e redes sociais]</p>
+    )}
+  </section>
 </Base>
-
-<style>
-  .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 28px;
-    padding-bottom: 28px;
-  }
-  .mark { text-decoration: none; font-weight: 600; letter-spacing: -0.01em; }
-  .top nav { display: flex; gap: 22px; }
-  .top nav a { text-decoration: none; color: var(--muted); }
-  .top nav a:hover { color: var(--fg); }
-
-  .hero { padding-top: 12vh; padding-bottom: 8vh; }
-  .eyebrow { color: var(--muted); margin: 0 0 18px; font-size: 1.05rem; }
-  h1 {
-    margin: 0;
-    font-size: clamp(2.6rem, 8vw, 6rem);
-    line-height: 1.02;
-    letter-spacing: -0.04em;
-    font-weight: 600;
-    max-width: 14ch;
-  }
-  .intro { margin: 28px 0 0; font-size: 1.2rem; max-width: 46ch; }
-
-  .photo-box {
-    aspect-ratio: 16 / 9;
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    display: grid;
-    place-items: center;
-    background: linear-gradient(135deg, #141416, #0e0e10);
-  }
-
-  .block { padding-top: 96px; }
-  h2 {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--muted);
-    font-weight: 500;
-    margin: 0 0 24px;
-  }
-
-  .projects {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-  }
-  .card {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    height: 100%;
-    min-height: 190px;
-    padding: 26px;
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    text-decoration: none;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  a.card:hover { border-color: var(--fg); transform: translateY(-2px); }
-  .name { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.02em; }
-  .text { color: var(--muted); }
-  .host { margin-top: auto; font-size: 0.92rem; }
-
-  .links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; }
-  .links a {
-    display: inline-block;
-    padding: 10px 18px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    text-decoration: none;
-  }
-  .links a:hover { border-color: var(--fg); }
-
-  .foot {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    padding-top: 120px;
-    padding-bottom: 40px;
-    color: var(--muted);
-    font-size: 0.92rem;
-  }
-  .foot a { text-decoration: none; }
-
-  @media (max-width: 640px) {
-    .projects { grid-template-columns: 1fr; }
-    .card { min-height: 0; }
-    .hero { padding-top: 8vh; }
-    .block { padding-top: 72px; }
-  }
-</style>

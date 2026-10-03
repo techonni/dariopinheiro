@@ -1,0 +1,91 @@
+@import "@fontsource-variable/geist";
+
+/* Mesmo tema do zunrel.com. */
+:root {
+  --bg: #fbfbfb;
+  --fg: #171717;
+  --text: #666666;
+  --muted: #737373;
+  --faint: #a0a0a0;
+  --line: #e5e5e5;
+  --chip: #f5f5f5;
+  --todo: #0f4bf1;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--bg); -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--line); }
+
+a { color: inherit; text-decoration: none; }
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 20px;
+}
+.brand { display: flex; align-items: center; gap: 8px; }
+.brand svg { width: 24px; height: 24px; }
+.brand span, .site-header nav {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.site-header nav { display: flex; gap: 16px; }
+.site-header nav a:hover { opacity: 0.7; }
+
+.column { width: 100%; max-width: 580px; margin: 0 auto; padding: 0 20px; }
+main { padding-top: 64px; }
+
+.eyebrow, .section-title { font-size: 13px; line-height: 20px; color: var(--muted); margin: 0; font-weight: 400; }
+h1 {
+  margin: 12px 0 0;
+  font-size: 26px;
+  line-height: 32px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.lead { margin: 16px 0 0; font-size: 15px; line-height: 24px; color: var(--text); }
+
+section { margin-top: 64px; }
+.rows { margin-top: 24px; display: grid; gap: 32px; }
+.row { display: block; }
+.row-title { display: block; font-size: 15px; line-height: 20px; font-weight: 500; }
+a.row:hover .row-title { text-decoration: underline; }
+.row-text { display: block; margin-top: 4px; font-size: 14px; line-height: 20px; color: var(--muted); }
+.row-meta { display: block; margin-top: 4px; font-size: 13px; line-height: 20px; color: var(--faint); }
+
+.todo { color: var(--todo); font-style: italic; }
+
+.site-footer { margin-top: 112px; padding-bottom: 64px; }
+.chips { display: flex; flex-wrap: wrap; gap: 11px; }
+.chips a {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 4px;
+  background: var(--chip);
+  font-size: 13px;
+  color: var(--text);
+}
+.chips a:hover { color: var(--fg); }
+.small { margin: 56px 0 0; font-size: 13px; line-height: 20px; color: var(--faint); }
+
+@media (min-width: 640px) {
+  .site-header { padding: 24px 32px; }
+  .site-header nav { gap: 24px; }
+}
+@media (min-width: 620px) {
+  .column { padding: 0; }
+}
