@@ -1,11 +1,12 @@
 ---
 // Newsletter: a mesma interface do zunrel.com (formulário « embedded » do Mailchimp,
 // envio em segundo plano, confirmação por e-mail). Sem chave API nem servidor.
-// Para ligar: pôr em `formUrl` o link do formulário Mailchimp e em `honeypot` o nome
-// do campo anti-robots (os dois estão no código « embedded » do Mailchimp).
+// Audiência « Zunrel » (partilhada com o zunrel.com, plano grátis): os inscritos daqui
+// recebem a tag « dariopinheiro.com » (id em `tagId`), definida no formulário embedded.
 // Enquanto `formUrl` estiver vazio, o bloco aparece mas o botão fica desligado.
-const formUrl = "";
-const honeypot = "";
+const formUrl = "https://zunrel.us9.list-manage.com/subscribe/post?u=13aa96838d6074fef23022e3e&id=893c08eb5d&f_id=0072d9e1f0";
+const honeypot = "b_13aa96838d6074fef23022e3e_893c08eb5d";
+const tagId = "11404685";
 
 const messages = {
   send: "Envoi…",
@@ -37,6 +38,7 @@ const messages = {
         aria-describedby="newsletter-help"
         class="nl-input"
       />
+      {tagId && <input type="hidden" name="tags" value={tagId} />}
       {honeypot && (
         <div aria-hidden="true" style="position: absolute; left: -5000px;">
           <input type="text" name={honeypot} tabindex="-1" value="" />
