@@ -6,5 +6,5 @@ Site pessoal, em **português**. Astro 7, estático, hospedado no **Cloudflare P
 
 - Responder em **português**, com palavras simples.
 - **Nunca inventar** frases sobre o Dário, links ou números. O que falta fica marcado « [a preencher] ».
-- Conteúdo da página inicial: `src/pages/index.astro` (listas `projects` e `links` no topo).
+- Conteúdo da página inicial: `src/pages/index.astro` (listas `sites` e `links` no topo).
 - Publicar: `npm run build` → push para `main` → verificar https://dariopinheiro.com.
