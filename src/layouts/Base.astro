@@ -32,7 +32,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
         <span>Dário Pinheiro</span>
       </a>
       <nav>
-        <a href="/#sites">Sites</a>
+        <a href="/#work">Work</a>
         <a href="/#contacto">Contacto</a>
       </nav>
     </header>
@@ -41,11 +41,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
         <slot />
       </main>
       <footer class="site-footer">
-        <nav class="chips">
-          <a href="https://techonni.com">Techonni</a>
-          <a href="https://zunrel.com">Zunrel</a>
-          <a href="https://game.zunrel.com">Jogo</a>
-        </nav>
         <p class="small">© {new Date().getFullYear()} Dário Pinheiro.</p>
       </footer>
     </div>

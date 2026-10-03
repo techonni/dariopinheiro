@@ -1,32 +1,14 @@
 ---
 import Base from "../layouts/Base.astro";
 
-// Os meus sites. Para acrescentar um, copiar um bloco.
-// url vazio = falta o link (aparece « a preencher »).
-const sites = [
-  {
-    name: "Techonni",
-    url: "https://techonni.com",
-    text: "Guias de GTA 6 em francês.",
-  },
-  {
-    name: "Zunrel",
-    url: "https://zunrel.com",
-    text: "Guias « como fazer » de Leadpages, HTML Pub e Shopify, em francês.",
-  },
-  {
-    name: "Pieceworth",
-    url: "",
-    text: "",
-  },
-  {
-    name: "Jogo",
-    url: "https://game.zunrel.com",
-    text: "Um jogo para jogar no navegador.",
-  },
+// Work: os sites em que trabalho. Para acrescentar um, copiar uma linha.
+const work = [
+  { name: "Techonni", text: "Guias de GTA 6 em francês", url: "https://techonni.com" },
+  { name: "Zunrel", text: "Guias de Leadpages, HTML Pub e Shopify", url: "https://zunrel.com" },
+  { name: "Pieceworth", text: "Guias para comprar luxo com cuidado", url: "https://pieceworth.com" },
 ];
 
-// Redes e contacto: pôr o link verdadeiro em "url". Os vazios não aparecem.
+// Contacto: pôr o link verdadeiro em "url". Os vazios não aparecem.
 const links = [
   { name: "E-mail", url: "" },
   { name: "Instagram", url: "" },
@@ -37,41 +19,39 @@ const links = [
 const host = (url: string) => new URL(url).host;
 ---
 
-<Base title="Dário Pinheiro" description="Dário Pinheiro: os meus sites e projetos na internet.">
-  <p class="eyebrow">Olá, eu sou o Dário.</p>
-  <h1>Crio sites, guias e jogos na internet.</h1>
-  <p class="lead todo">[a preencher: uma ou duas frases sobre quem é e o que faz]</p>
+<Base title="Dário Pinheiro" description="Dário Pinheiro: os sites em que trabalho.">
+  <h1>Dário Pinheiro</h1>
+  <p class="lead">Crio sites de guias simples e úteis: Techonni, Zunrel e Pieceworth.</p>
+  <p class="lead todo">[a preencher: uma ou duas frases sobre si]</p>
 
-  <section id="sites">
-    <h2 class="section-title">Os meus sites</h2>
-    <div class="rows">
-      {sites.map((s) =>
-        s.url ? (
-          <a class="row" href={s.url} target="_blank" rel="noopener">
-            <span class="row-title">{s.name} →</span>
-            <span class="row-text">{s.text}</span>
-            <span class="row-meta">{host(s.url)}</span>
+  <section id="work">
+    <h2 class="section-title">Work</h2>
+    <ul class="list">
+      {work.map((w) => (
+        <li>
+          <a class="item" href={w.url} target="_blank" rel="noopener">
+            <span class="item-name">{w.name}</span>
+            <span class="item-text">{w.text}</span>
+            <span class="item-meta">{host(w.url)} ↗</span>
           </a>
-        ) : (
-          <div class="row">
-            <span class="row-title">{s.name}</span>
-            <span class="row-text todo">[a preencher: link e uma frase]</span>
-          </div>
-        )
-      )}
-    </div>
+        </li>
+      ))}
+    </ul>
   </section>
 
   <section id="contacto">
     <h2 class="section-title">Contacto</h2>
     {links.length ? (
-      <div class="rows">
+      <ul class="list">
         {links.map((l) => (
-          <a class="row" href={l.url} target="_blank" rel="noopener">
-            <span class="row-title">{l.name} →</span>
-          </a>
+          <li>
+            <a class="item" href={l.url} target="_blank" rel="noopener">
+              <span class="item-name">{l.name}</span>
+              <span class="item-meta">↗</span>
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     ) : (
       <p class="lead todo">[a preencher: e-mail e redes sociais]</p>
     )}
