@@ -1,0 +1,273 @@
+---
+// Newsletter: a mesma interface do zunrel.com (formulário « embedded » do Mailchimp,
+// envio em segundo plano, confirmação por e-mail). Sem chave API nem servidor.
+// Para ligar: pôr em `formUrl` o link do formulário Mailchimp e em `honeypot` o nome
+// do campo anti-robots (os dois estão no código « embedded » do Mailchimp).
+// Enquanto `formUrl` estiver vazio, o bloco aparece mas o botão fica desligado.
+const formUrl = "";
+const honeypot = "";
+
+const messages = {
+  send: "A enviar…",
+  button: "Inscrever-me",
+  thanks: "Obrigado!",
+  confirm: "Último passo: abra o e-mail enviado para {email} e clique no botão para confirmar.",
+  already: "Já está inscrito.",
+  alreadyText: "Obrigado! As próximas novidades chegam ao seu e-mail.",
+  invalid: "Escreva um e-mail válido, por exemplo voce@exemplo.com.",
+  tooMany: "Muitas tentativas com este e-mail. Tente daqui a alguns minutos.",
+  failed: "Não foi possível inscrever este e-mail. Verifique-o e tente de novo.",
+};
+---
+
+<section data-newsletter-block data-messages={JSON.stringify(messages)} class="newsletter">
+  <div data-newsletter-intro>
+    <h2 class="nl-title">Newsletter</h2>
+    <p class="nl-text">As novidades dos meus sites por e-mail. Sem spam, desinscrição num clique.</p>
+    <form action={formUrl || undefined} method="post" target="dp-newsletter-frame" novalidate data-newsletter={formUrl ? "" : undefined} class="nl-form">
+      <label for="newsletter-email" class="sr-only">E-mail</label>
+      <input
+        id="newsletter-email"
+        type="email"
+        name="EMAIL"
+        required
+        autocomplete="email"
+        inputmode="email"
+        placeholder="voce@exemplo.com"
+        aria-describedby="newsletter-help"
+        class="nl-input"
+      />
+      {honeypot && (
+        <div aria-hidden="true" style="position: absolute; left: -5000px;">
+          <input type="text" name={honeypot} tabindex="-1" value="" />
+        </div>
+      )}
+      <button type="submit" class="nl-button" disabled={!formUrl}>
+        <span data-newsletter-spinner hidden class="newsletter-spinner" aria-hidden="true"></span>
+        <span data-newsletter-label>{messages.button}</span>
+      </button>
+    </form>
+    <p id="newsletter-help" data-newsletter-message aria-live="polite" class="nl-help">
+      {formUrl ? "Vai receber um e-mail para confirmar a inscrição." : <span class="todo">[a preencher: link do formulário Mailchimp]</span>}
+    </p>
+  </div>
+
+  <div data-newsletter-done hidden tabindex="-1" class="newsletter-done">
+    <span class="nl-check" aria-hidden="true">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path class="newsletter-check" d="M2.5 6.2 5 8.5l4.5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </span>
+    <div>
+      <p data-newsletter-done-title class="nl-done-title">{messages.thanks}</p>
+      <p data-newsletter-done-text class="nl-done-text"></p>
+    </div>
+  </div>
+
+  <iframe name="dp-newsletter-frame" title="Inscrição na newsletter" hidden tabindex="-1"></iframe>
+</section>
+
+<style>
+  .newsletter { margin-top: 48px; padding: 24px; border-radius: 6px; background: #f3f3f3; text-align: left; }
+  .newsletter.is-done { display: flex; flex-direction: column; justify-content: center; }
+  .nl-title { margin: 0; font-size: 15px; line-height: 20px; font-weight: 500; color: var(--fg); }
+  .nl-text { margin: 12px 0 0; font-size: 14px; line-height: 24px; color: var(--text); }
+  .nl-form { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .nl-input {
+    height: 39px; width: 100%; min-width: 0; padding: 0 12px;
+    border: 0; border-radius: 4px; background: #fff;
+    font: inherit; font-size: 14px; color: var(--fg); outline: none;
+  }
+  .nl-input::placeholder { color: var(--faint); }
+  .nl-input:focus { box-shadow: 0 0 0 2px var(--fg); }
+  .nl-input[aria-invalid="true"] { box-shadow: 0 0 0 2px #b42318; }
+  .nl-button {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    height: 39px; min-width: 120px; padding: 0 24px;
+    border: 0; border-radius: 4px; background: #262626; color: #fff;
+    font: inherit; font-size: 14px; font-weight: 500; cursor: pointer;
+  }
+  .nl-button:hover { background: #000; }
+  .nl-button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .nl-help { margin: 12px 0 0; font-size: 13px; line-height: 20px; color: var(--faint); }
+  .newsletter-done { display: flex; align-items: flex-start; gap: 12px; outline: none; }
+  .newsletter-done[hidden] { display: none; }
+  .nl-check { margin-top: 2px; display: flex; width: 24px; height: 24px; flex-shrink: 0; align-items: center; justify-content: center; border-radius: 9999px; background: #171717; }
+  .nl-done-title { margin: 0; font-size: 15px; line-height: 24px; font-weight: 500; color: var(--fg); }
+  .nl-done-text { margin: 4px 0 0; font-size: 14px; line-height: 24px; color: var(--text); }
+  @media (min-width: 480px) {
+    .nl-form { flex-direction: row; }
+    .nl-input { flex: 1; }
+  }
+  .newsletter-spinner {
+    width: 14px;
+    height: 14px;
+    border-radius: 9999px;
+    border: 2px solid rgb(255 255 255 / 0.35);
+    border-top-color: #fff;
+    animation: newsletter-spin 0.7s linear infinite;
+  }
+  .newsletter-done:not([hidden]) {
+    animation: newsletter-in 0.35s ease-out both;
+  }
+  .newsletter-done:not([hidden]) .newsletter-check {
+    stroke-dasharray: 12;
+    stroke-dashoffset: 12;
+    animation: newsletter-draw 0.4s 0.15s ease-out forwards;
+  }
+  @keyframes newsletter-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes newsletter-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+  @keyframes newsletter-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .newsletter-spinner,
+    .newsletter-done:not([hidden]),
+    .newsletter-done:not([hidden]) .newsletter-check {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var form = document.querySelector("form[data-newsletter]");
+    if (!form) return;
+    var block = document.querySelector("[data-newsletter-block]");
+    var intro = block.querySelector("[data-newsletter-intro]");
+    var done = block.querySelector("[data-newsletter-done]");
+    var doneTitle = block.querySelector("[data-newsletter-done-title]");
+    var doneText = block.querySelector("[data-newsletter-done-text]");
+    var message = block.querySelector("[data-newsletter-message]");
+    var input = form.querySelector('input[name="EMAIL"]');
+    var button = form.querySelector('button[type="submit"]');
+    var spinner = button.querySelector("[data-newsletter-spinner]");
+    var label = button.querySelector("[data-newsletter-label]");
+    var defaultHelp = message.textContent;
+    var storageKey = "dp-newsletter";
+    var m = JSON.parse(block.getAttribute("data-messages") || "{}");
+
+    function remember() {
+      try {
+        localStorage.setItem(storageKey, "1");
+      } catch (e) {}
+    }
+
+    function setBusy(busy) {
+      button.disabled = busy;
+      spinner.hidden = !busy;
+      label.textContent = busy ? m.send : m.button;
+      input.readOnly = busy;
+    }
+
+    function setError(text) {
+      input.setAttribute("aria-invalid", "true");
+      message.textContent = text;
+      message.style.color = "#b42318";
+      input.focus();
+    }
+
+    function clearError() {
+      input.removeAttribute("aria-invalid");
+      message.textContent = defaultHelp;
+      message.style.color = "";
+    }
+
+    function showDone(title, text, moveFocus) {
+      doneTitle.textContent = title;
+      doneText.textContent = text;
+      // Garde la hauteur du bloc pour que la page ne saute pas, et centre le message.
+      if (moveFocus !== false) block.style.minHeight = block.offsetHeight + "px";
+      block.classList.add("is-done");
+      intro.hidden = true;
+      done.hidden = false;
+      if (moveFocus !== false) done.focus({ preventScroll: true });
+    }
+
+    // Déjà inscrit sur ce navigateur : un simple rappel au lieu du formulaire.
+    try {
+      if (localStorage.getItem(storageKey) === "1") {
+        showDone(m.already, m.alreadyText, false);
+      }
+    } catch (e) {}
+
+    input.addEventListener("input", function () {
+      if (input.hasAttribute("aria-invalid")) clearError();
+    });
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (!input.value.trim() || !input.checkValidity()) {
+        // Pas d'envoi : l'événement ne compte pas comme inscription dans les statistiques.
+        event.stopPropagation();
+        setError(m.invalid);
+        return;
+      }
+
+      var email = input.value.trim();
+      var name = "dpNewsletter" + Date.now();
+      var url = form.action.replace("/subscribe/post?", "/subscribe/post-json?");
+      var params = new URLSearchParams(new FormData(form));
+      params.set("c", name);
+      var script = document.createElement("script");
+      var finished = false;
+
+      function finish() {
+        finished = true;
+        clearTimeout(fallback);
+        setBusy(false);
+        delete window[name];
+        script.remove();
+      }
+
+      function success() {
+        remember();
+        showDone(m.thanks, m.confirm.replace("{email}", email));
+      }
+
+      // Mailchimp ne répond pas : envoi classique dans l'iframe cachée, sans quitter la page.
+      function sendInFrame() {
+        if (finished) return;
+        finish();
+        form.submit();
+        success();
+      }
+
+      var fallback = setTimeout(sendInFrame, 8000);
+
+      window[name] = function (data) {
+        if (finished) return;
+        finish();
+        var msg = (data && data.msg) || "";
+        if (data && data.result === "success") {
+          success();
+        } else if (/already subscribed|déjà inscrit/i.test(msg)) {
+          remember();
+          showDone(m.already, m.alreadyText);
+        } else if (/too many|trop de/i.test(msg)) {
+          setError(m.tooMany);
+        } else {
+          setError(m.failed);
+        }
+      };
+
+      clearError();
+      setBusy(true);
+      script.src = url + "&" + params.toString();
+      script.onerror = sendInFrame;
+      document.body.appendChild(script);
+    });
+  })();
+</script>

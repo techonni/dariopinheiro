@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import NewsletterForm from "../components/NewsletterForm.astro";
 
 // Hub de links (como um « link na bio »). Cada grupo é uma lista de botões.
 // Para acrescentar um link, copiar uma linha. Links com url vazio não aparecem.
@@ -19,11 +20,7 @@ const groups = [
   {
     title: "Redes",
     links: [
-      { name: "Instagram", text: "", url: "" },
-      { name: "YouTube", text: "", url: "" },
-      { name: "TikTok", text: "", url: "" },
-      { name: "LinkedIn", text: "", url: "" },
-      { name: "E-mail", text: "", url: "" },
+      { name: "X", text: "@zunrel", url: "https://x.com/zunrel" },
     ],
   },
 ]
@@ -36,8 +33,7 @@ const host = (url: string) => (url.startsWith("mailto:") ? url.slice(7) : new UR
 <Base title="Dário Pinheiro" description="Dário Pinheiro: todos os meus links num só sítio.">
   <div class="hub">
     <h1>Dário Pinheiro</h1>
-    <p class="lead">Todos os meus sites e links num só sítio.</p>
-    <p class="lead todo">[a preencher: uma frase sobre si]</p>
+    <p class="lead">I make stuff on the internet.</p>
 
     {groups.map((g) => (
       <section>
@@ -58,6 +54,6 @@ const host = (url: string) => (url.startsWith("mailto:") ? url.slice(7) : new UR
       </section>
     ))}
 
-    <p class="lead todo">[a preencher: links das suas redes e e-mail]</p>
+    <NewsletterForm />
   </div>
 </Base>
