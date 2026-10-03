@@ -1,0 +1,10 @@
+# Dário Pinheiro (dariopinheiro.com)
+
+Site pessoal, em **português**. Astro 7, estático, hospedado no **Cloudflare Pages** (publica `main` a cada push). Domínio: dariopinheiro.com (DNS no Cloudflare; registo no WordPress.com, transferência para o Cloudflare prevista a partir de 3/11/2026).
+
+## Regras
+
+- Responder em **português**, com palavras simples.
+- **Nunca inventar** frases sobre o Dário, links ou números. O que falta fica marcado « [a preencher] ».
+- Conteúdo da página inicial: `src/pages/index.astro` (listas `projects` e `links` no topo).
+- Publicar: `npm run build` → push para `main` → verificar https://dariopinheiro.com.
