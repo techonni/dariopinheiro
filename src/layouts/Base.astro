@@ -67,5 +67,7 @@ const imageUrl = image ? new URL(image, Astro.site).href : undefined;
         <p class="small">© {new Date().getFullYear()} Dário Pinheiro.</p>
       </footer>
     </div>
+    <!-- Cloudflare Web Analytics (sem cookies): site « dariopinheiro.com » da conta Cloudflare, token público do beacon. -->
+    <script is:inline type="module" defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "27e3335e04134650bc746cdb8b005364"}'></script>
   </body>
 </html>

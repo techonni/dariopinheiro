@@ -28,6 +28,8 @@ const parts = post.rendered?.html ? splitForNewsletter(post.rendered.html) : nul
 const site = Astro.site!;
 const url = new URL(`/blog/${post.id}/`, site).href;
 const minutes = readingMinutes(post);
+// « Partager sur X » no fim do guia: intenção de publicação do X com o título, o link canónico e via @zunrel.
+const shareUrl = `https://x.com/intent/post?${new URLSearchParams({ text: post.data.title, url, via: "zunrel" }).toString().replace(/\+/g, "%20")}`;
 // Titre pour Google : on ajoute le nom seulement si le tout reste court (environ 65 caractères).
 const seoBase = post.data.seoTitle ?? post.data.title;
 const title = seoBase.length + 17 <= 65 ? `${seoBase} · Dário Pinheiro` : seoBase;
@@ -98,6 +100,10 @@ const breadcrumb = {
         <Content />
       </div>
     )}
+
+    <p class="post-share">
+      <a class="pill-link" href={shareUrl} target="_blank" rel="noopener">Partager sur X</a>
+    </p>
   </article>
 
   <NewsletterForm

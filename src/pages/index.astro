@@ -6,6 +6,7 @@ import { host, socialLinks } from "../lib/links";
 
 // Página inicial (pedido do Dário, 04/10/2026): só três blocos, por esta ordem:
 // 1) os guias do blog em destaque, 2) a newsletter, 3) o X.
+// No telemóvel (< 640 px) a newsletter sobe para logo depois da apresentação (CSS em global.css, `.hub > .newsletter`).
 // Menu lateral (src/components/MenuDrawer.astro): só Blog e X (links em src/lib/links.ts).
 // Guias em destaque: escolher os slugs aqui (ficheiros em src/content/blog/).
 const featuredSlugs = [
@@ -28,8 +29,8 @@ const featured = featuredSlugs.map((slug) => posts.find((p) => p.id === slug)).f
         <img class="avatar" src="/images/dario.jpg" alt="Dario" width="96" height="96" fetchpriority="high" />
       </picture>
       <h1>Dario</h1>
-      <p class="lead">I make stuff on the internet.</p>
-      <p class="lead-more">Je crée des sites d'affiliation avec l'IA, et je montre comment faire.</p>
+      <p class="lead">Je crée des sites d'affiliation avec l'IA.</p>
+      <p class="lead-more">Et je vous montre comment, étape par étape, à partir de mes vrais sites.</p>
     </header>
 
     <section class="featured">

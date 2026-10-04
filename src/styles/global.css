@@ -86,6 +86,14 @@ a.row:hover .row-title { text-decoration: underline; }
 .intro .lead { margin-top: 8px; font-size: 17px; line-height: 26px; color: var(--fg); }
 .lead-more { margin: 12px 0 0; font-size: 15px; line-height: 24px; color: var(--text); }
 .hub section { margin-top: 56px; }
+/* Telemóvel: a newsletter logo depois da apresentação, para ficar visível sem rolar muito
+   (quem chega das redes sociais vê-a primeiro). No computador, a ordem normal. */
+@media (max-width: 639px) {
+  .hub { display: flex; flex-direction: column; }
+  .hub > .newsletter { order: 1; margin-top: 40px; }
+  .hub > .featured { order: 2; }
+  .hub > section:not(.newsletter):not(.featured) { order: 3; }
+}
 .section-intro { margin: 8px 0 0; font-size: 15px; line-height: 24px; color: var(--text); }
 .items { list-style: none; margin: 20px 0 0; padding: 0; }
 .items li { border-bottom: 1px solid var(--hairline); }
@@ -241,3 +249,4 @@ a.row:hover .row-title { text-decoration: underline; }
 /* Página inicial: guias em destaque */
 .featured .post-list { margin-top: 20px; }
 .featured-more { margin: 20px 0 0; }
+.post-share { margin: 40px 0 0; padding-top: 20px; border-top: 1px solid var(--hairline); }
