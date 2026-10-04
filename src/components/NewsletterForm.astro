@@ -22,7 +22,7 @@ const messages = {
 
 <section data-newsletter-block data-messages={JSON.stringify(messages)} class="newsletter">
   <div data-newsletter-intro>
-    <h2 class="nl-title">Newsletter</h2>
+    <h2 class="section-title">Newsletter</h2>
     <p class="nl-text">Les nouveautés de mes sites par e-mail. Pas de spam, désinscription en un clic.</p>
     <form action={formUrl || undefined} method="post" target="dp-newsletter-frame" novalidate data-newsletter={formUrl ? "" : undefined} class="nl-form">
       <label for="newsletter-email" class="sr-only">E-mail</label>
@@ -47,8 +47,8 @@ const messages = {
         <span data-newsletter-label>{messages.button}</span>
       </button>
     </form>
-    <p id="newsletter-help" data-newsletter-message aria-live="polite" class="nl-help">
-      {formUrl ? "Vous recevrez un e-mail pour confirmer votre inscription." : <span class="todo">[à compléter : lien du formulaire Mailchimp]</span>}
+    <p id="newsletter-help" data-newsletter-message aria-live="polite" class="nl-help" hidden={!formUrl}>
+      {formUrl ? "Vous recevrez un e-mail pour confirmer votre inscription." : ""}
     </p>
   </div>
 
@@ -68,14 +68,14 @@ const messages = {
 </section>
 
 <style>
-  .newsletter { margin-top: 48px; padding: 24px; border-radius: 6px; background: #f3f3f3; text-align: left; }
+  .newsletter { margin-top: 72px; text-align: left; }
   .newsletter.is-done { display: flex; flex-direction: column; justify-content: center; }
   .nl-title { margin: 0; font-size: 15px; line-height: 20px; font-weight: 500; color: var(--fg); }
-  .nl-text { margin: 12px 0 0; font-size: 14px; line-height: 24px; color: var(--text); }
+  .nl-text { margin: 12px 0 0; font-size: 15px; line-height: 24px; color: var(--text); }
   .nl-form { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
   .nl-input {
     height: 39px; width: 100%; min-width: 0; padding: 0 12px;
-    border: 0; border-radius: 4px; background: #fff;
+    border: 0; border-radius: 4px; background: #ececec;
     font: inherit; font-size: 14px; color: var(--fg); outline: none;
   }
   .nl-input::placeholder { color: var(--faint); }
@@ -89,6 +89,7 @@ const messages = {
   }
   .nl-button:hover { background: #000; }
   .nl-button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .nl-help[hidden] { display: none; }
   .nl-help { margin: 12px 0 0; font-size: 13px; line-height: 20px; color: var(--faint); }
   .newsletter-done { display: flex; align-items: flex-start; gap: 12px; outline: none; }
   .newsletter-done[hidden] { display: none; }

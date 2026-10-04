@@ -6,5 +6,5 @@ Site pessoal. Textos do site em **francês**. Astro 7, estático, hospedado no *
 
 - Responder ao Dário em **português**, com palavras simples. Os textos do site são em **francês**.
 - **Nunca inventar** frases sobre o Dário, links ou números. O que falta fica marcado « [à compléter] ».
-- Conteúdo da página inicial: `src/pages/index.astro` (lista `groups` no topo). O site é o **hub de links** do Dário (como um « link na bio »), com o estilo do zunrel.com; sem imagens nos links.
+- Conteúdo da página inicial: `src/pages/index.astro` (lista `groups` no topo). O site é o **hub de links** do Dário (como um « link na bio »), com o estilo de oliur.com (lista simples com setas →, foto redonda no topo, newsletter logo a seguir a « Work »); sem imagens nos links. Sem texto azul.
 - Publicar: `npm run build` → push para `main` → verificar https://dariopinheiro.com.

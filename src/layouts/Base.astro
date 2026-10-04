@@ -29,14 +29,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <header class="site-header">
       <a class="brand" href="/" aria-label="Accueil">
         <DottedMark />
-        <span>Dário Pinheiro</span>
       </a>
     </header>
     <div class="column">
       <main>
         <slot />
       </main>
-      <footer class="site-footer" style="text-align:center">
+      <footer class="site-footer">
         <p class="small">© {new Date().getFullYear()} Dário Pinheiro.</p>
       </footer>
     </div>

@@ -2,11 +2,13 @@
 import Base from "../layouts/Base.astro";
 import NewsletterForm from "../components/NewsletterForm.astro";
 
-// Hub de links (como um « link na bio »). Cada grupo é uma lista de botões.
+// Hub de links (como um « link na bio »), com o estilo de oliur.com: lista simples, setas, mais texto.
 // Textos do site em francês. Para acrescentar um link, copiar uma linha. Links com url vazio não aparecem.
+// `intro` = frase curta por baixo do título do grupo (opcional).
 const groups = [
   {
     title: "Work",
+    intro: "Mes sites, chacun avec son sujet.",
     links: [
       { name: "Techonni", text: "Guides GTA 6 en français", url: "https://techonni.com" },
       { name: "Zunrel", text: "Guides Leadpages, HTML Pub et Shopify", url: "https://zunrel.com" },
@@ -15,10 +17,12 @@ const groups = [
   },
   {
     title: "Jeux",
+    intro: "",
     links: [{ name: "Jeu", text: "À jouer dans le navigateur", url: "https://game.zunrel.com" }],
   },
   {
     title: "Réseaux",
+    intro: "",
     links: [
       { name: "X", text: "@zunrel", url: "https://x.com/zunrel" },
     ],
@@ -27,26 +31,35 @@ const groups = [
   .map((g) => ({ ...g, links: g.links.filter((l) => l.url) }))
   .filter((g) => g.links.length);
 
+// A newsletter fica logo a seguir ao grupo « Work ».
+const [work, ...others] = groups;
+
 const host = (url: string) => (url.startsWith("mailto:") ? url.slice(7) : new URL(url).host);
 ---
 
 <Base title="Dário Pinheiro" description="Dário Pinheiro : tous mes sites et mes liens au même endroit.">
   <div class="hub">
-    <h1>Dário Pinheiro</h1>
-    <p class="lead">I make stuff on the internet.</p>
+    <header class="intro">
+      <picture>
+        <source srcset="/images/dario.webp" type="image/webp" />
+        <img class="avatar" src="/images/dario.jpg" alt="Dario" width="96" height="96" fetchpriority="high" />
+      </picture>
+      <h1>Dario</h1>
+      <p class="lead">I make stuff on the internet.</p>
+      <p class="lead-more">Ici, tous mes sites et mes liens au même endroit.</p>
+    </header>
 
-    {groups.map((g) => (
+    {[work].map((g) => (
       <section>
         <h2 class="section-title">{g.title}</h2>
-        <ul class="buttons">
+        {g.intro && <p class="section-intro">{g.intro}</p>}
+        <ul class="items">
           {g.links.map((l) => (
             <li>
-              <a class="button" href={l.url} target="_blank" rel="noopener">
-                <span>
-                  <span class="button-name">{l.name}</span>
-                  {l.text && <span class="button-text">{l.text}</span>}
-                </span>
-                <span class="button-meta">{host(l.url)} ↗</span>
+              <a class="item" href={l.url} target="_blank" rel="noopener">
+                <span class="item-name">{l.name} <span class="arrow" aria-hidden="true">→</span></span>
+                {l.text && <span class="item-text">{l.text}</span>}
+                <span class="item-meta">{host(l.url)} ↗</span>
               </a>
             </li>
           ))}
@@ -55,5 +68,23 @@ const host = (url: string) => (url.startsWith("mailto:") ? url.slice(7) : new UR
     ))}
 
     <NewsletterForm />
+
+    {others.map((g) => (
+      <section>
+        <h2 class="section-title">{g.title}</h2>
+        {g.intro && <p class="section-intro">{g.intro}</p>}
+        <ul class="items">
+          {g.links.map((l) => (
+            <li>
+              <a class="item" href={l.url} target="_blank" rel="noopener">
+                <span class="item-name">{l.name} <span class="arrow" aria-hidden="true">→</span></span>
+                {l.text && <span class="item-text">{l.text}</span>}
+                <span class="item-meta">{host(l.url)} ↗</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
   </div>
 </Base>
