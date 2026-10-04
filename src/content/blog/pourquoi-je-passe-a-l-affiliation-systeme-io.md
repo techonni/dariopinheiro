@@ -58,8 +58,8 @@ Le programme d'affiliation de systeme.io est **gratuit**, **sans candidature**, 
 
 Ce point compte pour mon modèle : quelqu'un peut créer un compte gratuit grâce à un guide, l'utiliser pendant des mois, puis passer à un plan payant quand son activité grandit. Je n'ai pas besoin de pousser qui que ce soit vers un achat immédiat. Le guide doit simplement être utile.
 
-Si vous voulez voir l'outil par vous-même : [systeme.io](https://systeme.io/).
-<!-- TODO-affiliate: remplacer https://systeme.io/ par le lien affilié de Dario (et ajouter la mention « lien affilié ») dès qu'il l'a. -->
+<p>Si vous voulez voir l’outil par vous-même : <a href="https://systeme.io/fr?sa=sa0210069650f7a7d1911c7693beefdfbcd9f0e9f5" target="_blank" rel="sponsored noopener">systeme.io</a>.</p>
+<p class="affiliate-note">Lien affilié : si vous créez un compte via ce lien, je touche une commission, sans surcoût pour vous.</p>
 
 ## Ce qui change pour mes sites
 
@@ -86,3 +86,6 @@ La suite, concrètement :
 3. **Raconter chaque étape ici**, y compris les erreurs.
 
 Je pars de zéro sur ce nouveau sujet, et c'est assumé. Si vous voulez créer un site d'affiliation, ou simplement lancer une activité en ligne sans payer une pile d'abonnements dès le départ, vous pouvez suivre le parcours avec moi. Le plus simple : la newsletter, juste en dessous.
+
+<p class="affiliate-cta"><a href="https://systeme.io/fr?sa=sa0210069650f7a7d1911c7693beefdfbcd9f0e9f5" target="_blank" rel="sponsored noopener">Créer un compte gratuit sur systeme.io</a></p>
+<p class="affiliate-note">Lien affilié : si vous créez un compte via ce lien, je touche une commission, sans surcoût pour vous.</p>

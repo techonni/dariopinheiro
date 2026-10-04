@@ -189,6 +189,12 @@ a.row:hover .row-title { text-decoration: underline; }
 .prose code { font-family: var(--id-font-mono); font-size: 0.88em; padding: 2px 6px; background: var(--id-surface-2); border-radius: 6px; color: var(--fg); }
 .prose pre { margin: 20px 0 0; padding: 16px 18px; overflow-x: auto; background: var(--id-surface-1); border: 1px solid var(--id-line-strong); border-radius: var(--id-radius-md); font-size: 14px; line-height: 22px; }
 .prose pre code { padding: 0; background: none; }
+/* Lien affilié : mention discrète juste sous le lien (pedido de 04/10/2026), et appel à l'action en texte avec flèche. */
+.prose .affiliate-note { margin: 8px 0 0; font-size: 13px; line-height: 20px; color: var(--id-text-2); }
+.prose .affiliate-cta { margin: 32px 0 0; padding-top: 20px; border-top: 1px solid var(--hairline); }
+.prose .affiliate-cta a { display: inline-flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 600; text-decoration: none; }
+.prose .affiliate-cta a::after { content: "→"; color: var(--id-text-2); transition: transform 0.15s, color 0.15s; }
+.prose .affiliate-cta a:hover::after, .prose .affiliate-cta a:focus-visible::after { transform: translateX(3px); color: var(--fg); }
 .prose hr { margin: 40px 0; border: 0; border-top: 1px solid var(--id-line); }
 .prose table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 22px; display: block; overflow-x: auto; }
 .prose th, .prose td { padding: 10px 12px; border-bottom: 1px solid var(--id-line-strong); text-align: left; vertical-align: top; }
