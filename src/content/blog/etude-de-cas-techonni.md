@@ -17,8 +17,6 @@ GTA 6 est l'un des jeux les plus attendus. Sa date de sortie officielle est le *
 
 Une niche d'actualité a des avantages : une demande forte et des questions très claires. Elle a aussi des inconvénients : beaucoup de concurrence, des informations qui changent vite, et des rumeurs partout.
 
-> Pourquoi j'ai choisi GTA 6 : [à compléter].
-
 ## Le lancement : 15 guides en une session
 
 Le site a été créé le **3 octobre 2026**. En une première session de travail avec mon assistant de code IA, le site Astro a été construit avec **15 guides** :

@@ -11,8 +11,6 @@ order: 13
 
 Pinterest est souvent vu comme un réseau d'images de déco et de recettes. C'est aussi un **moteur de recherche visuel** : les gens y cherchent des idées et des solutions, et une épingle peut envoyer des visites pendant longtemps. Pour des guides « comment faire », c'est une source de trafic logique. Voici comment je l'utilise pour [Zunrel](https://zunrel.com), avec l'IA pour faire le travail répétitif.
 
-> Les résultats de Pinterest pour mes sites : [à compléter]. Je ne publie pas de chiffres tant que je n'ai pas assez de recul.
-
 ## Pourquoi Pinterest pour des guides
 
 - Les gens y **cherchent** (« créer une boutique en ligne », « landing page »), ils ne font pas que défiler.

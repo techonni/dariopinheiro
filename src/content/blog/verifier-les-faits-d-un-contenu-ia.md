@@ -68,7 +68,7 @@ Quand une information ne peut pas être vérifiée, ne la publiez pas comme un f
 
 - **dans vos notes** : « à confirmer ». Sur Zunrel, certains noms de menus de Leadpages ont été marqués ainsi, parce que la page d'aide officielle n'était pas accessible ce jour-là ;
 - **dans le texte** : formulez-le comme une estimation (« Rockstar n'a pas encore donné d'heure précise ; en général… ») ;
-- **sur ce blog** : ce qui me concerne et que je n'ai pas encore écrit est marqué « [à compléter] ».
+- **ou ne l'écrivez pas du tout** : une phrase en moins vaut mieux qu'une phrase inventée.
 
 ## Étape 7 : les liens
 

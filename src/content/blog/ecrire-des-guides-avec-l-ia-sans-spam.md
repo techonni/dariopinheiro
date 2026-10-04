@@ -59,7 +59,7 @@ Tous mes guides suivent un modèle. Sur Zunrel : question, résumé, introductio
 
 ## Règle 5 : l'honnêteté vaut mieux qu'un faux avis
 
-Ne faites pas dire à l'IA « j'ai testé » si vous n'avez pas testé. Ce blog suit une règle simple, écrite dans les instructions du dépôt : ne jamais inventer de phrases sur moi ; ce qui manque est marqué « [à compléter] ». Sur Techonni, ce qui n'est pas officiel est présenté comme une estimation ou une rumeur, jamais comme un fait.
+Ne faites pas dire à l'IA « j'ai testé » si vous n'avez pas testé. Ce blog suit une règle simple, écrite dans les instructions du dépôt : ne jamais inventer de phrases sur moi ; une information qui manque n'est tout simplement pas écrite. Sur Techonni, ce qui n'est pas officiel est présenté comme une estimation ou une rumeur, jamais comme un fait.
 
 L'expérience réelle est votre avantage sur un texte générique. Ajoutez ce que vous seul savez : ce qui vous a bloqué, ce que vous avez changé, ce qui n'a pas marché. Par exemple, sur Zunrel, j'ai retiré toutes les captures d'écran des guides le 2 octobre 2026 : c'est une décision que je peux expliquer, et que l'IA n'aurait pas inventée.
 

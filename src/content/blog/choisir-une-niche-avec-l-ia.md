@@ -11,8 +11,6 @@ order: 1
 
 Je crée des sites d'affiliation avec l'IA, et j'en ai aujourd'hui trois, chacun dans une niche très différente : des logiciels pour créer des pages et des boutiques ([Zunrel](https://zunrel.com)), l'achat de luxe en ligne ([Pieceworth](https://pieceworth.com)) et un jeu vidéo très attendu, GTA 6 ([Techonni](https://techonni.com)). Ce guide explique comment je m'y prendrais pour choisir une niche aujourd'hui, avec l'IA comme assistant, et surtout ce que l'IA ne peut pas décider à votre place.
 
-> Pourquoi j'ai choisi ces trois sujets-là au départ : [à compléter].
-
 ## Ce qu'est une « bonne » niche d'affiliation
 
 Une niche, c'est un sujet assez étroit pour qu'un petit site puisse y être utile, et assez large pour remplir des dizaines de pages. Pour un site d'affiliation, j'ajoute trois conditions :

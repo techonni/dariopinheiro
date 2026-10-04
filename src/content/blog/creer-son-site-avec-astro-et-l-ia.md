@@ -55,7 +55,7 @@ L'important est de définir un **schéma** : Astro refuse alors de construire le
 C'est l'étape la plus importante. Chaque dépôt contient un fichier d'instructions (`CLAUDE.md` chez moi) que l'assistant lit à chaque session. On y met :
 
 - **ce qu'est le site**, sa langue et son public ;
-- **les règles qui ne se discutent pas**. Sur ce hub, par exemple : « ne jamais inventer de phrases sur moi, de liens ou de chiffres ; ce qui manque est marqué [à compléter] ». Sur Techonni : ne jamais inventer un prix, une date ou un lien d'affiliation, et écrire comme une rumeur ce qui n'est pas officiel ;
+- **les règles qui ne se discutent pas**. Sur ce hub, par exemple : « ne jamais inventer de phrases sur moi, de liens ou de chiffres ». Sur Techonni : ne jamais inventer un prix, une date ou un lien d'affiliation, et écrire comme une rumeur ce qui n'est pas officiel ;
 - **comment publier** : `npm run build`, puis push sur `main`, puis vérifier la page en ligne ;
 - **la fin de session** : mettre à jour un fichier de passation.
 

@@ -51,7 +51,7 @@ L'avantage du modèle Sovrn pour le luxe : j'écris un lien normal vers la bouti
 
 Chaque lien vers une boutique porte `rel="sponsored"` et la mention « Affiliate link », et une page dédiée explique l'affiliation (voir [placement et mention légale](/blog/liens-affilies-placement-et-mention-legale/)).
 
-> État de la validation Sovrn et premiers résultats : [à compléter]. Au 29 septembre 2026, la validation était en cours.
+Au 29 septembre 2026, la validation de Sovrn était encore en cours.
 
 ## Le design et la voix
 

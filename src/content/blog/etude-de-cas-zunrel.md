@@ -79,8 +79,6 @@ J'ai aussi essayé de faire travailler un agent dans le navigateur (lecture de t
 
 Honnêtement : au début. Fin septembre 2026, les tableaux de bord de PartnerStack et d'Impact n'affichaient encore **aucune vente ni commission**, et la plupart des visites mesurées dans GA4 étaient les miennes. Les données de Search Console n'étaient pas encore disponibles. C'est normal pour un site de quelques semaines, et c'est pour ça que je ne publie pas de « revenus du mois ».
 
-> Point d'étape plus récent (trafic, premières commissions) : [à compléter].
-
 ## Les prochaines étapes
 
 - Lire les données de Search Console et réécrire les titres des pages qui ont des impressions mais peu de clics.
