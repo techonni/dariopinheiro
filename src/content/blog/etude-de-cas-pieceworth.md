@@ -7,9 +7,12 @@ category: "Études de cas"
 published: 2026-10-04
 updated: 2026-10-04
 order: 17
+archived: true
 ---
 
-[Pieceworth](https://pieceworth.com) aide à **bien acheter le luxe en ligne**. C'est mon site le plus exigeant sur les faits : quand on parle de retours, de droits de douane ou de paiement en plusieurs fois pour des achats de plusieurs centaines d'euros, une erreur coûte cher au lecteur. Voici comment il est construit, et le changement de cap qu'il a connu.
+> **Note (octobre 2026) :** j'ai fermé Pieceworth, et pieceworth.com redirige maintenant vers ce site. Cette étude de cas reste en ligne comme archive de ce que j'avais construit. Pourquoi ce changement : [je passe à l'affiliation systeme.io](/blog/pourquoi-je-passe-a-l-affiliation-systeme-io/).
+
+Pieceworth aide à **bien acheter le luxe en ligne**. C'est mon site le plus exigeant sur les faits : quand on parle de retours, de droits de douane ou de paiement en plusieurs fois pour des achats de plusieurs centaines d'euros, une erreur coûte cher au lecteur. Voici comment il est construit, et le changement de cap qu'il a connu.
 
 ## La niche : les questions avant un achat de luxe
 

@@ -4,8 +4,14 @@ export type Post = CollectionEntry<"blog">;
 
 export const categories = ["Démarrer", "Construire", "Écrire", "Monétiser et mesurer", "Faire venir du monde", "Études de cas", "Durer"] as const;
 
-export async function getPosts(): Promise<Post[]> {
+// Tous les guides, y compris les archivés (pages et plan du site).
+export async function getAllPosts(): Promise<Post[]> {
   return (await getCollection("blog")).sort((a, b) => a.data.order - b.data.order);
+}
+
+// Guides listés (accueil, /blog/, « À lire ensuite ») : sans les guides archivés (ex. : Pieceworth, site fermé).
+export async function getPosts(): Promise<Post[]> {
+  return (await getAllPosts()).filter((p) => !p.data.archived);
 }
 
 // Nombre de mots du texte (sans la syntaxe Markdown des liens).

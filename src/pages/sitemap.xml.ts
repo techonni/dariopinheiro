@@ -1,9 +1,9 @@
 // Plano do site para o Google (mesmo modelo do techonni.com): início, blog e cada guia do blog.
 import type { APIRoute } from "astro";
-import { getPosts } from "../lib/blog";
+import { getAllPosts } from "../lib/blog";
 
 export const GET: APIRoute = async ({ site }) => {
-  const posts = await getPosts();
+  const posts = await getAllPosts();
   const lastBlogUpdate = posts.map((p) => p.data.updated.toISOString().slice(0, 10)).sort().at(-1);
   const urls = [
     { path: "/", lastmod: undefined },

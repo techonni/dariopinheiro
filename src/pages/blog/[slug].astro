@@ -2,18 +2,23 @@
 import { render } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import NewsletterForm from "../../components/NewsletterForm.astro";
-import { formatDate, getPosts, readingMinutes, splitForNewsletter, type Post } from "../../lib/blog";
+import { formatDate, getAllPosts, getPosts, readingMinutes, splitForNewsletter, type Post } from "../../lib/blog";
 
 export async function getStaticPaths() {
+  const all = await getAllPosts();
   const posts = await getPosts();
-  return posts.map((post, i) => ({
-    params: { slug: post.id },
-    props: {
-      post,
-      // Guide suivant d'abord, puis les deux d'après (on revient au début à la fin de la liste).
-      next: [1, 2, 3].map((k) => posts[(i + k) % posts.length]),
-    },
-  }));
+  return all.map((post) => {
+    // Position dans la liste des guides listés (un guide archivé reprend après le guide listé qui le précède).
+    const i = posts.includes(post) ? posts.indexOf(post) : posts.filter((p) => p.data.order < post.data.order).length - 1;
+    return {
+      params: { slug: post.id },
+      props: {
+        post,
+        // Guide suivant d'abord, puis les deux d'après (on revient au début à la fin de la liste).
+        next: [1, 2, 3].map((k) => posts[(((i + k) % posts.length) + posts.length) % posts.length]),
+      },
+    };
+  });
 }
 
 interface Props {
@@ -91,7 +96,7 @@ const breadcrumb = {
           id="mid"
           variant="inline"
           title="Ce guide vous aide ?"
-          text="Recevez les prochains par e-mail, avec les coulisses de mes trois sites (Zunrel, Pieceworth, Techonni) : ce qui marche, ce qui rate. Pas de spam, désinscription en un clic."
+          text="Recevez les prochains par e-mail, avec les coulisses de mes sites et de mes débuts avec systeme.io : ce qui marche, ce qui rate. Pas de spam, désinscription en un clic."
         />
         <div class="prose prose-after" set:html={parts[1]} />
       </>
@@ -109,7 +114,7 @@ const breadcrumb = {
   <NewsletterForm
     id="end"
     title="Recevez le prochain guide"
-    text="Je crée des sites d'affiliation avec l'IA et je raconte tout : chaque nouveau guide et les coulisses de Zunrel, Pieceworth et Techonni, par e-mail, quand il y a du concret. Pas de spam, désinscription en un clic."
+    text="Je crée des sites d'affiliation avec l'IA et je raconte tout : chaque nouveau guide et les coulisses de mes sites et de mes débuts avec systeme.io, par e-mail, quand il y a du concret. Pas de spam, désinscription en un clic."
   />
 
   <section class="blog-section">

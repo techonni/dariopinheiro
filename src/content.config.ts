@@ -16,6 +16,8 @@ const blog = defineCollection({
     published: z.coerce.date(),
     updated: z.coerce.date(),
     order: z.number(),
+    // Guide archivé : la page reste en ligne (et dans le plan du site), mais n'apparaît plus dans les listes.
+    archived: z.boolean().default(false),
   }),
 });
 
