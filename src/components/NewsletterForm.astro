@@ -91,8 +91,8 @@ const messages = {
   .nl-text { margin: 12px 0 0; font-size: 15px; line-height: 24px; color: var(--text); }
   .nl-form { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
   .nl-input {
-    height: 48px; width: 100%; min-width: 0; padding: 0 20px;
-    border: 1px solid var(--id-line-strong); border-radius: var(--id-radius-pill); background: var(--id-bg);
+    height: 48px; width: 100%; min-width: 0; padding: 0 16px;
+    border: 1px solid var(--id-line-strong); border-radius: var(--id-radius-field); background: var(--id-bg);
     font: inherit; font-size: 16px; color: var(--fg); outline: none;
   }
   .nl-input::placeholder { color: var(--id-text-3); opacity: 1; }
@@ -101,7 +101,7 @@ const messages = {
   .nl-button {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     height: 48px; min-width: 120px; padding: 0 24px;
-    border: 0; border-radius: var(--id-radius-pill); background: var(--id-accent); color: var(--id-on-accent);
+    border: 0; border-radius: var(--id-radius-field); background: var(--id-accent); color: var(--id-on-accent);
     font: inherit; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.15s;
   }
   .nl-button:hover { background: var(--id-accent-hover); }
