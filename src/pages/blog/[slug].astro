@@ -2,7 +2,7 @@
 import { render } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import NewsletterForm from "../../components/NewsletterForm.astro";
-import { formatDate, getPosts, readingMinutes, type Post } from "../../lib/blog";
+import { formatDate, getPosts, readingMinutes, splitForNewsletter, type Post } from "../../lib/blog";
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -23,6 +23,8 @@ interface Props {
 
 const { post, next } = Astro.props;
 const { Content } = await render(post);
+// Newsletter a meio do guia: o HTML já gerado do Markdown é cortado em dois (ver splitForNewsletter).
+const parts = post.rendered?.html ? splitForNewsletter(post.rendered.html) : null;
 const site = Astro.site!;
 const url = new URL(`/blog/${post.id}/`, site).href;
 const minutes = readingMinutes(post);
@@ -80,12 +82,29 @@ const breadcrumb = {
       <p class="post-updated">Mis à jour le {formatDate(post.data.updated)}</p>
     )}
 
-    <div class="prose">
-      <Content />
-    </div>
+    {parts ? (
+      <>
+        <div class="prose" set:html={parts[0]} />
+        <NewsletterForm
+          id="mid"
+          variant="inline"
+          title="Ce guide vous aide ?"
+          text="Recevez les prochains par e-mail, avec les coulisses de mes trois sites (Zunrel, Pieceworth, Techonni) : ce qui marche, ce qui rate. Pas de spam, désinscription en un clic."
+        />
+        <div class="prose prose-after" set:html={parts[1]} />
+      </>
+    ) : (
+      <div class="prose">
+        <Content />
+      </div>
+    )}
   </article>
 
-  <NewsletterForm text="Un nouveau guide, une mise à jour de mes sites : je vous écris quand il y a du concret. Pas de spam, désinscription en un clic." />
+  <NewsletterForm
+    id="end"
+    title="Recevez le prochain guide"
+    text="Je crée des sites d'affiliation avec l'IA et je raconte tout : chaque nouveau guide et les coulisses de Zunrel, Pieceworth et Techonni, par e-mail, quand il y a du concret. Pas de spam, désinscription en un clic."
+  />
 
   <section class="blog-section">
     <h2 class="section-title">À lire ensuite</h2>

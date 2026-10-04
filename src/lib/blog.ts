@@ -24,3 +24,26 @@ export function readingMinutes(post: Post): number {
 export function formatDate(date: Date): string {
   return date.toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 }
+
+// Newsletter no meio do guia (pedido do Dário, 04/10/2026): o HTML do guia é cortado em dois
+// antes de um título H2, o mais perto possível de 45 % do texto, nunca antes do 2.º H2
+// e deixando pelo menos 25 % do texto depois. Sem H2 que sirva: corte depois de um parágrafo.
+// Assim não é preciso mexer em nenhum ficheiro Markdown.
+export function splitForNewsletter(html: string): [string, string] | null {
+  // Mede-se o texto visível (sem as tags), para que os blocos de código coloridos não falseiem a conta.
+  const textBefore = (pos: number) => html.slice(0, pos).replace(/<[^>]*>/g, "").length;
+  const total = textBefore(html.length);
+  if (!total) return null;
+  const pick = (positions: number[]) =>
+    positions
+      .map((p) => ({ p, share: textBefore(p) / total }))
+      .filter((c) => c.share >= 0.2 && c.share <= 0.75)
+      .sort((a, b) => Math.abs(a.share - 0.45) - Math.abs(b.share - 0.45))[0]?.p;
+  const h2 = [...html.matchAll(/<h2[\s>]/g)].map((m) => m.index!).slice(1);
+  let at = pick(h2);
+  if (at === undefined) {
+    at = pick([...html.matchAll(/<\/p>\s*/g)].map((m) => m.index! + m[0].length));
+  }
+  if (at === undefined) return null;
+  return [html.slice(0, at), html.slice(at)];
+}

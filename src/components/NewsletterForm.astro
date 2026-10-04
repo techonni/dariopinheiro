@@ -3,11 +3,28 @@
 // envio em segundo plano pelo ponto JSONP « post-json », confirmação por e-mail).
 // Sem chave API nem servidor. Usa a MESMA audiência Mailchimp do zunrel.com
 // (lista 893c08eb5d): o link e o campo anti-robots são os de src/lib/guides.ts do zunrel.
-// Texto de introdução (opcional): o blog usa uma frase própria.
+// Componente reutilizável: pode aparecer várias vezes na mesma página (meio e fim de cada guia).
+// - text: frase de introdução (opcional).
+// - title: título do bloco (por defeito « Newsletter »).
+// - id: sufixo único quando há vários formulários na página (ids do campo e da iframe).
+// - variant: "section" (bloco normal, título h2) ou "inline" (no meio de um guia: traços finos
+//   em cima e em baixo, título que não entra no plano do artigo, e desaparece se o visitante já se inscreveu).
 interface Props {
   text?: string;
+  title?: string;
+  id?: string;
+  variant?: "section" | "inline";
 }
-const { text = "Les nouveautés de mes sites par e-mail. Pas de spam, désinscription en un clic." } = Astro.props;
+const {
+  text = "Les nouveautés de mes sites par e-mail. Pas de spam, désinscription en un clic.",
+  title = "Newsletter",
+  id = "main",
+  variant = "section",
+} = Astro.props;
+const emailId = `newsletter-email-${id}`;
+const helpId = `newsletter-help-${id}`;
+const frameName = `dp-newsletter-frame-${id}`;
+const Wrapper = variant === "inline" ? "aside" : "section";
 
 const formUrl =
   "https://gmail.us9.list-manage.com/subscribe/post?u=13aa96838d6074fef23022e3e&id=893c08eb5d&f_id=0073d9e1f0";
@@ -34,21 +51,27 @@ const messages = {
 };
 ---
 
-<section data-newsletter-block data-messages={JSON.stringify(messages)} class="newsletter">
+<Wrapper
+  data-newsletter-block
+  data-variant={variant}
+  data-messages={JSON.stringify(messages)}
+  class:list={["newsletter", variant === "inline" && "newsletter-inline"]}
+  aria-label={variant === "inline" ? title : undefined}
+>
   <div data-newsletter-intro>
-    <h2 class="section-title">Newsletter</h2>
+    {variant === "inline" ? <p class="section-title">{title}</p> : <h2 class="section-title">{title}</h2>}
     <p class="nl-text">{text}</p>
-    <form action={formUrl || undefined} method="post" target="dp-newsletter-frame" novalidate data-newsletter={formUrl ? "" : undefined} class="nl-form">
-      <label for="newsletter-email" class="sr-only">E-mail</label>
+    <form action={formUrl || undefined} method="post" target={frameName} novalidate data-newsletter={formUrl ? "" : undefined} class="nl-form">
+      <label for={emailId} class="sr-only">E-mail</label>
       <input
-        id="newsletter-email"
+        id={emailId}
         type="email"
         name="EMAIL"
         required
         autocomplete="email"
         inputmode="email"
         placeholder="vous@exemple.com"
-        aria-describedby="newsletter-help"
+        aria-describedby={helpId}
         class="nl-input"
       />
       {hubTagIds && <input type="hidden" name="tags" value={hubTagIds} />}
@@ -62,7 +85,7 @@ const messages = {
         <span data-newsletter-label>{messages.button}</span>
       </button>
     </form>
-    <p id="newsletter-help" data-newsletter-message aria-live="polite" class="nl-help" hidden={!formUrl}>
+    <p id={helpId} data-newsletter-message aria-live="polite" class="nl-help" hidden={!formUrl}>
       {formUrl ? "Vous recevrez un e-mail pour confirmer votre inscription." : ""}
     </p>
   </div>
@@ -79,13 +102,16 @@ const messages = {
     </div>
   </div>
 
-  <iframe name="dp-newsletter-frame" title="Inscription à la newsletter" hidden tabindex="-1"></iframe>
-</section>
+  <iframe name={frameName} title="Inscription à la newsletter" hidden tabindex="-1"></iframe>
+</Wrapper>
 
 <style>
   /* Sem caixa à volta (estilo minimalista): só o título, o texto e o formulário. */
   .newsletter { margin-top: 56px; text-align: left; }
   .newsletter .section-title { margin-left: 0; }
+  /* No meio de um guia: só dois traços finos, sem caixa nem fundo. */
+  .newsletter-inline { margin: 48px 0 0; padding: 28px 0 32px; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .newsletter-inline[data-hidden] { display: none; }
   .newsletter.is-done { display: flex; flex-direction: column; justify-content: center; }
   .nl-title { margin: 0; font-size: 15px; line-height: 20px; font-weight: 500; color: var(--fg); }
   .nl-text { margin: 12px 0 0; font-size: 15px; line-height: 24px; color: var(--text); }
@@ -160,10 +186,22 @@ const messages = {
 </style>
 
 <script is:inline>
+  // Vários formulários por página: cada bloco tem o seu estado; quando um se inscreve, os outros
+  // passam a « déjà inscrit » (e os do meio do guia desaparecem).
+  // O script repete-se em cada bloco: só o primeiro corre, depois de a página toda estar lida.
   (function () {
-    var form = document.querySelector("form[data-newsletter]");
+    if (window.__dpNewsletterInit) return;
+    window.__dpNewsletterInit = true;
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    else init();
+    function init() {
+    var storageKey = "dp-newsletter";
+    var blocks = Array.prototype.slice.call(document.querySelectorAll("[data-newsletter-block]"));
+    var others = [];
+    blocks.forEach(function (block) {
+    var form = block.querySelector("form[data-newsletter]");
     if (!form) return;
-    var block = document.querySelector("[data-newsletter-block]");
+    var inline = block.getAttribute("data-variant") === "inline";
     var intro = block.querySelector("[data-newsletter-intro]");
     var done = block.querySelector("[data-newsletter-done]");
     var doneTitle = block.querySelector("[data-newsletter-done-title]");
@@ -174,13 +212,15 @@ const messages = {
     var spinner = button.querySelector("[data-newsletter-spinner]");
     var label = button.querySelector("[data-newsletter-label]");
     var defaultHelp = message.textContent;
-    var storageKey = "dp-newsletter";
     var m = JSON.parse(block.getAttribute("data-messages") || "{}");
 
     function remember() {
       try {
         localStorage.setItem(storageKey, "1");
       } catch (e) {}
+      others.forEach(function (o) {
+        if (o.block !== block) o.already();
+      });
     }
 
     function setBusy(busy) {
@@ -214,11 +254,14 @@ const messages = {
       if (moveFocus !== false) done.focus({ preventScroll: true });
     }
 
-    // Déjà inscrit sur ce navigateur : un simple rappel au lieu du formulaire.
+    // Déjà inscrit : un simple rappel au lieu du formulaire (au milieu d'un guide, rien du tout).
+    function already() {
+      if (inline) block.setAttribute("data-hidden", "");
+      else showDone(m.already, m.alreadyText, false);
+    }
+    others.push({ block: block, already: already });
     try {
-      if (localStorage.getItem(storageKey) === "1") {
-        showDone(m.already, m.alreadyText, false);
-      }
+      if (localStorage.getItem(storageKey) === "1") already();
     } catch (e) {}
 
     input.addEventListener("input", function () {
@@ -287,5 +330,7 @@ const messages = {
       script.onerror = sendInFrame;
       document.body.appendChild(script);
     });
+      });
+    }
   })();
 </script>
