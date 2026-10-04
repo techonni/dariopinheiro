@@ -2,7 +2,8 @@
 // Menu lateral (hambúrguer), igual ao do techonni.com / zunrel.com / pieceworth.com:
 // painel escuro a toda a altura que desliza da direita, fundo escurecido,
 // fecha com ✕, Esc, clique fora ou clique num link.
-import { host, menuGroups } from "../lib/links";
+// Só dois blocos (pedido do Dário, 04/10/2026): Blog e X.
+import { host, socialLinks } from "../lib/links";
 ---
 
 <button
@@ -37,11 +38,11 @@ import { host, menuGroups } from "../lib/links";
       </a>
     </nav>
 
-    {menuGroups.map((g) => (
+    {socialLinks.length > 0 && (
       <>
-        <p class="menu-label">{g.title}</p>
-        <nav class="menu-list" aria-label={g.title}>
-          {g.links.map((l) => (
+        <p class="menu-label">X</p>
+        <nav class="menu-list" aria-label="X">
+          {socialLinks.map((l) => (
             <a href={l.url} target="_blank" rel="noopener">
               <span class="menu-name">{l.name}</span>
               {l.text && <span class="menu-text">{l.text}</span>}
@@ -50,7 +51,7 @@ import { host, menuGroups } from "../lib/links";
           ))}
         </nav>
       </>
-    ))}
+    )}
   </div>
 </div>
 
