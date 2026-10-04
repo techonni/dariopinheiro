@@ -1,0 +1,70 @@
+---
+import Base from "../../layouts/Base.astro";
+import NewsletterForm from "../../components/NewsletterForm.astro";
+import { categories, getPosts, readingMinutes } from "../../lib/blog";
+
+// Liste des guides du blog, rangés par thème (champ `category` de chaque fichier Markdown).
+const posts = await getPosts();
+const sections = categories
+  .map((name) => ({ name, posts: posts.filter((p) => p.data.category === name) }))
+  .filter((s) => s.posts.length);
+
+const site = Astro.site!;
+const title = "Blog · Créer des sites d'affiliation avec l'IA · Dário Pinheiro";
+const description =
+  "Des guides pratiques pour créer des sites d'affiliation avec l'IA, étape par étape, à partir de mes vrais sites : Zunrel, Pieceworth et Techonni.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "Blog de Dário Pinheiro",
+  url: new URL("/blog/", site).href,
+  inLanguage: "fr",
+  description,
+  author: { "@type": "Person", name: "Dário Pinheiro", url: site.href },
+  blogPost: posts.map((p) => ({
+    "@type": "BlogPosting",
+    headline: p.data.title,
+    url: new URL(`/blog/${p.id}/`, site).href,
+    datePublished: p.data.published.toISOString(),
+    dateModified: p.data.updated.toISOString(),
+  })),
+};
+---
+
+<Base title={title} description={description} image="/images/dario.jpg" wide>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
+  <div class="blog">
+    <header class="blog-head">
+      <p class="eyebrow-plain">Blog</p>
+      <h1>Je crée des sites d'affiliation avec l'IA, et je montre comment faire.</h1>
+      <p class="lead">
+        {posts.length} guides pratiques, étape par étape, tirés de mes propres sites :{" "}
+        <a class="inline-link" href="https://zunrel.com" target="_blank" rel="noopener">Zunrel</a>,{" "}
+        <a class="inline-link" href="https://pieceworth.com" target="_blank" rel="noopener">Pieceworth</a> et{" "}
+        <a class="inline-link" href="https://techonni.com" target="_blank" rel="noopener">Techonni</a>.{" "}
+        Pas de chiffres inventés, pas de promesses : seulement ce que je fais.
+      </p>
+    </header>
+
+    {sections.map((s) => (
+      <section class="blog-section">
+        <h2 class="section-title">{s.name}</h2>
+        <ul class="post-list">
+          {s.posts.map((p) => (
+            <li>
+              <a class="post-card" href={`/blog/${p.id}/`}>
+                <span class="post-title">{p.data.title}</span>
+                <span class="post-summary">{p.data.summary}</span>
+                <span class="post-meta">{readingMinutes(p)} min de lecture</span>
+                <span class="arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <NewsletterForm text="Les prochains guides du blog et les nouveautés de mes sites par e-mail. Pas de spam, désinscription en un clic." />
+  </div>
+</Base>

@@ -1,14 +1,22 @@
 ---
 import "../styles/global.css";
 import DottedMark from "../components/DottedMark.astro";
+import MenuDrawer from "../components/MenuDrawer.astro";
 
 interface Props {
   title: string;
   description: string;
+  // « article » pour les guides du blog.
+  ogType?: "website" | "article";
+  // Image de partage (chemin depuis /public), facultative.
+  image?: string;
+  // Colonne plus large pour les pages de lecture (blog).
+  wide?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, ogType = "website", image, wide = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const imageUrl = image ? new URL(image, Astro.site).href : undefined;
 ---
 
 <!doctype html>
@@ -20,18 +28,24 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Dário Pinheiro" />
+    <meta property="og:locale" content="fr_FR" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    {imageUrl && <meta property="og:image" content={imageUrl} />}
+    <meta name="twitter:card" content="summary" />
+    <slot name="head" />
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="/" aria-label="Accueil">
         <DottedMark />
       </a>
+      <MenuDrawer />
     </header>
-    <div class="column">
+    <div class={wide ? "column column-wide" : "column"}>
       <main>
         <slot />
       </main>

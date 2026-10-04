@@ -1,43 +1,26 @@
 ---
 import Base from "../layouts/Base.astro";
 import NewsletterForm from "../components/NewsletterForm.astro";
+import { getPosts, readingMinutes } from "../lib/blog";
+import { host, socialLinks } from "../lib/links";
 
-// Hub de links (como um « link na bio »), com o estilo de oliur.com: lista simples, setas, mais texto.
-// Textos do site em francês. Para acrescentar um link, copiar uma linha. Links com url vazio não aparecem.
-// `intro` = frase curta por baixo do título do grupo (opcional).
-const groups = [
-  {
-    title: "Work",
-    intro: "Mes sites, chacun avec son sujet.",
-    links: [
-      { name: "Techonni", text: "Guides GTA 6 en français", url: "https://techonni.com" },
-      { name: "Zunrel", text: "Guides Leadpages, HTML Pub et Shopify", url: "https://zunrel.com" },
-      { name: "Pieceworth", text: "Guides pour bien acheter le luxe", url: "https://pieceworth.com" },
-    ],
-  },
-  {
-    title: "Jeux",
-    intro: "",
-    links: [{ name: "Jeu", text: "À jouer dans le navigateur", url: "https://game.zunrel.com" }],
-  },
-  {
-    title: "Réseaux",
-    intro: "",
-    links: [
-      { name: "X", text: "@zunrel", url: "https://x.com/zunrel" },
-    ],
-  },
-]
-  .map((g) => ({ ...g, links: g.links.filter((l) => l.url) }))
-  .filter((g) => g.links.length);
-
-// A newsletter fica logo a seguir ao grupo « Work ».
-const [work, ...others] = groups;
-
-const host = (url: string) => (url.startsWith("mailto:") ? url.slice(7) : new URL(url).host);
+// Página inicial (pedido do Dário, 04/10/2026): só três blocos, por esta ordem:
+// 1) os guias do blog em destaque, 2) a newsletter, 3) o X.
+// Os sites (« Work ») e o jogo estão no menu lateral (src/components/MenuDrawer.astro, links em src/lib/links.ts).
+// Guias em destaque: escolher os slugs aqui (ficheiros em src/content/blog/).
+const featuredSlugs = [
+  "erreurs-a-eviter-et-workflow-ia",
+  "choisir-une-niche-avec-l-ia",
+  "ecrire-des-guides-avec-l-ia-sans-spam",
+  "etude-de-cas-zunrel",
+  "etude-de-cas-pieceworth",
+  "etude-de-cas-techonni",
+];
+const posts = await getPosts();
+const featured = featuredSlugs.map((slug) => posts.find((p) => p.id === slug)).filter((p) => p !== undefined);
 ---
 
-<Base title="Dário Pinheiro" description="Dário Pinheiro : tous mes sites et mes liens au même endroit.">
+<Base title="Dário Pinheiro" description="Dário Pinheiro : je crée des sites d'affiliation avec l'IA, et je montre comment faire. Guides pratiques, newsletter et liens.">
   <div class="hub">
     <header class="intro">
       <picture>
@@ -46,35 +29,34 @@ const host = (url: string) => (url.startsWith("mailto:") ? url.slice(7) : new UR
       </picture>
       <h1>Dario</h1>
       <p class="lead">I make stuff on the internet.</p>
-      <p class="lead-more">Ici, tous mes sites et mes liens au même endroit.</p>
+      <p class="lead-more">Je crée des sites d'affiliation avec l'IA, et je montre comment faire.</p>
     </header>
 
-    {[work].map((g) => (
-      <section>
-        <h2 class="section-title">{g.title}</h2>
-        {g.intro && <p class="section-intro">{g.intro}</p>}
-        <ul class="items">
-          {g.links.map((l) => (
-            <li>
-              <a class="item" href={l.url} target="_blank" rel="noopener">
-                <span class="item-name">{l.name} <span class="arrow" aria-hidden="true">→</span></span>
-                {l.text && <span class="item-text">{l.text}</span>}
-                <span class="item-meta">{host(l.url)} ↗</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    ))}
+    <section class="featured">
+      <h2 class="section-title">Blog</h2>
+      <p class="section-intro">Des guides pratiques, étape par étape, tirés de mes vrais sites.</p>
+      <ul class="post-list">
+        {featured.map((p) => (
+          <li>
+            <a class="post-card" href={`/blog/${p.id}/`}>
+              <span class="post-title">{p.data.title}</span>
+              <span class="post-summary">{p.data.summary}</span>
+              <span class="post-meta">{readingMinutes(p)} min de lecture</span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="featured-more"><a class="pill-link" href="/blog/">Tous les guides ({posts.length})</a></p>
+    </section>
 
     <NewsletterForm />
 
-    {others.map((g) => (
+    {socialLinks.length > 0 && (
       <section>
-        <h2 class="section-title">{g.title}</h2>
-        {g.intro && <p class="section-intro">{g.intro}</p>}
+        <h2 class="section-title">Réseaux</h2>
         <ul class="items">
-          {g.links.map((l) => (
+          {socialLinks.map((l) => (
             <li>
               <a class="item" href={l.url} target="_blank" rel="noopener">
                 <span class="item-name">{l.name} <span class="arrow" aria-hidden="true">→</span></span>
@@ -85,6 +67,6 @@ const host = (url: string) => (url.startsWith("mailto:") ? url.slice(7) : new UR
           ))}
         </ul>
       </section>
-    ))}
+    )}
   </div>
 </Base>

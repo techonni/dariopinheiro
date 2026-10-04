@@ -3,6 +3,12 @@
 // envio em segundo plano pelo ponto JSONP « post-json », confirmação por e-mail).
 // Sem chave API nem servidor. Usa a MESMA audiência Mailchimp do zunrel.com
 // (lista 893c08eb5d): o link e o campo anti-robots são os de src/lib/guides.ts do zunrel.
+// Texto de introdução (opcional): o blog usa uma frase própria.
+interface Props {
+  text?: string;
+}
+const { text = "Les nouveautés de mes sites par e-mail. Pas de spam, désinscription en un clic." } = Astro.props;
+
 const formUrl =
   "https://gmail.us9.list-manage.com/subscribe/post?u=13aa96838d6074fef23022e3e&id=893c08eb5d&f_id=0073d9e1f0";
 const honeypot = "b_13aa96838d6074fef23022e3e_893c08eb5d";
@@ -31,7 +37,7 @@ const messages = {
 <section data-newsletter-block data-messages={JSON.stringify(messages)} class="newsletter">
   <div data-newsletter-intro>
     <h2 class="section-title">Newsletter</h2>
-    <p class="nl-text">Les nouveautés de mes sites par e-mail. Pas de spam, désinscription en un clic.</p>
+    <p class="nl-text">{text}</p>
     <form action={formUrl || undefined} method="post" target="dp-newsletter-frame" novalidate data-newsletter={formUrl ? "" : undefined} class="nl-form">
       <label for="newsletter-email" class="sr-only">E-mail</label>
       <input

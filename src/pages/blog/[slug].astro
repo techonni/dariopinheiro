@@ -1,0 +1,106 @@
+---
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import NewsletterForm from "../../components/NewsletterForm.astro";
+import { formatDate, getPosts, readingMinutes, type Post } from "../../lib/blog";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      // Guide suivant d'abord, puis les deux d'après (on revient au début à la fin de la liste).
+      next: [1, 2, 3].map((k) => posts[(i + k) % posts.length]),
+    },
+  }));
+}
+
+interface Props {
+  post: Post;
+  next: Post[];
+}
+
+const { post, next } = Astro.props;
+const { Content } = await render(post);
+const site = Astro.site!;
+const url = new URL(`/blog/${post.id}/`, site).href;
+const minutes = readingMinutes(post);
+// Titre pour Google : on ajoute le nom seulement si le tout reste court (environ 65 caractères).
+const seoBase = post.data.seoTitle ?? post.data.title;
+const title = seoBase.length + 17 <= 65 ? `${seoBase} · Dário Pinheiro` : seoBase;
+
+const author = { "@type": "Person", name: "Dário Pinheiro", url: site.href };
+const article = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.data.title,
+  description: post.data.description,
+  image: [new URL("/images/dario.jpg", site).href],
+  datePublished: post.data.published.toISOString(),
+  dateModified: post.data.updated.toISOString(),
+  inLanguage: "fr",
+  author,
+  publisher: author,
+  mainEntityOfPage: { "@type": "WebPage", "@id": url },
+  articleSection: post.data.category,
+};
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: site.href },
+    { "@type": "ListItem", position: 2, name: "Blog", item: new URL("/blog/", site).href },
+    { "@type": "ListItem", position: 3, name: post.data.title, item: url },
+  ],
+};
+---
+
+<Base title={title} description={post.data.description} ogType="article" image="/images/dario.jpg" wide>
+  <Fragment slot="head">
+    <meta property="article:published_time" content={post.data.published.toISOString()} />
+    <meta property="article:modified_time" content={post.data.updated.toISOString()} />
+    <meta property="article:section" content={post.data.category} />
+    <script type="application/ld+json" set:html={JSON.stringify(article)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  </Fragment>
+
+  <article class="post">
+    <nav class="crumbs" aria-label="Fil d'Ariane">
+      <a href="/">Accueil</a><span aria-hidden="true"> / </span><a href="/blog/">Blog</a>
+    </nav>
+    <p class="eyebrow-plain">{post.data.category}</p>
+    <h1>{post.data.title}</h1>
+    <p class="post-lede">{post.data.description}</p>
+    <p class="post-byline">
+      <img src="/images/dario.jpg" alt="" width="28" height="28" loading="lazy" />
+      <span>Dário Pinheiro · <time datetime={post.data.published.toISOString().slice(0, 10)}>{formatDate(post.data.published)}</time> · {minutes} min de lecture</span>
+    </p>
+    {post.data.updated.getTime() !== post.data.published.getTime() && (
+      <p class="post-updated">Mis à jour le {formatDate(post.data.updated)}</p>
+    )}
+
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+
+  <NewsletterForm text="Un nouveau guide, une mise à jour de mes sites : je vous écris quand il y a du concret. Pas de spam, désinscription en un clic." />
+
+  <section class="blog-section">
+    <h2 class="section-title">À lire ensuite</h2>
+    <ul class="post-list">
+      {next.map((p) => (
+        <li>
+          <a class="post-card" href={`/blog/${p.id}/`}>
+            <span class="post-title">{p.data.title}</span>
+            <span class="post-summary">{p.data.summary}</span>
+            <span class="post-meta">{readingMinutes(p)} min de lecture</span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="all-posts"><a class="pill-link" href="/blog/">Tous les guides</a></p>
+  </section>
+</Base>
