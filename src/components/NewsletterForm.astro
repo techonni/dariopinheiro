@@ -1,11 +1,19 @@
 ---
 // Newsletter: a mesma interface do zunrel.com (formulário « embedded » do Mailchimp,
-// envio em segundo plano, confirmação por e-mail). Sem chave API nem servidor.
-// Para ligar: pôr em `formUrl` o link do formulário Mailchimp e em `honeypot` o nome
-// do campo anti-robots (os dois estão no código « embedded » do Mailchimp).
-// Enquanto `formUrl` estiver vazio, o bloco aparece mas o botão fica desligado.
-const formUrl = "";
-const honeypot = "";
+// envio em segundo plano pelo ponto JSONP « post-json », confirmação por e-mail).
+// Sem chave API nem servidor. Usa a MESMA audiência Mailchimp do zunrel.com
+// (lista 893c08eb5d): o link e o campo anti-robots são os de src/lib/guides.ts do zunrel.
+const formUrl =
+  "https://gmail.us9.list-manage.com/subscribe/post?u=13aa96838d6074fef23022e3e&id=893c08eb5d&f_id=0073d9e1f0";
+const honeypot = "b_13aa96838d6074fef23022e3e_893c08eb5d";
+
+// TODO (tag do hub): ainda NÃO existe no Mailchimp uma tag para as inscrições vindas
+// de dariopinheiro.com. Tags existentes na audiência (zunrel): shopify 11404677,
+// leadpages 11404678, htmlpub 11404679, lang-fr 11404680, lang-pt 11404681, lang-en 11404682.
+// Para identificar o hub: criar a tag (ex.: « hub ») em Mailchimp → Audience → Tags,
+// copiar o seu ID numérico e pô-lo aqui (vários IDs separados por vírgula, ex.: "<id>,11404680").
+// Enquanto estiver vazio, o campo `tags` não é enviado.
+const hubTagIds = "";
 
 const messages = {
   send: "Envoi…",
@@ -37,6 +45,7 @@ const messages = {
         aria-describedby="newsletter-help"
         class="nl-input"
       />
+      {hubTagIds && <input type="hidden" name="tags" value={hubTagIds} />}
       {honeypot && (
         <div aria-hidden="true" style="position: absolute; left: -5000px;">
           <input type="text" name={honeypot} tabindex="-1" value="" />
