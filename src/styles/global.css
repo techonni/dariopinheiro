@@ -26,6 +26,8 @@ body {
   color: var(--fg);
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  overflow-wrap: break-word;
 }
 
 ::selection { background: #e5e5e5; color: #111; }
@@ -63,7 +65,7 @@ a { color: inherit; text-decoration: none; }
 .site-header nav { display: flex; gap: 16px; }
 .site-header nav a:hover { opacity: 0.7; }
 
-.column { width: 100%; max-width: 640px; margin: 0 auto; padding: 0 20px; }
+.column { width: 100%; max-width: 640px; margin: 0 auto; padding: 0 20px; min-width: 0; }
 main { padding-top: 56px; }
 
 .eyebrow, .section-title { font-size: 13px; line-height: 20px; color: var(--muted); margin: 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
@@ -130,7 +132,7 @@ a.row:hover .row-title { text-decoration: underline; }
 .site-header nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 4px; }
 
 .eyebrow-plain { margin: 0 0 12px; font-size: 13px; line-height: 20px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-.blog-head h1, .post h1 { font-size: 40px; line-height: 1.12; font-weight: 600; letter-spacing: -0.025em; }
+.blog-head h1, .post h1 { font-size: 40px; line-height: 1.12; font-weight: 600; letter-spacing: -0.025em; overflow-wrap: anywhere; word-break: break-word; }
 .blog-head .lead { font-size: 17px; line-height: 27px; }
 .inline-link { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .inline-link:hover { text-decoration-thickness: 2px; }
@@ -188,14 +190,23 @@ a.row:hover .row-title { text-decoration: underline; }
 .prose .affiliate-cta a::after { content: "\2192"; color: var(--muted); transition: transform 0.15s, color 0.15s; }
 .prose .affiliate-cta a:hover::after, .prose .affiliate-cta a:focus-visible::after { transform: translateX(3px); color: var(--fg); }
 .prose hr { margin: 40px 0; border: 0; border-top: 1px solid var(--line); }
-.prose img {
+.prose img,
+.prose picture img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
+  max-height: none;
   margin: 32px 0 8px;
   border: 0;
   border-radius: 0;
   filter: none;
+  object-fit: contain;
+  object-position: center;
+}
+.prose p:has(> img:only-child),
+.prose p:has(> a:only-child > img:only-child) {
+  overflow: visible;
 }
 .prose p:has(> em:only-child),
 .prose p.credit {
@@ -263,37 +274,64 @@ a.row:hover .row-title { text-decoration: underline; }
 .featured-more { margin: 20px 0 0; }
 .post-share { margin: 40px 0 0; padding-top: 20px; border-top: 1px solid var(--hairline); }
 
-.nl-form { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.nl-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+}
 .nl-input {
   display: block;
+  flex: 1 1 auto;
   width: 100%;
-  min-height: 46px;
-  height: 46px;
+  min-width: 0;
+  min-height: 48px;
+  height: 48px;
   padding: 0 14px;
   background: #fff !important;
   color: #111 !important;
   border: 1px solid #111 !important;
-  border-radius: 8px !important;
+  border-radius: 6px !important;
   -webkit-appearance: none;
   appearance: none;
   font-size: 16px;
-  line-height: 46px;
+  line-height: 48px;
 }
-.nl-input::placeholder { color: #6e6e6e !important; opacity: 1; }
+.nl-input::placeholder { color: #666 !important; opacity: 1; }
 .nl-button, .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
-  height: 46px;
+  flex: 0 0 auto;
+  width: auto;
+  min-height: 48px;
+  height: 48px;
   padding: 0 22px;
-  background: #3d3d3d !important;
+  background: #111 !important;
   color: #fff !important;
   border: 0;
-  border-radius: 8px !important;
-  font-size: 16px;
-  font-weight: 500;
+  border-radius: 9999px !important;
+  font-size: 15px;
+  font-weight: 600;
   text-decoration: none;
+  white-space: nowrap;
 }
 .nl-button { width: 100%; }
+.btn { width: auto; }
 .btn:hover, .nl-button:hover { background: #111 !important; }
+@media (min-width: 480px) {
+  .nl-form {
+    flex-direction: row;
+    align-items: center;
+  }
+  .nl-input {
+    flex: 1 1 auto;
+    width: auto;
+  }
+  .nl-button {
+    width: auto;
+    flex: 0 0 auto;
+  }
+}
+

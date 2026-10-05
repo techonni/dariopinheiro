@@ -132,6 +132,8 @@ const breadcrumb = {
     font-size: 36px;
     line-height: 1.2;
     letter-spacing: -0.03em;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
   .post-byline {
     margin: 16px 0 0;
@@ -158,13 +160,20 @@ const breadcrumb = {
   .next-list a {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     gap: 12px;
     padding: 18px 0;
     color: var(--fg);
     text-decoration: none;
     font-weight: 600;
   }
-  .next-list .arrow { color: var(--muted); font-weight: 400; }
+  .next-list a > span:first-child {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  .next-list .arrow { flex: 0 0 auto; color: var(--muted); font-weight: 400; }
   .all-posts { margin-top: 28px; }
   @media (max-width: 600px) {
     .post h1 { font-size: 28px; }

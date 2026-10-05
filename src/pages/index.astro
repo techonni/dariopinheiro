@@ -98,27 +98,40 @@ const tagline = "Ni développeur, ni designer, ni gourou. J'aime juste créer de
   .home-list a {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     gap: 16px;
     padding: 22px 0;
     color: var(--fg);
     text-decoration: none;
   }
   .home-list .t {
+    flex: 1 1 auto;
+    min-width: 0;
     font-size: 18px;
     font-weight: 600;
     letter-spacing: -0.015em;
     line-height: 1.35;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: normal;
   }
   .home-list .d {
+    flex: 0 0 auto;
     font-size: 13px;
     color: var(--muted);
     white-space: nowrap;
     padding-top: 3px;
   }
   .home :global(.newsletter) { margin-top: 56px; }
-  @media (max-width: 600px) {
+  .who .tag {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  @media (max-width: 768px) {
     .who img { width: 52px; height: 52px; }
     .who b { font-size: 22px; }
     .home-list a { flex-direction: column; gap: 6px; }
+    .home-list .d { white-space: normal; }
   }
+
 </style>

@@ -70,7 +70,7 @@ const messages = {
         required
         autocomplete="email"
         inputmode="email"
-        placeholder="vous@exemple.com"
+        placeholder="ton@email.com"
         aria-describedby={helpId}
         class="nl-input"
       />
@@ -115,22 +115,53 @@ const messages = {
   .newsletter.is-done { display: flex; flex-direction: column; justify-content: center; }
   .nl-title { margin: 0; font-size: 15px; line-height: 20px; font-weight: 500; color: var(--fg); }
   .nl-text { margin: 12px 0 0; font-size: 15px; line-height: 24px; color: var(--text); }
-  .nl-form { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
-  .nl-input {
-    height: 48px; width: 100%; min-width: 0; padding: 0 16px;
-    border: 1px solid var(--id-line-strong); border-radius: var(--id-radius-field); background: var(--id-bg);
-    font: inherit; font-size: 16px; color: var(--fg); outline: none;
+  .nl-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
   }
-  .nl-input::placeholder { color: var(--id-text-3); opacity: 1; }
-  .nl-input:focus { border-color: var(--id-text); box-shadow: 0 0 0 1px var(--id-text); }
+  .nl-input {
+    flex: 1 1 auto;
+    height: 48px;
+    width: 100%;
+    min-width: 0;
+    padding: 0 16px;
+    border: 1px solid #111;
+    border-radius: 6px;
+    background: #fff;
+    font: inherit;
+    font-size: 16px;
+    color: var(--fg);
+    outline: none;
+  }
+  .nl-input::placeholder { color: #666; opacity: 1; }
+  .nl-input:focus { border-color: #111; box-shadow: 0 0 0 1px #111; }
   .nl-input[aria-invalid="true"] { border-color: var(--id-danger); box-shadow: 0 0 0 1px var(--id-danger); }
   .nl-button {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    height: 48px; min-width: 120px; padding: 0 24px;
-    border: 0; border-radius: var(--id-radius-field); background: var(--id-accent); color: var(--id-on-accent);
-    font: inherit; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.15s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    height: 48px;
+    width: 100%;
+    min-width: 120px;
+    padding: 0 22px;
+    border: 0;
+    border-radius: 9999px;
+    background: #111;
+    color: #fff;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
   }
-  .nl-button:hover { background: var(--id-accent-hover); }
+  .nl-button:hover { background: #333; }
   .nl-button:disabled { background: var(--id-surface-3); color: var(--id-text-2); cursor: not-allowed; }
   .nl-help[hidden] { display: none; }
   .nl-help { margin: 12px 0 0; font-size: 13px; line-height: 20px; color: var(--faint); }
@@ -140,8 +171,9 @@ const messages = {
   .nl-done-title { margin: 0; font-size: 15px; line-height: 24px; font-weight: 500; color: var(--fg); }
   .nl-done-text { margin: 4px 0 0; font-size: 14px; line-height: 24px; color: var(--text); }
   @media (min-width: 480px) {
-    .nl-form { flex-direction: row; }
-    .nl-input { flex: 1; }
+    .nl-form { flex-direction: row; align-items: center; }
+    .nl-input { flex: 1 1 auto; width: auto; }
+    .nl-button { width: auto; flex: 0 0 auto; }
   }
   .newsletter-spinner {
     width: 14px;

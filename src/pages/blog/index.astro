@@ -102,25 +102,34 @@ const jsonLd = {
   .post-row {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     gap: 16px;
     padding: 22px 0;
     color: var(--fg);
     text-decoration: none;
   }
   .post-title {
+    flex: 1 1 auto;
+    min-width: 0;
     font-size: 18px;
     font-weight: 600;
     letter-spacing: -0.015em;
     line-height: 1.35;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: normal;
   }
   .post-meta {
+    flex: 0 0 auto;
     font-size: 13px;
     color: var(--muted);
     white-space: nowrap;
     padding-top: 3px;
   }
-  @media (max-width: 600px) {
-    .blog-head h1 { font-size: 32px; }
+  @media (max-width: 768px) {
+    .blog-head h1 { font-size: 32px; overflow-wrap: anywhere; }
     .post-row { flex-direction: column; gap: 6px; }
+    .post-meta { white-space: normal; }
   }
+
 </style>
