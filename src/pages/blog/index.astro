@@ -3,16 +3,15 @@ import Base from "../../layouts/Base.astro";
 import NewsletterForm from "../../components/NewsletterForm.astro";
 import { categories, getPosts, readingMinutes } from "../../lib/blog";
 
-// Liste des guides du blog, rangés par thème (champ `category` de chaque fichier Markdown).
 const posts = await getPosts();
 const sections = categories
   .map((name) => ({ name, posts: posts.filter((p) => p.data.category === name) }))
   .filter((s) => s.posts.length);
 
 const site = Astro.site!;
-const title = "Blog · Créer des sites d'affiliation avec l'IA · Dário Pinheiro";
+const title = "Blog · La route, en guides · Dário Pinheiro";
 const description =
-  "Des guides pratiques pour créer des sites d'affiliation avec l'IA, étape par étape, à partir de mes vrais sites : Zunrel et Techonni.";
+  "La route pour faire des sites, étape par étape, à partir de ce que je construis. Zunrel est le site public. Le reste renvoie ici.";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -37,12 +36,11 @@ const jsonLd = {
   <div class="blog">
     <header class="blog-head">
       <p class="eyebrow-plain">Blog</p>
-      <h1>Je crée des sites d'affiliation avec l'IA, et je montre comment faire.</h1>
+      <h1>La route, en guides.</h1>
       <p class="lead">
-        {posts.length} guides pratiques, étape par étape, tirés de mes propres sites :{" "}
-        <a class="inline-link" href="https://zunrel.com" target="_blank" rel="noopener">Zunrel</a> et{" "}
-        <a class="inline-link" href="https://techonni.com" target="_blank" rel="noopener">Techonni</a>.{" "}
-        Pas de chiffres inventés, pas de promesses : seulement ce que je fais.
+        {posts.length} guides, étape par étape, tirés de ce que je construis.{" "}
+        <a class="inline-link" href="https://zunrel.com" target="_blank" rel="noopener">Zunrel</a>{" "}
+        est le site public. techonni.com et pieceworth.com renvoient ici.
       </p>
     </header>
 
@@ -65,8 +63,8 @@ const jsonLd = {
     ))}
 
     <NewsletterForm
-      title="Recevez le prochain guide"
-      text="Chaque nouveau guide et les coulisses de mes sites et de mes débuts avec systeme.io, par e-mail, quand il y a du concret. Pas de spam, désinscription en un clic."
+      title="La lettre"
+      text="La suite de la route, par e-mail : les sites, ce qui marche, ce qui rate. Pas de spam, désinscription en un clic."
     />
   </div>
 </Base>
