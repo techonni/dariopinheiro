@@ -1,45 +1,46 @@
 @import "@fontsource-variable/geist";
 @import "./tokens.css";
 
-/* Identidade partilhada (tokens.css): fundo preto, cinzentos escuros, texto branco. */
+/* Cores do zunrel.com: bege, preto, cinza, filete. */
 :root {
-  --bg: var(--id-bg);
-  --fg: var(--id-text);
-  --text: var(--id-text-2);
-  --muted: var(--id-text-2);
-  --faint: var(--id-text-3);
-  --line: var(--id-line-strong);
-  --chip: var(--id-surface-2);
+  --bg: #fafaf7;
+  --ink: #111111;
+  --fg: #111111;
+  --text: #3d3d3d;
+  --muted: #6e6e6e;
+  --faint: #6e6e6e;
+  --line: #e4e4df;
+  --rule: #e4e4df;
+  --chip: #ffffff;
   --todo: var(--muted);
-  --hairline: #292929; /* separador fino entre itens das listas (estilo minimalista) */
+  --hairline: #e4e4df;
 }
 
 * { box-sizing: border-box; }
 
-html { background: var(--bg); -webkit-text-size-adjust: 100%; scroll-padding-top: 88px; /* âncoras não ficam por baixo do cabeçalho fixo */ }
+html { background: var(--bg); -webkit-text-size-adjust: 100%; scroll-padding-top: 88px; }
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--id-font);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-::selection { background: #3a3a3c; color: #fff; }
-:focus-visible { outline: 2px solid var(--id-focus); outline-offset: 3px; border-radius: 6px; }
+::selection { background: #e4e4df; color: #111; }
+:focus-visible { outline: 2px solid #111; outline-offset: 3px; border-radius: 6px; }
 
 a { color: inherit; text-decoration: none; }
 
-/* Cabeçalho fixo no topo (pedido do Dário, 04/10/2026): fundo preto, traço fino depois de rolar.
-   Sem transform/filter: o menu lateral (position: fixed) está dentro do cabeçalho. */
 .site-header {
   position: sticky; top: 0; z-index: 40;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 24px 20px;
-  background: var(--bg);
+  background: rgb(250 250 247 / 0.94);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s;
 }
@@ -75,19 +76,15 @@ a.row:hover .row-title { text-decoration: underline; }
 .row-text { display: block; margin-top: 4px; font-size: 14px; line-height: 20px; color: var(--muted); }
 .row-meta { display: block; margin-top: 4px; font-size: 13px; line-height: 20px; color: var(--faint); }
 
-/* Hub: listas minimalistas (pedido do Dário, 04/10/2026): sem caixas arredondadas,
-   só linhas finas entre os itens e uma seta à direita que avança no hover. */
 .hub { max-width: 520px; margin: 0 auto; text-align: left; }
 .intro .avatar {
   display: block; width: 96px; height: 96px; border-radius: 9999px; object-fit: cover;
-  background: var(--id-surface-3); box-shadow: 0 0 0 1px var(--id-line-strong), 0 0 0 5px var(--id-bg), 0 0 0 6px var(--id-line);
+  background: #e7e4dc; box-shadow: 0 0 0 1px var(--line);
 }
 .intro h1 { margin-top: 24px; font-size: 34px; line-height: 40px; font-weight: 700; letter-spacing: -0.02em; }
 .intro .lead { margin-top: 8px; font-size: 17px; line-height: 26px; color: var(--fg); }
 .lead-more { margin: 12px 0 0; font-size: 15px; line-height: 24px; color: var(--text); }
 .hub section { margin-top: 56px; }
-/* Telemóvel: a newsletter logo depois da apresentação, para ficar visível sem rolar muito
-   (quem chega das redes sociais vê-a primeiro). No computador, a ordem normal. */
 @media (max-width: 639px) {
   .hub { display: flex; flex-direction: column; }
   .hub > .newsletter { order: 1; margin-top: 40px; }
@@ -102,16 +99,17 @@ a.row:hover .row-title { text-decoration: underline; }
 .item-name { display: block; font-size: 17px; line-height: 22px; font-weight: 600; color: var(--fg); }
 .item .arrow {
   position: absolute; right: 4px; top: 50%; margin-top: -11px; line-height: 22px;
-  color: var(--id-text-2); font-size: 17px; transition: transform 0.15s, color 0.15s;
+  color: var(--muted); font-size: 17px; transition: transform 0.15s, color 0.15s;
 }
 .item:hover .arrow, .item:focus-visible .arrow { transform: translateX(3px); color: var(--fg); }
-.item-text { display: block; margin-top: 4px; font-size: 15px; line-height: 21px; color: var(--id-text-2); }
-.item-meta { display: block; margin-top: 4px; font-size: 13px; line-height: 18px; color: var(--id-text-2); }
+.item-text { display: block; margin-top: 4px; font-size: 15px; line-height: 21px; color: var(--muted); }
+.item-meta { display: block; margin-top: 4px; font-size: 13px; line-height: 18px; color: var(--muted); }
 
 .todo { color: var(--todo); font-style: italic; }
 
 .site-footer { margin-top: 96px; padding-bottom: 64px; }
 .small { margin: 0; font-size: 13px; line-height: 20px; color: var(--faint); }
+.site-footer a { text-decoration: underline; text-underline-offset: 3px; }
 
 @media (min-width: 640px) {
   .site-header { padding: 24px 32px; }
@@ -121,16 +119,11 @@ a.row:hover .row-title { text-decoration: underline; }
   .column { padding: 0; }
 }
 
-
-
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
 
-/* ==========================================================================
-   Blog (/blog/ et /blog/<slug>/) : listes minimalistes (lignes fines + flèche), texte lisible.
-   ========================================================================== */
 .column-wide { max-width: 680px; }
 .site-header nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 4px; }
 
@@ -146,32 +139,30 @@ a.row:hover .row-title { text-decoration: underline; }
 .post-list li:first-child { border-top: 1px solid var(--hairline); }
 .post-card { display: block; position: relative; padding: 18px 40px 18px 0; }
 .post-title { display: block; font-size: 17px; line-height: 23px; font-weight: 600; color: var(--fg); letter-spacing: -0.01em; }
-.post-summary { display: block; margin-top: 4px; font-size: 15px; line-height: 22px; color: var(--id-text-2); }
-.post-meta { display: block; margin-top: 6px; font-size: 13px; line-height: 20px; color: var(--id-text-3); }
+.post-summary { display: block; margin-top: 4px; font-size: 15px; line-height: 22px; color: var(--muted); }
+.post-meta { display: block; margin-top: 6px; font-size: 13px; line-height: 20px; color: var(--muted); }
 .post-card .arrow {
   position: absolute; right: 4px; top: 18px; line-height: 23px;
-  color: var(--id-text-2); font-size: 17px; transition: transform 0.15s, color 0.15s;
+  color: var(--muted); font-size: 17px; transition: transform 0.15s, color 0.15s;
 }
 .post-card:hover .arrow, .post-card:focus-visible .arrow { transform: translateX(3px); color: var(--fg); }
 
-/* Link « Tous les guides » : texte simples com seta (já não é uma pílula branca). */
 .pill-link {
   display: inline-flex; align-items: center; gap: 8px; padding: 8px 0;
   color: var(--fg); font-size: 15px; font-weight: 600;
 }
-.pill-link::after { content: "→"; color: var(--id-text-2); transition: transform 0.15s, color 0.15s; }
+.pill-link::after { content: "\2192"; color: var(--muted); transition: transform 0.15s, color 0.15s; }
 .pill-link:hover::after, .pill-link:focus-visible::after { transform: translateX(3px); color: var(--fg); }
 .all-posts { margin: 24px 0 0; }
 
-/* Article */
 .crumbs { margin: 0 0 24px; font-size: 13px; line-height: 20px; color: var(--faint); }
 .crumbs a:hover { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
-.post-lede { margin: 16px 0 0; font-size: 18px; line-height: 28px; color: var(--id-text-2); }
+.post-lede { margin: 16px 0 0; font-size: 18px; line-height: 28px; color: var(--muted); }
 .post-byline { display: flex; align-items: center; gap: 10px; margin: 24px 0 0; font-size: 13px; line-height: 20px; color: var(--faint); }
 .post-byline img { width: 28px; height: 28px; border-radius: 9999px; object-fit: cover; }
 .post-updated { margin: 8px 0 0; font-size: 13px; color: var(--faint); }
 
-.prose { margin-top: 40px; font-size: 17px; line-height: 29px; color: var(--fg); }
+.prose { margin-top: 40px; font-size: 17px; line-height: 29px; color: #1f1f1f; }
 .prose > :first-child { margin-top: 0; }
 .prose-after { margin-top: 0; }
 .prose-after > h2:first-child { margin-top: 40px; }
@@ -179,43 +170,39 @@ a.row:hover .row-title { text-decoration: underline; }
 .prose h2 { margin: 48px 0 0; font-size: 22px; line-height: 30px; font-weight: 650; color: var(--fg); letter-spacing: -0.015em; }
 .prose h3 { margin: 32px 0 0; font-size: 18px; line-height: 26px; font-weight: 600; color: var(--fg); }
 .prose strong { color: var(--fg); font-weight: 600; }
-.prose a { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; text-decoration-color: #6e6e73; }
+.prose a { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; text-decoration-color: #6e6e6e; }
 .prose a:hover { text-decoration-color: var(--fg); }
 .prose ul, .prose ol { padding-left: 22px; }
 .prose li + li { margin-top: 8px; }
-.prose li::marker { color: var(--id-text-3); }
-.prose blockquote { padding: 0 0 0 18px; border-left: 1px solid var(--id-line-strong); color: var(--fg); }
+.prose li::marker { color: var(--muted); }
+.prose blockquote { padding: 0 0 0 18px; border-left: 2px solid #3d3d3d; color: var(--fg); }
 .prose blockquote p:first-child { margin-top: 0; }
-.prose code { font-family: var(--id-font-mono); font-size: 0.88em; padding: 2px 6px; background: var(--id-surface-2); border-radius: 6px; color: var(--fg); }
-.prose pre { margin: 20px 0 0; padding: 16px 18px; overflow-x: auto; background: var(--id-surface-1); border: 1px solid var(--id-line-strong); border-radius: var(--id-radius-md); font-size: 14px; line-height: 22px; }
-.prose pre code { padding: 0; background: none; }
-/* Lien affilié : mention discrète juste sous le lien (pedido de 04/10/2026), et appel à l'action en texte avec flèche. */
-.prose .affiliate-note { margin: 8px 0 0; font-size: 13px; line-height: 20px; color: var(--id-text-2); }
+.prose code { font-family: var(--id-font-mono); font-size: 0.88em; padding: 2px 6px; background: #fff; border: 1px solid var(--line); border-radius: 6px; color: var(--fg); }
+.prose pre { margin: 20px 0 0; padding: 16px 18px; overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: 8px; font-size: 14px; line-height: 22px; }
+.prose pre code { padding: 0; background: none; border: 0; }
+.prose .affiliate-note { margin: 8px 0 0; font-size: 13px; line-height: 20px; color: var(--muted); }
 .prose .affiliate-cta { margin: 32px 0 0; padding-top: 20px; border-top: 1px solid var(--hairline); }
 .prose .affiliate-cta a { display: inline-flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 600; text-decoration: none; }
-.prose .affiliate-cta a::after { content: "→"; color: var(--id-text-2); transition: transform 0.15s, color 0.15s; }
+.prose .affiliate-cta a::after { content: "\2192"; color: var(--muted); transition: transform 0.15s, color 0.15s; }
 .prose .affiliate-cta a:hover::after, .prose .affiliate-cta a:focus-visible::after { transform: translateX(3px); color: var(--fg); }
-.prose hr { margin: 40px 0; border: 0; border-top: 1px solid var(--id-line); }
+.prose hr { margin: 40px 0; border: 0; border-top: 1px solid var(--line); }
 .prose table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 22px; display: block; overflow-x: auto; }
-.prose th, .prose td { padding: 10px 12px; border-bottom: 1px solid var(--id-line-strong); text-align: left; vertical-align: top; }
+.prose th, .prose td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
 .prose th { color: var(--fg); font-weight: 600; }
 
 @media (min-width: 640px) {
   .blog-head h1, .post h1 { font-size: 36px; line-height: 42px; }
 }
 
-/* ==========================================================================
-   Menu do cabeçalho (botão hambúrguer + menu lateral), como nos outros 3 sites.
-   ========================================================================== */
 .menu-button {
   display: flex; align-items: center; justify-content: center;
   width: 40px; height: 40px; margin: -8px 0; padding: 0;
-  border: 0; border-radius: var(--id-radius-xs);
+  border: 0; border-radius: 8px;
   background: none; color: var(--fg); cursor: pointer;
   transition: opacity 0.15s;
 }
 @media (hover: hover) { .menu-button:hover { opacity: 0.7; } }
-.menu-button:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+.menu-button:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
 
 .menu-drawer { position: fixed; inset: 0; z-index: 50; }
 .menu-drawer[hidden] { display: none; }
@@ -228,7 +215,7 @@ a.row:hover .row-title { text-decoration: underline; }
   display: flex; flex-direction: column;
   width: 85%; max-width: 360px; padding: 24px 20px 32px; overflow-y: auto;
   border-left: 1px solid var(--hairline);
-  background: var(--id-bg); box-shadow: var(--id-shadow);
+  background: #fafaf7; box-shadow: var(--id-shadow);
   transform: translateX(100%); transition: transform 300ms ease-out;
 }
 @media (min-width: 640px) { .menu-panel { width: 340px; } }
@@ -239,20 +226,36 @@ a.row:hover .row-title { text-decoration: underline; }
 
 .menu-label { margin: 32px 0 0; font-size: 13px; line-height: 20px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
 .menu-top + .menu-label { margin-top: 16px; }
-/* Menu: linhas simples com separadores finos e seta ›, sem cartão agrupado. */
 .menu-list { display: flex; flex-direction: column; margin: 8px 0 0; }
 .menu-list a { display: block; position: relative; padding: 14px 28px 14px 0; border-bottom: 1px solid var(--hairline); }
 .menu-list a:first-child { border-top: 1px solid var(--hairline); }
 .menu-list a::after {
-  content: "›"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+  content: "\203a"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
   color: var(--muted); font-size: 20px; transition: transform 0.15s, color 0.15s;
 }
 .menu-list a:hover::after, .menu-list a:focus-visible::after { transform: translate(3px, -50%); color: var(--fg); }
 .menu-name { display: block; font-size: 17px; line-height: 22px; font-weight: 600; color: var(--fg); }
-.menu-text { display: block; margin-top: 2px; font-size: 14px; line-height: 20px; color: var(--id-text-2); }
-.menu-meta { display: block; margin-top: 2px; font-size: 13px; line-height: 18px; color: var(--id-text-2); }
+.menu-text { display: block; margin-top: 2px; font-size: 14px; line-height: 20px; color: var(--muted); }
+.menu-meta { display: block; margin-top: 2px; font-size: 13px; line-height: 18px; color: var(--muted); }
 
-/* Página inicial: guias em destaque */
 .featured .post-list { margin-top: 20px; }
 .featured-more { margin: 20px 0 0; }
 .post-share { margin: 40px 0 0; padding-top: 20px; border-top: 1px solid var(--hairline); }
+
+/* Campo da letra: branco, contorno visível, botão preto. Igual ao zunrel.com. */
+.nl-input {
+  background: #fff !important;
+  color: #111 !important;
+  border: 1px solid #c9c9c3 !important;
+  border-radius: 8px !important;
+  height: 46px !important;
+}
+.nl-input::placeholder { color: #8a8a84 !important; }
+.nl-input:focus { border-color: #111 !important; box-shadow: 0 0 0 1px #111 !important; }
+.nl-button {
+  background: #111 !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  height: 46px !important;
+}
+.nl-button:hover { background: #3d3d3d !important; }
