@@ -8,13 +8,11 @@ export async function getStaticPaths() {
   const all = await getAllPosts();
   const posts = await getPosts();
   return all.map((post) => {
-    // Position dans la liste des guides listés (un guide archivé reprend après le guide listé qui le précède).
     const i = posts.includes(post) ? posts.indexOf(post) : posts.filter((p) => p.data.order < post.data.order).length - 1;
     return {
       params: { slug: post.id },
       props: {
         post,
-        // Guide suivant d'abord, puis les deux d'après (on revient au début à la fin de la liste).
         next: [1, 2, 3].map((k) => posts[(((i + k) % posts.length) + posts.length) % posts.length]),
       },
     };
@@ -28,16 +26,14 @@ interface Props {
 
 const { post, next } = Astro.props;
 const { Content } = await render(post);
-// Newsletter a meio do guia: o HTML já gerado do Markdown é cortado em dois (ver splitForNewsletter).
 const parts = post.rendered?.html ? splitForNewsletter(post.rendered.html) : null;
 const site = Astro.site!;
 const url = new URL(`/blog/${post.id}/`, site).href;
 const minutes = readingMinutes(post);
-// « Partager sur X » no fim do guia: intenção de publicação do X com o título, o link canónico e via @zunrel.
 const shareUrl = `https://x.com/intent/post?${new URLSearchParams({ text: post.data.title, url, via: "zunrel" }).toString().replace(/\+/g, "%20")}`;
-// Titre pour Google : on ajoute le nom seulement si le tout reste court (environ 65 caractères).
 const seoBase = post.data.seoTitle ?? post.data.title;
 const title = seoBase.length + 17 <= 65 ? `${seoBase} · Dário Pinheiro` : seoBase;
+const letter = "La suite de la route, par e-mail : les sites, ce qui marche, ce qui rate. Pas de spam, désinscription en un clic.";
 
 const author = { "@type": "Person", name: "Dário Pinheiro", url: site.href };
 const article = {
@@ -92,12 +88,7 @@ const breadcrumb = {
     {parts ? (
       <>
         <div class="prose" set:html={parts[0]} />
-        <NewsletterForm
-          id="mid"
-          variant="inline"
-          title="Ce guide vous aide ?"
-          text="Recevez les prochains par e-mail, avec les coulisses de mes sites et de mes débuts avec systeme.io : ce qui marche, ce qui rate. Pas de spam, désinscription en un clic."
-        />
+        <NewsletterForm id="mid" variant="inline" title="La lettre" text={letter} />
         <div class="prose prose-after" set:html={parts[1]} />
       </>
     ) : (
@@ -111,11 +102,7 @@ const breadcrumb = {
     </p>
   </article>
 
-  <NewsletterForm
-    id="end"
-    title="Recevez le prochain guide"
-    text="Je crée des sites d'affiliation avec l'IA et je raconte tout : chaque nouveau guide et les coulisses de mes sites et de mes débuts avec systeme.io, par e-mail, quand il y a du concret. Pas de spam, désinscription en un clic."
-  />
+  <NewsletterForm id="end" title="La lettre" text={letter} />
 
   <section class="blog-section">
     <h2 class="section-title">À lire ensuite</h2>
