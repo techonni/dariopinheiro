@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import DottedMark from "../components/DottedMark.astro";
 import MenuDrawer from "../components/MenuDrawer.astro";
 
 interface Props {
@@ -24,7 +23,8 @@ const imageUrl = image ? new URL(image, Astro.site).href : undefined;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/images/dario.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/images/dario.png" />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Dário Pinheiro" />
     <meta property="og:locale" content="fr_FR" />
@@ -38,7 +38,7 @@ const imageUrl = image ? new URL(image, Astro.site).href : undefined;
   <body>
     <header class="site-header" data-sticky-header>
       <a class="brand" href="/" aria-label="Accueil">
-        <DottedMark />
+        <img class="brand-mark" src="/images/dario.png" alt="" width="30" height="30" />
         <span class="brand-name">Dario</span>
       </a>
       <MenuDrawer />

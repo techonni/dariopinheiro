@@ -1,0 +1,87 @@
+---
+import type { Post } from "../lib/blog";
+import { getCardImage, getExcerpt } from "../lib/blog";
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const img = getCardImage(post);
+const excerpt = getExcerpt(post);
+---
+
+<a class="post-card" href={`/blog/${post.id}/`}>
+  <div class="post-card-media">
+    <img src={img.url} alt={img.alt} loading="lazy" decoding="async" width="800" height="500" />
+  </div>
+  <div class="post-card-body">
+    <h3 class="post-card-title">{post.data.title}</h3>
+    {excerpt && <p class="post-card-excerpt">{excerpt}</p>}
+    <span class="post-card-arrow" aria-hidden="true">→</span>
+  </div>
+</a>
+
+<style>
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: var(--fg);
+    text-decoration: none;
+    min-width: 0;
+  }
+  .post-card-media {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #f0f0f0;
+    border: 0;
+  }
+  .post-card-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .post-card-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 14px 0 28px;
+    min-width: 0;
+  }
+  .post-card-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: normal;
+  }
+  .post-card-excerpt {
+    margin: 8px 0 0;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--muted);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+  }
+  .post-card-arrow {
+    position: absolute;
+    right: 0;
+    bottom: 6px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1;
+  }
+  @media (hover: hover) {
+    .post-card:hover .post-card-arrow { color: var(--fg); }
+  }
+</style>

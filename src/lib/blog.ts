@@ -79,3 +79,59 @@ export function splitForNewsletter(html: string): [string, string] | null {
   if (at === undefined) return null;
   return [html.slice(0, at), html.slice(at)];
 }
+
+const FALLBACK_CARD_IMAGES = [
+  "https://images.unsplash.com/photo-1696475191936-c4bab353e0c9?w=800&q=80",
+  "https://images.unsplash.com/photo-1627808487567-3d9bc24c8550?w=800&q=80",
+  "https://images.unsplash.com/photo-1667334543874-a3fc51bbe906?w=800&q=80",
+  "https://images.unsplash.com/photo-1628600538663-34a346ce4348?w=800&q=80",
+  "https://images.unsplash.com/photo-1627674806991-e0dcdb609d73?w=800&q=80",
+  "https://images.unsplash.com/photo-1545033691-015d9d4b508d?w=800&q=80",
+  "https://images.unsplash.com/photo-1627808487208-f7dd9b1b1cc9?w=800&q=80",
+  "https://images.unsplash.com/photo-1731351707982-d9cfb6c5b6e7?w=800&q=80",
+  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+  "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
+  "https://images.unsplash.com/photo-1511497584788-876760111969?w=800&q=80",
+];
+
+function hashSlug(slug: string): number {
+  let h = 0;
+  for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0;
+  return h;
+}
+
+/** Card thumbnail: first frontmatter image, else deterministic monochrome-nature fallback. */
+export function getCardImage(post: Post): { url: string; alt: string } {
+  const first = post.data.images?.[0];
+  if (first?.url) {
+    const url = first.url.includes("w=")
+      ? first.url.replace(/([?&])w=\d+/, "$1w=800")
+      : first.url + (first.url.includes("?") ? "&" : "?") + "w=800";
+    return { url, alt: first.alt || post.data.title };
+  }
+  const url = FALLBACK_CARD_IMAGES[hashSlug(post.id) % FALLBACK_CARD_IMAGES.length];
+  return { url, alt: post.data.title };
+}
+
+/** Short excerpt for cards: prefer description/summary, else first prose words + ellipsis. */
+export function getExcerpt(post: Post, maxChars = 110): string {
+  const raw =
+    (post.data.description as string | undefined)?.trim() ||
+    (post.data.summary as string | undefined)?.trim() ||
+    "";
+  let text = raw;
+  if (!text) {
+    text = (post.body ?? "")
+      .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+      .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+      .replace(/[#*_>`|]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+  text = text.replace(/\s+/g, " ").trim();
+  if (!text) return "";
+  if (text.length <= maxChars) return text;
+  const cut = text.slice(0, maxChars).replace(/\s+\S*$/, "");
+  return cut.replace(/[.,;:!?]+$/, "") + "\u2026";
+}

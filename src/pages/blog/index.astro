@@ -1,7 +1,8 @@
 ---
 import Base from "../../layouts/Base.astro";
 import NewsletterForm from "../../components/NewsletterForm.astro";
-import { formatDateShort, getGuidePosts, getJournalPosts, readingMinutes } from "../../lib/blog";
+import PostCard from "../../components/PostCard.astro";
+import { getGuidePosts, getJournalPosts } from "../../lib/blog";
 
 const journal = await getJournalPosts();
 const guides = await getGuidePosts();
@@ -32,7 +33,7 @@ const jsonLd = {
 <Base title={title} description={description} image="/images/dario.png" wide>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
   <div class="blog">
-    <header class="blog-head">
+    <header class="blog-head blog-narrow">
       <p class="eyebrow-plain">Blog</p>
       <h1>Le journal.</h1>
       <p class="lead">
@@ -43,43 +44,36 @@ const jsonLd = {
     {journal.length > 0 && (
       <section class="blog-section">
         <h2 class="section-title">Journal</h2>
-        <ul class="post-list">
+        <div class="card-grid">
           {journal.map((p) => (
-            <li>
-              <a class="post-row" href={`/blog/${p.id}/`}>
-                <span class="post-title">{p.data.title}</span>
-                <span class="post-meta">{formatDateShort(p.data.published)} · {readingMinutes(p)} min →</span>
-              </a>
-            </li>
+            <PostCard post={p} />
           ))}
-        </ul>
+        </div>
       </section>
     )}
 
     {guides.length > 0 && (
       <section class="blog-section">
         <h2 class="section-title">Guides</h2>
-        <ul class="post-list">
+        <div class="card-grid">
           {guides.map((p) => (
-            <li>
-              <a class="post-row" href={`/blog/${p.id}/`}>
-                <span class="post-title">{p.data.title}</span>
-                <span class="post-meta">{readingMinutes(p)} min →</span>
-              </a>
-            </li>
+            <PostCard post={p} />
           ))}
-        </ul>
+        </div>
       </section>
     )}
 
-    <NewsletterForm
-      title="La lettre"
-      text="La suite de la route, par e-mail : les sites, ce qui marche, ce qui rate. Pas de spam, désinscription en un clic."
-    />
+    <div class="blog-narrow">
+      <NewsletterForm
+        title="La lettre"
+        text="La suite de la route, par e-mail : les sites, ce qui marche, ce qui rate. Pas de spam, désinscription en un clic."
+      />
+    </div>
   </div>
 </Base>
 
 <style>
+  .blog-narrow { max-width: 640px; }
   .blog-head { padding-top: 8px; }
   .blog-head h1 {
     margin-top: 8px;
@@ -89,7 +83,7 @@ const jsonLd = {
   .blog-section { margin-top: 56px; }
   .section-title {
     margin: 0;
-    padding-bottom: 12px;
+    padding-bottom: 16px;
     border-bottom: 1px solid var(--rule);
     font-size: 12px;
     letter-spacing: 0.1em;
@@ -97,39 +91,19 @@ const jsonLd = {
     font-weight: 500;
     color: var(--muted);
   }
-  .post-list { list-style: none; margin: 0; padding: 0; }
-  .post-list li { border-bottom: 1px solid var(--rule); }
-  .post-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 22px 0;
-    color: var(--fg);
-    text-decoration: none;
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 16px;
+    margin-top: 20px;
   }
-  .post-title {
-    flex: 1 1 auto;
-    min-width: 0;
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-    line-height: 1.35;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-    white-space: normal;
+  @media (min-width: 768px) {
+    .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 20px; }
   }
-  .post-meta {
-    flex: 0 0 auto;
-    font-size: 13px;
-    color: var(--muted);
-    white-space: nowrap;
-    padding-top: 3px;
+  @media (min-width: 1024px) {
+    .card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 36px 24px; }
   }
   @media (max-width: 768px) {
     .blog-head h1 { font-size: 32px; overflow-wrap: anywhere; }
-    .post-row { flex-direction: column; gap: 6px; }
-    .post-meta { white-space: normal; }
   }
-
 </style>

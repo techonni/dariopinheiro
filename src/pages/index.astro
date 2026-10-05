@@ -1,54 +1,55 @@
 ---
 import Base from "../layouts/Base.astro";
 import NewsletterForm from "../components/NewsletterForm.astro";
-import { formatDateShort, getJournalPosts, getPosts } from "../lib/blog";
+import PostCard from "../components/PostCard.astro";
+import { getJournalPosts, getPosts } from "../lib/blog";
 
 const journal = await getJournalPosts();
-const latest = journal.length ? journal.slice(0, 6) : (await getPosts()).slice(0, 6);
+const latest = journal.length ? journal.slice(0, 8) : (await getPosts()).slice(0, 8);
 const tagline = "Ni développeur, ni designer, ni gourou. J'aime juste créer des trucs sur internet.";
 ---
 
-<Base title="Dário Pinheiro" description={tagline} image="/images/dario.png">
+<Base title="Dário Pinheiro" description={tagline} image="/images/dario.png" wide>
   <div class="home">
-    <div class="who">
-      <img src="/images/dario.png" alt="Dario" width="64" height="64" fetchpriority="high" />
-      <div>
-        <b>Dario</b>
-        <p class="tag">{tagline}</p>
+    <div class="home-narrow">
+      <div class="who">
+        <img src="/images/dario.png" alt="Dario" width="64" height="64" fetchpriority="high" />
+        <div>
+          <b>Dario</b>
+          <p class="tag">{tagline}</p>
+        </div>
       </div>
+
+      <p class="intro">
+        Ici, je raconte ce que je construis sur internet : sites, pivots, échecs et petites victoires.
+        Un article le soir, à la première personne.
+      </p>
+
+      <p class="actions">
+        <a class="btn" href="/blog/">Lire le blog →</a>
+      </p>
     </div>
 
-    <p class="intro">
-      Ici, je raconte ce que je construis sur internet : sites, pivots, échecs et petites victoires.
-      Un article le soir, à la première personne.
-    </p>
-
-    <p class="actions">
-      <a class="btn" href="/blog/">Lire le blog →</a>
-    </p>
-
     <p class="k">Récents</p>
-    <ul class="home-list">
+    <div class="card-grid">
       {latest.map((p) => (
-        <li>
-          <a href={`/blog/${p.id}/`}>
-            <span class="t">{p.data.title}</span>
-            <span class="d">{formatDateShort(p.data.published)} →</span>
-          </a>
-        </li>
+        <PostCard post={p} />
       ))}
-    </ul>
+    </div>
 
-    <NewsletterForm
-      id="home"
-      title="La lettre"
-      text="La suite de la route, par e-mail : les sites, ce qui marche, ce qui rate. Pas de spam, désinscription en un clic."
-    />
+    <div class="home-narrow">
+      <NewsletterForm
+        id="home"
+        title="La lettre"
+        text="La suite de la route, par e-mail : les sites, ce qui marche, ce qui rate. Pas de spam, désinscription en un clic."
+      />
+    </div>
   </div>
 </Base>
 
 <style>
   .home { padding-top: 8px; }
+  .home-narrow { max-width: 640px; }
   .who {
     display: flex;
     gap: 16px;
@@ -75,6 +76,8 @@ const tagline = "Ni développeur, ni designer, ni gourou. J'aime juste créer de
     color: var(--muted);
     font-size: 17px;
     line-height: 1.5;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
   .intro {
     margin: 32px 0 0;
@@ -90,48 +93,26 @@ const tagline = "Ni développeur, ni designer, ni gourou. J'aime juste créer de
     text-transform: uppercase;
     font-weight: 500;
     color: var(--muted);
-    padding-bottom: 12px;
+    padding-bottom: 16px;
     border-bottom: 1px solid var(--rule);
   }
-  .home-list { list-style: none; margin: 0; padding: 0; }
-  .home-list li { border-bottom: 1px solid var(--rule); }
-  .home-list a {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 22px 0;
-    color: var(--fg);
-    text-decoration: none;
-  }
-  .home-list .t {
-    flex: 1 1 auto;
-    min-width: 0;
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-    line-height: 1.35;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-    white-space: normal;
-  }
-  .home-list .d {
-    flex: 0 0 auto;
-    font-size: 13px;
-    color: var(--muted);
-    white-space: nowrap;
-    padding-top: 3px;
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 16px;
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
   }
   .home :global(.newsletter) { margin-top: 56px; }
-  .who .tag {
-    overflow-wrap: anywhere;
-    word-break: break-word;
+  @media (min-width: 768px) {
+    .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 20px; }
+  }
+  @media (min-width: 1024px) {
+    .card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 36px 24px; }
   }
   @media (max-width: 768px) {
     .who img { width: 52px; height: 52px; }
     .who b { font-size: 22px; }
-    .home-list a { flex-direction: column; gap: 6px; }
-    .home-list .d { white-space: normal; }
   }
-
 </style>
