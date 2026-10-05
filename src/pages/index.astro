@@ -2,13 +2,8 @@
 import Base from "../layouts/Base.astro";
 import NewsletterForm from "../components/NewsletterForm.astro";
 import { getPosts, readingMinutes } from "../lib/blog";
-import { host, socialLinks } from "../lib/links";
+import { host, sites, socialLinks } from "../lib/links";
 
-// Página inicial (pedido do Dário, 04/10/2026): só três blocos, por esta ordem:
-// 1) os guias do blog em destaque, 2) a newsletter, 3) o X.
-// No telemóvel (< 640 px) a newsletter sobe para logo depois da apresentação (CSS em global.css, `.hub > .newsletter`).
-// Menu lateral (src/components/MenuDrawer.astro): só Blog e X (links em src/lib/links.ts).
-// Guias em destaque: escolher os slugs aqui (ficheiros em src/content/blog/).
 const featuredSlugs = [
   "pourquoi-je-passe-a-l-affiliation-systeme-io",
   "erreurs-a-eviter-et-workflow-ia",
@@ -21,7 +16,7 @@ const posts = await getPosts();
 const featured = featuredSlugs.map((slug) => posts.find((p) => p.id === slug)).filter((p) => p !== undefined);
 ---
 
-<Base title="Dário Pinheiro" description="Dário Pinheiro : je crée des sites d'affiliation avec l'IA, et je montre comment faire. Guides pratiques, newsletter et liens.">
+<Base title="Dário Pinheiro" description="Dário Pinheiro : je crée des sites avec l'IA, et je montre comment faire. Zunrel, guides pratiques, newsletter.">
   <div class="hub">
     <header class="intro">
       <picture>
@@ -29,9 +24,25 @@ const featured = featuredSlugs.map((slug) => posts.find((p) => p.id === slug)).f
         <img class="avatar" src="/images/dario.jpg" alt="Dario" width="96" height="96" fetchpriority="high" />
       </picture>
       <h1>Dario</h1>
-      <p class="lead">Je crée des sites d'affiliation avec l'IA.</p>
+      <p class="lead">Je crée des sites avec l'IA.</p>
       <p class="lead-more">Et je vous montre comment, étape par étape, à partir de mes vrais sites.</p>
     </header>
+
+    <section class="featured">
+      <h2 class="section-title">Sites</h2>
+      <p class="section-intro">Deux sites publics. Les autres noms renvoient ici.</p>
+      <ul class="items">
+        {sites.map((l) => (
+          <li>
+            <a class="item" href={l.url}>
+              <span class="item-name">{l.name} <span class="arrow" aria-hidden="true">→</span></span>
+              {l.text && <span class="item-text">{l.text}</span>}
+              <span class="item-meta">{host(l.url)}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
 
     <section class="featured">
       <h2 class="section-title">Blog</h2>
