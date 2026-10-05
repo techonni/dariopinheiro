@@ -1,84 +1,164 @@
 ---
 import Base from "../layouts/Base.astro";
 import NewsletterForm from "../components/NewsletterForm.astro";
-import { getPosts, readingMinutes } from "../lib/blog";
-import { host, sites, socialLinks } from "../lib/links";
+import { getPosts } from "../lib/blog";
+import { socialLinks } from "../lib/links";
 
-const featuredSlugs = [
-  "pourquoi-je-passe-a-l-affiliation-systeme-io",
-  "erreurs-a-eviter-et-workflow-ia",
+const posts = await getPosts();
+const guideSlugs = [
+  "etude-de-cas-zunrel",
   "choisir-une-niche-avec-l-ia",
   "ecrire-des-guides-avec-l-ia-sans-spam",
-  "etude-de-cas-zunrel",
-  "etude-de-cas-techonni",
+  "erreurs-a-eviter-et-workflow-ia",
+  "newsletter-avec-mailchimp",
+  "pinterest-source-de-trafic",
 ];
-const posts = await getPosts();
-const featured = featuredSlugs.map((slug) => posts.find((p) => p.id === slug)).filter((p) => p !== undefined);
+const guides = guideSlugs
+  .map((slug) => posts.find((p) => p.id === slug))
+  .filter((p) => p !== undefined);
+
+const siteRows = [
+  { name: "Zunrel", href: "https://zunrel.com/", external: true },
+  { name: "Dário Pinheiro", href: "/blog/", external: false },
+  { name: "Lettre du dimanche", href: "#lettre", external: false },
+  ...socialLinks.map((l) => ({ name: l.name, href: l.url, external: true })),
+];
+const num = (n: number) => String(n).padStart(2, "0");
 ---
 
-<Base title="Dário Pinheiro" description="Dário Pinheiro : je crée des sites avec l'IA, et je montre comment faire. Zunrel, guides pratiques, newsletter.">
-  <div class="hub">
-    <header class="intro">
+<Base title="Dário Pinheiro" description="Deux sites. Pas plus. Zunrel pour le téléphone épuré, et les guides pour les faire.">
+  <div class="index">
+    <div class="who">
       <picture>
         <source srcset="/images/dario.webp" type="image/webp" />
-        <img class="avatar" src="/images/dario.jpg" alt="Dario" width="96" height="96" fetchpriority="high" />
+        <img src="/images/dario.jpg" alt="Dario" width="52" height="52" fetchpriority="high" />
       </picture>
-      <h1>Dario</h1>
-      <p class="lead">Je crée des sites avec l'IA.</p>
-      <p class="lead-more">Et je vous montre comment, étape par étape, à partir de mes vrais sites.</p>
-    </header>
+      <div>
+        <b>Dario</b>
+        <span>Deux sites. Pas plus.</span>
+      </div>
+    </div>
 
-    <section class="featured">
-      <h2 class="section-title">Sites</h2>
-      <p class="section-intro">Deux sites publics. Les autres noms renvoient ici.</p>
-      <ul class="items">
-        {sites.map((l) => (
-          <li>
-            <a class="item" href={l.url}>
-              <span class="item-name">{l.name} <span class="arrow" aria-hidden="true">→</span></span>
-              {l.text && <span class="item-text">{l.text}</span>}
-              <span class="item-meta">{host(l.url)}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <h1>Index</h1>
 
-    <section class="featured">
-      <h2 class="section-title">Blog</h2>
-      <p class="section-intro">Des guides pratiques, étape par étape, tirés de mes vrais sites.</p>
-      <ul class="post-list">
-        {featured.map((p) => (
-          <li>
-            <a class="post-card" href={`/blog/${p.id}/`}>
-              <span class="post-title">{p.data.title}</span>
-              <span class="post-summary">{p.data.summary}</span>
-              <span class="post-meta">{readingMinutes(p)} min de lecture</span>
-              <span class="arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-      <p class="featured-more"><a class="pill-link" href="/blog/">Tous les guides ({posts.length})</a></p>
-    </section>
-
-    <NewsletterForm />
-
-    {socialLinks.length > 0 && (
+    <div class="cols">
       <section>
-        <h2 class="section-title">Réseaux</h2>
-        <ul class="items">
-          {socialLinks.map((l) => (
+        <p class="k">Sites</p>
+        <ol>
+          {siteRows.map((row, i) => (
             <li>
-              <a class="item" href={l.url} target="_blank" rel="noopener">
-                <span class="item-name">{l.name} <span class="arrow" aria-hidden="true">→</span></span>
-                {l.text && <span class="item-text">{l.text}</span>}
-                <span class="item-meta">{host(l.url)} ↗</span>
+              <a href={row.href} target={row.external ? "_blank" : undefined} rel={row.external ? "noopener" : undefined}>
+                <span class="n">{num(i + 1)}</span>
+                <span>{row.name}</span>
               </a>
             </li>
           ))}
-        </ul>
+        </ol>
       </section>
-    )}
+      <section>
+        <p class="k">Guides</p>
+        <ol>
+          {guides.map((p, i) => (
+            <li>
+              <a href={`/blog/${p.id}/`}>
+                <span class="n">{num(i + 1)}</span>
+                <span>{p.data.title}</span>
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href="/blog/">
+              <span class="n">{num(guides.length + 1)}</span>
+              <span>Tous les guides</span>
+            </a>
+          </li>
+        </ol>
+      </section>
+    </div>
+
+    <div id="lettre">
+      <NewsletterForm />
+    </div>
   </div>
 </Base>
+
+<style>
+  :global(.column) {
+    max-width: 860px;
+  }
+  .index {
+    padding-top: 28px;
+  }
+  .who {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .who img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--rule, #e4e4df);
+    background: #e7e4dc;
+  }
+  .who b {
+    display: block;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+  }
+  .who span {
+    color: var(--muted, #6e6e6e);
+    font-size: 14px;
+  }
+  h1 {
+    margin: 36px 0 0;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 28px;
+  }
+  .k {
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted, #6e6e6e);
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--ink, #111);
+  }
+  ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li a {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 8px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule, #e4e4df);
+    color: inherit;
+    text-decoration: none;
+  }
+  .n {
+    color: var(--muted, #6e6e6e);
+    font-size: 12px;
+    padding-top: 3px;
+    font-variant-numeric: tabular-nums;
+  }
+  #lettre {
+    margin-top: 56px;
+  }
+  @media (max-width: 700px) {
+    .cols {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+</style>
