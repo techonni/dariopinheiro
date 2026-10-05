@@ -8,23 +8,22 @@ published: 2026-10-06
 updated: 2026-10-06
 order: 1
 images:
-  - url: "https://images.unsplash.com/photo-1667592112737-4a4bce97b853?w=1200&q=80"
-    alt: "Chemin de terre entre les arbres"
-    credit: "Henry Schneider"
-    page: "https://unsplash.com/photos/a-dirt-road-surrounded-by-trees-sc8xkk8PAE0"
-  - url: "https://images.unsplash.com/photo-1629461461750-ef5b81781bc2?w=1200&q=80"
-    alt: "Ordinateur portable ouvert sur une table blanche"
-    credit: "Pauline Bernard"
-    page: "https://unsplash.com/photos/macbook-pro-on-white-table-5QgGvT1smdI"
-  - url: "https://images.unsplash.com/photo-1704383293727-acb2b9d30e29?w=1200&q=80"
-    alt: "Icône Pinterest rouge"
-    credit: "Abid Shah"
-    page: "https://unsplash.com/photos/a-red-square-with-a-pin-on-it-6wudoH3GlJQ"
+  - url: "https://images.unsplash.com/photo-1541422348463-9bc715520974?w=1200&q=80"
+    alt: "Silhouette of mountains"
+    credit: "Fabrizio Conti"
+    page: "https://unsplash.com/photos/silhouette-of-mountains-m5fHSKYSflI"
+  - url: "https://images.unsplash.com/photo-1512955533067-4acc26d88e3d?w=1200&q=80"
+    alt: "Mountains surrounded by low clouds"
+    credit: "Luemen Rutkowski"
+    page: "https://unsplash.com/photos/mountains-surrounded-by-low-clouds-3UDaBAmldMU"
+  - url: "https://images.unsplash.com/photo-1541681142377-e350759029d0?w=1200&q=80"
+    alt: "Silhouette of pointed mountain"
+    credit: "Fabrizio Conti"
+    page: "https://unsplash.com/photos/silhouette-of-pointed-mountain-8m0jo7jb5To"
 ---
+![Silhouette of mountains](https://images.unsplash.com/photo-1541422348463-9bc715520974?w=1200&q=80)
 
-![Chemin de terre entre les arbres](https://images.unsplash.com/photo-1667592112737-4a4bce97b853?w=1200&q=80)
-
-*Photo : [Henry Schneider](https://unsplash.com/photos/a-dirt-road-surrounded-by-trees-sc8xkk8PAE0) / Unsplash*
+*Photo : [Fabrizio Conti](https://unsplash.com/photos/silhouette-of-mountains-m5fHSKYSflI) / Unsplash*
 
 Je m’appelle Dario. Je ne suis ni développeur, ni designer, ni gourou. J’aime juste créer des trucs sur internet — et ces derniers mois, j’en ai créé beaucoup. Trop, parfois. Zunrel est le fil rouge de cette histoire : le site que j’ai poussé, pivoté, vider, rempli, pivoté encore. En deux jours de début octobre 2026, j’ai changé de direction trois fois. Puis une quatrième, plus calme. Aujourd’hui, Zunrel est un site français sur Notion pour débutants. Voici comment j’y suis arrivé, sans maquillage.
 
@@ -54,9 +53,9 @@ Pourquoi Notion ? Parce que j’aime l’outil. Parce que le besoin est réel �
 
 En peu de temps, le site a grossi jusqu’à **36 articles**. J’ai préparé des épingles Pinterest via des imports CSV — le même genre de workflow que j’avais déjà testé sur d’autres projets. J’ai arrêté de faire des reels pour me concentrer sur les pins. Les reels demandent une énergie de performance que je n’avais plus envie de donner. Pinterest, pour un site de guides et de templates, me semblait plus durable : une épingle peut vivre longtemps, un reel disparaît dans le fil.
 
-![Ordinateur portable ouvert sur une table blanche](https://images.unsplash.com/photo-1629461461750-ef5b81781bc2?w=1200&q=80)
+![Mountains surrounded by low clouds](https://images.unsplash.com/photo-1512955533067-4acc26d88e3d?w=1200&q=80)
 
-*Photo : [Pauline Bernard](https://unsplash.com/photos/macbook-pro-on-white-table-5QgGvT1smdI) / Unsplash*
+*Photo : [Luemen Rutkowski](https://unsplash.com/photos/mountains-surrounded-by-low-clouds-3UDaBAmldMU) / Unsplash*
 
 ## Ce que j’ai appris en changeant trop souvent
 
@@ -79,9 +78,9 @@ En parallèle, j’ai fait migrer mes sites vers Cloudflare, et j’ai redesign�
 
 Le minimalisme n’était pas qu’une idée de magazine éphémère le 4 octobre. C’était déjà mon goût de design. Le magazine a juste été une façon trop rapide de transformer un goût en niche. Notion, c’est différent : le goût (clarté, templates, organisation) devient le sujet, pas seulement le style.
 
-![Icône Pinterest rouge](https://images.unsplash.com/photo-1704383293727-acb2b9d30e29?w=1200&q=80)
+![Silhouette of pointed mountain](https://images.unsplash.com/photo-1541681142377-e350759029d0?w=1200&q=80)
 
-*Photo : [Abid Shah](https://unsplash.com/photos/a-red-square-with-a-pin-on-it-6wudoH3GlJQ) / Unsplash*
+*Photo : [Fabrizio Conti](https://unsplash.com/photos/silhouette-of-pointed-mountain-8m0jo7jb5To) / Unsplash*
 
 
 

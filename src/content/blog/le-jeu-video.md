@@ -8,23 +8,22 @@ published: 2026-10-06
 updated: 2026-10-06
 order: 3
 images:
-  - url: "https://images.unsplash.com/photo-1498736297812-3a08021f206f?w=1200&q=80"
-    alt: "Bornes d’arcade"
-    credit: "Ben Neale"
-    page: "https://unsplash.com/photos/two-arcade-cabinets-zpxKdH_xNSI"
-  - url: "https://images.unsplash.com/photo-1635870664257-430f094c25db?w=1200&q=80"
-    alt: "Manette et téléphone"
-    credit: "Triyansh Gill"
-    page: "https://unsplash.com/photos/a-close-up-of-a-cell-phone-near-a-controller-tMjYoJY9rSY"
-  - url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80"
-    alt: "Écran de code sur un MacBook"
-    credit: "Arnold Francisca"
-    page: "https://unsplash.com/photos/turned-on-macbook-pro-wit-programming-codes-display-f77Bh3inUpE"
+  - url: "https://images.unsplash.com/photo-1625391915893-8f762ade389e?w=1200&q=80"
+    alt: "Grayscale flower in bloom"
+    credit: "Dieter K"
+    page: "https://unsplash.com/photos/grayscale-photo-of-flower-in-bloom-3d5HhLuor2o"
+  - url: "https://images.unsplash.com/photo-1615047611638-644db9d02f4d?w=1200&q=80"
+    alt: "Grayscale leaf plant"
+    credit: "Annie Spratt"
+    page: "https://unsplash.com/photos/grayscale-photo-of-green-leaf-plant-3yLJWDHxfwk"
+  - url: "https://images.unsplash.com/photo-1681065498547-44cf07ac84a8?w=1200&q=80"
+    alt: "Pine tree in black and white"
+    credit: "Reggie Tmin"
+    page: "https://unsplash.com/photos/a-black-and-white-photo-of-a-pine-tree-ZGbriLOvOI0"
 ---
+![Grayscale flower in bloom](https://images.unsplash.com/photo-1625391915893-8f762ade389e?w=1200&q=80)
 
-![Bornes d’arcade](https://images.unsplash.com/photo-1498736297812-3a08021f206f?w=1200&q=80)
-
-*Photo : [Ben Neale](https://unsplash.com/photos/two-arcade-cabinets-zpxKdH_xNSI) / Unsplash*
+*Photo : [Dieter K](https://unsplash.com/photos/grayscale-photo-of-flower-in-bloom-3d5HhLuor2o) / Unsplash*
 
 Il y a un moment, dans la route de Zunrel, où le site n’était plus seulement des guides. Pendant quelques jours — du 29 septembre au 2 octobre 2026 — zunrel.com a hébergé un site de jeux. Puis je suis revenu à l’affiliation, et le jeu a trouvé sa place à part : [game.zunrel.com](https://game.zunrel.com). Un jeu style Crash, en monnaie virtuelle, sans argent réel. Construit avec PixiJS, GSAP, TypeScript, Howler.js. Et surtout : construit avec l’IA, sans que je code moi-même ligne par ligne.
 
@@ -51,9 +50,9 @@ Au début, l’interface du jeu copiait trop l’ambiance d’un site de casino 
 
 C’est une leçon utile pour quiconque construit avec l’IA : le premier rendu imite souvent ce que le modèle a beaucoup vu. À toi de dire « non, restyle ».
 
-![Manette et téléphone](https://images.unsplash.com/photo-1635870664257-430f094c25db?w=1200&q=80)
+![Grayscale leaf plant](https://images.unsplash.com/photo-1615047611638-644db9d02f4d?w=1200&q=80)
 
-*Photo : [Triyansh Gill](https://unsplash.com/photos/a-close-up-of-a-cell-phone-near-a-controller-tMjYoJY9rSY) / Unsplash*
+*Photo : [Annie Spratt](https://unsplash.com/photos/grayscale-photo-of-green-leaf-plant-3yLJWDHxfwk) / Unsplash*
 
 ## Du site de jeux à game.zunrel.com
 
@@ -69,9 +68,9 @@ Beaucoup de gens croient qu’il faut d’abord « apprendre à coder » pendant
 
 Est-ce parfait ? Non. Est-ce jouable ? Oui. Est-ce que je donne des chiffres de joueurs ou de sessions ? Non — je n’en invente pas.
 
-![Écran de code sur un MacBook](https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80)
+![Pine tree in black and white](https://images.unsplash.com/photo-1681065498547-44cf07ac84a8?w=1200&q=80)
 
-*Photo : [Arnold Francisca](https://unsplash.com/photos/turned-on-macbook-pro-wit-programming-codes-display-f77Bh3inUpE) / Unsplash*
+*Photo : [Reggie Tmin](https://unsplash.com/photos/a-black-and-white-photo-of-a-pine-tree-ZGbriLOvOI0) / Unsplash*
 
 
 

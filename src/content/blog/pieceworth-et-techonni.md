@@ -8,23 +8,22 @@ published: 2026-10-06
 updated: 2026-10-06
 order: 2
 images:
-  - url: "https://images.unsplash.com/photo-1618215650148-e8e61eae521c?w=1200&q=80"
-    alt: "Montre de luxe au poignet"
-    credit: "Gilles De Muynck"
-    page: "https://unsplash.com/photos/person-wearing-gold-and-silver-round-analog-watch-gJ9b48mc5qs"
-  - url: "https://images.unsplash.com/photo-1727767579124-e469ea02784c?w=1200&q=80"
-    alt: "Panneau Closed sur une porte"
-    credit: "Tim Mossholder"
-    page: "https://unsplash.com/photos/a-close-up-of-a-closed-sign-hanging-from-a-rope-3SBavF0odNw"
-  - url: "https://images.unsplash.com/photo-1542416409-400da26855b5?w=1200&q=80"
-    alt: "Ville de nuit, voitures et immeubles"
-    credit: "Stéphan Valentin"
-    page: "https://unsplash.com/photos/vehicles-on-road-near-high-rise-buildings-oqYLdbuJDQU"
+  - url: "https://images.unsplash.com/photo-1546967702-f0a630011379?w=1200&q=80"
+    alt: "Silhouette of tree near calm sea"
+    credit: "Mick Haupt"
+    page: "https://unsplash.com/photos/silhouette-of-tree-near-calm-sea-TEjR4zowKgE"
+  - url: "https://images.unsplash.com/photo-1692382869937-23a541fbe02a?w=1200&q=80"
+    alt: "Trees looking up at the sky"
+    credit: "Anne Roston"
+    page: "https://unsplash.com/photos/a-black-and-white-photo-of-trees-looking-up-at-the-sky-8d16lTuX0-E"
+  - url: "https://images.unsplash.com/photo-1556880422-2315628cdb05?w=1200&q=80"
+    alt: "Snow covered mountain under grey sky"
+    credit: "mtsjrdl"
+    page: "https://unsplash.com/photos/snow-covered-mountain-under-grey-sky-IE9yvat5374"
 ---
+![Silhouette of tree near calm sea](https://images.unsplash.com/photo-1546967702-f0a630011379?w=1200&q=80)
 
-![Montre de luxe au poignet](https://images.unsplash.com/photo-1618215650148-e8e61eae521c?w=1200&q=80)
-
-*Photo : [Gilles De Muynck](https://unsplash.com/photos/person-wearing-gold-and-silver-round-analog-watch-gJ9b48mc5qs) / Unsplash*
+*Photo : [Mick Haupt](https://unsplash.com/photos/silhouette-of-tree-near-calm-sea-TEjR4zowKgE) / Unsplash*
 
 Le 4 octobre 2026, j’ai fermé Pieceworth. Le domaine redirige maintenant. Le même mouvement a touché Techonni : techonni.com redirige aussi, vers Zunrel. Ce n’est pas une « success story ». C’est le récit de deux niches que j’ai choisies, construites avec l’IA, puis arrêtées — et de ce que j’ai appris en le faisant sans mentir sur les résultats.
 
@@ -44,9 +43,9 @@ Je n’inventerai pas de chiffres de trafic ni de commissions. Ce que je peux di
 
 Le 4 octobre 2026, j’ai décidé de fermer. Rediriger, plutôt que laisser un site à moitié mort. Une redirection, c’est honnête : le projet s’arrête, le domaine ne ment pas. J’ai gardé l’étude de cas en archive sur mon blog perso, pour me souvenir de ce que j’avais construit — pas pour faire semblant que le site vit encore.
 
-![Panneau Closed sur une porte](https://images.unsplash.com/photo-1727767579124-e469ea02784c?w=1200&q=80)
+![Trees looking up at the sky](https://images.unsplash.com/photo-1692382869937-23a541fbe02a?w=1200&q=80)
 
-*Photo : [Tim Mossholder](https://unsplash.com/photos/a-close-up-of-a-closed-sign-hanging-from-a-rope-3SBavF0odNw) / Unsplash*
+*Photo : [Anne Roston](https://unsplash.com/photos/a-black-and-white-photo-of-trees-looking-up-at-the-sky-8d16lTuX0-E) / Unsplash*
 
 ## Techonni : la niche portée par l’actualité
 
@@ -60,9 +59,9 @@ Une niche d’actualité a un avantage : la clarté des questions. Elle a un inc
 
 Le 4 octobre 2026, techonni.com a rejoint le même geste que Pieceworth : redirection. Pas parce que GTA 6 « n’intéresse personne ». Parce que *moi*, je ne pouvais pas tenir trois niches sérieuses en même temps. Fermer (ou rediriger), c’est aussi une forme de minimalisme : moins de sites morts, plus d’énergie sur un fil.
 
-![Ville de nuit, voitures et immeubles](https://images.unsplash.com/photo-1542416409-400da26855b5?w=1200&q=80)
+![Snow covered mountain under grey sky](https://images.unsplash.com/photo-1556880422-2315628cdb05?w=1200&q=80)
 
-*Photo : [Stéphan Valentin](https://unsplash.com/photos/vehicles-on-road-near-high-rise-buildings-oqYLdbuJDQU) / Unsplash*
+*Photo : [mtsjrdl](https://unsplash.com/photos/snow-covered-mountain-under-grey-sky-IE9yvat5374) / Unsplash*
 
 ## Deux niches, deux leçons
 
