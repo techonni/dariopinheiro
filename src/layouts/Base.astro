@@ -6,11 +6,8 @@ import MenuDrawer from "../components/MenuDrawer.astro";
 interface Props {
   title: string;
   description: string;
-  // « article » pour les guides du blog.
   ogType?: "website" | "article";
-  // Image de partage (chemin depuis /public), facultative.
   image?: string;
-  // Colonne plus large pour les pages de lecture (blog).
   wide?: boolean;
 }
 
@@ -42,11 +39,11 @@ const imageUrl = image ? new URL(image, Astro.site).href : undefined;
     <header class="site-header" data-sticky-header>
       <a class="brand" href="/" aria-label="Accueil">
         <DottedMark />
+        <span class="brand-name">Dario</span>
       </a>
       <MenuDrawer />
     </header>
     <script is:inline>
-      // Cabeçalho fixo: um traço fino em baixo só depois de rolar a página.
       (function () {
         var header = document.querySelector("[data-sticky-header]");
         if (!header) return;
@@ -63,7 +60,6 @@ const imageUrl = image ? new URL(image, Astro.site).href : undefined;
         <p class="small">© {new Date().getFullYear()} Dário Pinheiro. <a href="https://x.com/zunrel">X · @zunrel</a></p>
       </footer>
     </div>
-    <!-- Cloudflare Web Analytics (sem cookies): site « dariopinheiro.com » da conta Cloudflare, token público do beacon. -->
     <script is:inline type="module" defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "27e3335e04134650bc746cdb8b005364"}'></script>
   </body>
 </html>

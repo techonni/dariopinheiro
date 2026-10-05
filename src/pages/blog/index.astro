@@ -1,18 +1,16 @@
 ---
 import Base from "../../layouts/Base.astro";
 import NewsletterForm from "../../components/NewsletterForm.astro";
-import { categories, getPosts, readingMinutes } from "../../lib/blog";
+import { formatDateShort, getGuidePosts, getJournalPosts, readingMinutes } from "../../lib/blog";
 
-const posts = await getPosts();
-const sections = categories
-  .map((name) => ({ name, posts: posts.filter((p) => p.data.category === name) }))
-  .filter((s) => s.posts.length);
+const journal = await getJournalPosts();
+const guides = await getGuidePosts();
 
 const site = Astro.site!;
-const title = "Blog · La route, en guides · Dário Pinheiro";
-const description =
-  "La route pour faire des sites, étape par étape, à partir de ce que je construis. Zunrel est le site public. Le reste renvoie ici.";
+const title = "Blog · Dário Pinheiro";
+const description = "Journal personnel et guides : ce que je construis, ce qui marche, ce qui rate.";
 
+const allListed = [...journal, ...guides];
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Blog",
@@ -21,7 +19,7 @@ const jsonLd = {
   inLanguage: "fr",
   description,
   author: { "@type": "Person", name: "Dário Pinheiro", url: site.href },
-  blogPost: posts.map((p) => ({
+  blogPost: allListed.map((p) => ({
     "@type": "BlogPosting",
     headline: p.data.title,
     url: new URL(`/blog/${p.id}/`, site).href,
@@ -31,36 +29,48 @@ const jsonLd = {
 };
 ---
 
-<Base title={title} description={description} image="/images/dario.jpg" wide>
+<Base title={title} description={description} image="/images/dario.png" wide>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
   <div class="blog">
     <header class="blog-head">
       <p class="eyebrow-plain">Blog</p>
-      <h1>La route, en guides.</h1>
+      <h1>Le journal.</h1>
       <p class="lead">
-        {posts.length} guides, étape par étape, tirés de ce que je construis.{" "}
-        <a class="inline-link" href="https://zunrel.com" target="_blank" rel="noopener">Zunrel</a>{" "}
-        est le site public. techonni.com et pieceworth.com renvoient ici.
+        Ce que j&apos;ai fait ces derniers mois — sites, pivots, échecs et victoires — puis les guides tirés de la route.
       </p>
     </header>
 
-    {sections.map((s) => (
+    {journal.length > 0 && (
       <section class="blog-section">
-        <h2 class="section-title">{s.name}</h2>
+        <h2 class="section-title">Journal</h2>
         <ul class="post-list">
-          {s.posts.map((p) => (
+          {journal.map((p) => (
             <li>
-              <a class="post-card" href={`/blog/${p.id}/`}>
+              <a class="post-row" href={`/blog/${p.id}/`}>
                 <span class="post-title">{p.data.title}</span>
-                <span class="post-summary">{p.data.summary}</span>
-                <span class="post-meta">{readingMinutes(p)} min de lecture</span>
-                <span class="arrow" aria-hidden="true">→</span>
+                <span class="post-meta">{formatDateShort(p.data.published)} · {readingMinutes(p)} min →</span>
               </a>
             </li>
           ))}
         </ul>
       </section>
-    ))}
+    )}
+
+    {guides.length > 0 && (
+      <section class="blog-section">
+        <h2 class="section-title">Guides</h2>
+        <ul class="post-list">
+          {guides.map((p) => (
+            <li>
+              <a class="post-row" href={`/blog/${p.id}/`}>
+                <span class="post-title">{p.data.title}</span>
+                <span class="post-meta">{readingMinutes(p)} min →</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
 
     <NewsletterForm
       title="La lettre"
@@ -68,3 +78,49 @@ const jsonLd = {
     />
   </div>
 </Base>
+
+<style>
+  .blog-head { padding-top: 8px; }
+  .blog-head h1 {
+    margin-top: 8px;
+    font-size: 40px;
+    letter-spacing: -0.03em;
+  }
+  .blog-section { margin-top: 56px; }
+  .section-title {
+    margin: 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .post-list { list-style: none; margin: 0; padding: 0; }
+  .post-list li { border-bottom: 1px solid var(--rule); }
+  .post-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 0;
+    color: var(--fg);
+    text-decoration: none;
+  }
+  .post-title {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.35;
+  }
+  .post-meta {
+    font-size: 13px;
+    color: var(--muted);
+    white-space: nowrap;
+    padding-top: 3px;
+  }
+  @media (max-width: 600px) {
+    .blog-head h1 { font-size: 32px; }
+    .post-row { flex-direction: column; gap: 6px; }
+  }
+</style>

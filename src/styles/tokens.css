@@ -1,37 +1,37 @@
-/* Identidade do hub: as mesmas cores do zunrel.com (bege, preto, filete). */
+/* Refonte éditoriale : noir et blanc, sans boîtes. */
 :root {
   color-scheme: light;
 
-  --id-bg: #fafaf7;
-  --id-surface-1: #fafaf7;
+  --id-bg: #ffffff;
+  --id-surface-1: #ffffff;
   --id-surface-2: #ffffff;
-  --id-surface-3: #efefea;
+  --id-surface-3: #f3f3f3;
 
-  --id-line: #e4e4df;
-  --id-line-strong: #c9c9c3;
+  --id-line: #e5e5e5;
+  --id-line-strong: #111111;
   --id-focus: #111111;
 
   --id-text: #111111;
-  --id-text-2: #6e6e6e;
-  --id-text-3: #6e6e6e;
+  --id-text-2: #666666;
+  --id-text-3: #666666;
 
   --id-accent: #111111;
   --id-on-accent: #ffffff;
-  --id-accent-hover: #3d3d3d;
+  --id-accent-hover: #333333;
   --id-ghost: #ffffff;
-  --id-ghost-hover: #efefea;
+  --id-ghost-hover: #f3f3f3;
 
   --id-success: #1f7a3a;
   --id-danger: #b42318;
   --id-warning: #8a6a00;
 
-  --id-radius-xs: 8px;
-  --id-radius-sm: 12px;
-  --id-radius-md: 16px;
-  --id-radius-lg: 20px;
-  --id-radius-xl: 24px;
+  --id-radius-xs: 0;
+  --id-radius-sm: 0;
+  --id-radius-md: 0;
+  --id-radius-lg: 0;
+  --id-radius-xl: 0;
   --id-radius-pill: 9999px;
-  --id-radius-field: 8px;
+  --id-radius-field: 4px;
 
   --id-font: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   --id-font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -56,7 +56,7 @@
   --id-space-12: 48px;
   --id-space-16: 64px;
 
-  --id-shadow: 0 8px 32px rgb(17 17 17 / 0.08);
+  --id-shadow: none;
   --id-backdrop: rgb(17 17 17 / 0.28);
   --id-ease: cubic-bezier(0.32, 0.72, 0, 1);
   --id-dur: 0.3s;

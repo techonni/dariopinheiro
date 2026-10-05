@@ -3,17 +3,17 @@
 
 /* Cores do zunrel.com: bege, preto, cinza, filete. */
 :root {
-  --bg: #fafaf7;
+  --bg: #ffffff;
   --ink: #111111;
   --fg: #111111;
   --text: #3d3d3d;
-  --muted: #6e6e6e;
-  --faint: #6e6e6e;
-  --line: #e4e4df;
-  --rule: #e4e4df;
+  --muted: #666666;
+  --faint: #666666;
+  --line: #e5e5e5;
+  --rule: #111111;
   --chip: #ffffff;
   --todo: var(--muted);
-  --hairline: #e4e4df;
+  --hairline: #e5e5e5;
 }
 
 * { box-sizing: border-box; }
@@ -28,7 +28,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-::selection { background: #e4e4df; color: #111; }
+::selection { background: #e5e5e5; color: #111; }
 :focus-visible { outline: 2px solid #111; outline-offset: 3px; border-radius: 6px; }
 
 a { color: inherit; text-decoration: none; }
@@ -36,14 +36,21 @@ a { color: inherit; text-decoration: none; }
 /* Sem backdrop-filter nem transform: o menu (position: fixed) está dentro do cabeçalho.
    Um filtro prende o painel à altura do cabeçalho e ele deixa de abrir. */
 .site-header {
-  position: static;
+  position: sticky;
+  top: 0;
+  z-index: 40;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 20px;
-  background: #fafaf7;
+  padding: 16px 20px;
+  background: #ffffff;
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s;
+}
+.brand-name {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 .site-header[data-scrolled] { border-bottom-color: var(--hairline); }
 .brand { display: flex; align-items: center; gap: 8px; color: #111; }
@@ -56,7 +63,7 @@ a { color: inherit; text-decoration: none; }
 .site-header nav { display: flex; gap: 16px; }
 .site-header nav a:hover { opacity: 0.7; }
 
-.column { width: 100%; max-width: 520px; margin: 0 auto; padding: 0 20px; }
+.column { width: 100%; max-width: 640px; margin: 0 auto; padding: 0 20px; }
 main { padding-top: 56px; }
 
 .eyebrow, .section-title { font-size: 13px; line-height: 20px; color: var(--muted); margin: 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
@@ -181,6 +188,26 @@ a.row:hover .row-title { text-decoration: underline; }
 .prose .affiliate-cta a::after { content: "\2192"; color: var(--muted); transition: transform 0.15s, color 0.15s; }
 .prose .affiliate-cta a:hover::after, .prose .affiliate-cta a:focus-visible::after { transform: translateX(3px); color: var(--fg); }
 .prose hr { margin: 40px 0; border: 0; border-top: 1px solid var(--line); }
+.prose img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 32px 0 8px;
+  border: 0;
+  border-radius: 0;
+  filter: none;
+}
+.prose p:has(> em:only-child),
+.prose p.credit {
+  margin-top: 0;
+  margin-bottom: 28px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.prose figure { margin: 32px 0 8px; }
+.prose figure img { margin: 0; }
+.prose figcaption { margin-top: 8px; font-size: 13px; color: var(--muted); }
+
 .prose table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 22px; display: block; overflow-x: auto; }
 .prose th, .prose td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
 .prose th { color: var(--fg); font-weight: 600; }
