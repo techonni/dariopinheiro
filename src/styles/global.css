@@ -33,19 +33,20 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
+/* Sem backdrop-filter nem transform: o menu (position: fixed) está dentro do cabeçalho.
+   Um filtro prende o painel à altura do cabeçalho e ele deixa de abrir. */
 .site-header {
   position: sticky; top: 0; z-index: 40;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 24px 20px;
-  background: rgb(250 250 247 / 0.94);
-  backdrop-filter: blur(12px);
+  background: #fafaf7;
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s;
 }
 .site-header[data-scrolled] { border-bottom-color: var(--hairline); }
-.brand { display: flex; align-items: center; gap: 8px; }
+.brand { display: flex; align-items: center; gap: 8px; color: #111; }
 .brand svg { width: 24px; height: 24px; }
 .brand span, .site-header nav {
   font-size: 15px;
@@ -85,12 +86,6 @@ a.row:hover .row-title { text-decoration: underline; }
 .intro .lead { margin-top: 8px; font-size: 17px; line-height: 26px; color: var(--fg); }
 .lead-more { margin: 12px 0 0; font-size: 15px; line-height: 24px; color: var(--text); }
 .hub section { margin-top: 56px; }
-@media (max-width: 639px) {
-  .hub { display: flex; flex-direction: column; }
-  .hub > .newsletter { order: 1; margin-top: 40px; }
-  .hub > .featured { order: 2; }
-  .hub > section:not(.newsletter):not(.featured) { order: 3; }
-}
 .section-intro { margin: 8px 0 0; font-size: 15px; line-height: 24px; color: var(--text); }
 .items { list-style: none; margin: 20px 0 0; padding: 0; }
 .items li { border-bottom: 1px solid var(--hairline); }
@@ -198,8 +193,7 @@ a.row:hover .row-title { text-decoration: underline; }
   display: flex; align-items: center; justify-content: center;
   width: 40px; height: 40px; margin: -8px 0; padding: 0;
   border: 0; border-radius: 8px;
-  background: none; color: var(--fg); cursor: pointer;
-  transition: opacity 0.15s;
+  background: none; color: #111; cursor: pointer;
 }
 @media (hover: hover) { .menu-button:hover { opacity: 0.7; } }
 .menu-button:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
@@ -207,7 +201,7 @@ a.row:hover .row-title { text-decoration: underline; }
 .menu-drawer { position: fixed; inset: 0; z-index: 50; }
 .menu-drawer[hidden] { display: none; }
 .menu-backdrop {
-  position: absolute; inset: 0; background: var(--id-backdrop); backdrop-filter: blur(2px);
+  position: absolute; inset: 0; background: rgb(17 17 17 / 0.28);
   opacity: 0; transition: opacity 300ms ease-out;
 }
 .menu-panel {
@@ -215,7 +209,7 @@ a.row:hover .row-title { text-decoration: underline; }
   display: flex; flex-direction: column;
   width: 85%; max-width: 360px; padding: 24px 20px 32px; overflow-y: auto;
   border-left: 1px solid var(--hairline);
-  background: #fafaf7; box-shadow: var(--id-shadow);
+  background: #fafaf7; box-shadow: 0 8px 32px rgb(17 17 17 / 0.08);
   transform: translateX(100%); transition: transform 300ms ease-out;
 }
 @media (min-width: 640px) { .menu-panel { width: 340px; } }
@@ -242,20 +236,34 @@ a.row:hover .row-title { text-decoration: underline; }
 .featured-more { margin: 20px 0 0; }
 .post-share { margin: 40px 0 0; padding-top: 20px; border-top: 1px solid var(--hairline); }
 
-/* Campo da letra: branco, contorno visível, botão preto. Igual ao zunrel.com. */
+.nl-form { display: flex; flex-direction: column; gap: 8px; width: 100%; }
 .nl-input {
+  display: block;
+  width: 100%;
+  min-height: 46px;
+  height: 46px;
+  padding: 0 14px;
   background: #fff !important;
   color: #111 !important;
-  border: 1px solid #c9c9c3 !important;
+  border: 1px solid #111 !important;
   border-radius: 8px !important;
-  height: 46px !important;
+  -webkit-appearance: none;
+  appearance: none;
+  font-size: 16px;
+  line-height: 46px;
 }
-.nl-input::placeholder { color: #8a8a84 !important; }
-.nl-input:focus { border-color: #111 !important; box-shadow: 0 0 0 1px #111 !important; }
+.nl-input::placeholder { color: #6e6e6e !important; opacity: 1; }
 .nl-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 46px;
+  height: 46px;
   background: #111 !important;
   color: #fff !important;
+  border: 0;
   border-radius: 8px !important;
-  height: 46px !important;
+  font-size: 16px;
+  font-weight: 600;
 }
-.nl-button:hover { background: #3d3d3d !important; }
