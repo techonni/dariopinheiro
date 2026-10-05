@@ -9,6 +9,8 @@ updated: 2026-10-04
 order: 10
 ---
 
+> **Note (octobre 2026) :** techonni.com et pieceworth.com redirigent vers ce site. Ce guide garde ce que j'avais construit. Les liens mènent aux études de cas. Zunrel reste le site public.
+
 Le SEO « on-page », c'est tout ce qui se règle sur la page elle-même : le titre, la description, la structure du texte, les liens, les données structurées. Ça ne remplace pas un bon contenu, mais ça aide Google à le comprendre et le lecteur à cliquer. Voici la checklist que j'applique, avec ce que l'IA peut automatiser.
 
 ## 1. Le titre (balise `<title>`)
@@ -23,7 +25,7 @@ Sur [Zunrel](https://zunrel.com), le titre d'un guide est la question elle-même
 
 ## 2. La description (balise `meta description`)
 
-C'est le petit texte sous le titre dans Google. Elle n'influence pas directement le classement, mais elle donne envie de cliquer (ou pas). Visez **environ 150 à 160 caractères**, une phrase qui dit ce que la page apporte. Sur [Techonni](https://techonni.com), le schéma du contenu refuse toute description de plus de 160 caractères : le site ne se construit pas si la règle n'est pas respectée.
+C'est le petit texte sous le titre dans Google. Elle n'influence pas directement le classement, mais elle donne envie de cliquer (ou pas). Visez **environ 150 à 160 caractères**, une phrase qui dit ce que la page apporte. Sur [Techonni](/blog/etude-de-cas-techonni/), le schéma du contenu refuse toute description de plus de 160 caractères : le site ne se construit pas si la règle n'est pas respectée.
 
 L'IA est très bonne pour proposer des descriptions, à condition de lui donner la limite et de vérifier qu'elle ne promet rien que la page ne contient pas.
 

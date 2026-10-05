@@ -9,6 +9,8 @@ updated: 2026-10-04
 order: 11
 ---
 
+> **Note (octobre 2026) :** techonni.com et pieceworth.com redirigent vers ce site. Ce guide garde ce que j'avais construit. Les liens mènent aux études de cas. Zunrel reste le site public.
+
 Un lien affilié bien placé rend service : le lecteur vient d'apprendre à faire quelque chose, et le lien l'emmène là où il peut le faire. Mal placé ou caché, il fait fuir le lecteur et peut vous mettre en défaut vis-à-vis de la loi et des programmes. Voici comment je fais sur mes sites, et les règles à connaître.
 
 > Je ne suis pas juriste. Ce guide donne des repères pratiques ; pour votre situation précise, lisez les textes officiels de votre pays et les conditions de vos programmes.
@@ -30,7 +32,7 @@ Chaque bouton porte un attribut qui indique son emplacement (haut, bas, fiche ou
 
 ### Des liens normaux qui deviennent affiliés
 
-Sur [Pieceworth](https://pieceworth.com), j'écris des liens normaux vers les boutiques (par exemple vers Farfetch). Le script de Sovrn Commerce, placé dans le gabarit du site, les transforme en liens affiliés. Avantage : je n'invente jamais de lien de suivi. Inconvénient : il faut quand même signaler chaque lien comme affilié, puisqu'il le devient.
+Sur [Pieceworth](/blog/etude-de-cas-pieceworth/), j'écris des liens normaux vers les boutiques (par exemple vers Farfetch). Le script de Sovrn Commerce, placé dans le gabarit du site, les transforme en liens affiliés. Avantage : je n'invente jamais de lien de suivi. Inconvénient : il faut quand même signaler chaque lien comme affilié, puisqu'il le devient.
 
 ### Ce que je ne fais pas
 
@@ -75,7 +77,7 @@ Un lien affilié partagé dans une publication, une épingle Pinterest ou une ne
 
 ## Partie 4 : le cas des marques citées
 
-Un site de fans comme [Techonni](https://techonni.com) cite une marque sans aucun lien commercial. Il précise en pied de page qu'il est indépendant, non affilié à Rockstar Games ni à Take-Two, et que les noms cités appartiennent à leurs propriétaires. Quand des liens affiliés arriveront, ils seront signalés comme sur les autres sites. Si vous parlez d'une marque sans être partenaire, dites-le aussi.
+Un site de fans comme [Techonni](/blog/etude-de-cas-techonni/) cite une marque sans aucun lien commercial. Il précise en pied de page qu'il est indépendant, non affilié à Rockstar Games ni à Take-Two, et que les noms cités appartiennent à leurs propriétaires. Quand des liens affiliés arriveront, ils seront signalés comme sur les autres sites. Si vous parlez d'une marque sans être partenaire, dites-le aussi.
 
 ## Checklist
 

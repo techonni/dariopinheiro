@@ -9,6 +9,8 @@ updated: 2026-10-04
 order: 7
 ---
 
+> **Note (octobre 2026) :** techonni.com et pieceworth.com redirigent vers ce site. Ce guide garde ce que j'avais construit. Les liens mènent aux études de cas. Zunrel reste le site public.
+
 Écrire avec l'IA n'est pas un problème en soi. Le problème, c'est de publier des pages en masse, sans valeur, juste pour attirer des visites : Google appelle ça du contenu à grande échelle abusif, et le combat activement. Sur mes sites, l'IA écrit la plupart des brouillons. Voici les règles qui font la différence entre un guide utile et du spam.
 
 ## Ce que Google regarde : E-E-A-T
@@ -28,7 +30,7 @@ Chaque guide répond à une seule question, posée dans le titre. Sur [Zunrel](h
 
 ## Règle 2 : la réponse tout en haut
 
-Le lecteur veut la réponse, pas une introduction de trois paragraphes. Sur [Techonni](https://techonni.com), le guide sur la date de sortie de GTA 6 commence par la réponse en gras : le jeu sort le 19 novembre 2026, sur PS5 et Xbox Series X|S. Le détail vient ensuite.
+Le lecteur veut la réponse, pas une introduction de trois paragraphes. Sur [Techonni](/blog/etude-de-cas-techonni/), le guide sur la date de sortie de GTA 6 commence par la réponse en gras : le jeu sort le 19 novembre 2026, sur PS5 et Xbox Series X|S. Le détail vient ensuite.
 
 ## Règle 3 : donner les faits à l'IA, pas l'inverse
 
@@ -38,7 +40,7 @@ C'est la règle la plus importante. L'IA ne doit jamais être la source des fait
 - les **prix avec leur date et leur source** ;
 - ce que j'ai observé moi-même.
 
-Sur [Pieceworth](https://pieceworth.com), tous les faits sur Farfetch viennent d'un fichier de notes tiré des pages officielles, lues à une date précise. L'IA rédige à partir de ce fichier, et chaque guide liste ses sources.
+Sur [Pieceworth](/blog/etude-de-cas-pieceworth/), tous les faits sur Farfetch viennent d'un fichier de notes tiré des pages officielles, lues à une date précise. L'IA rédige à partir de ce fichier, et chaque guide liste ses sources.
 
 Un prompt type :
 

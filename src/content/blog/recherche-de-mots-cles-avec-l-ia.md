@@ -9,6 +9,8 @@ updated: 2026-10-04
 order: 3
 ---
 
+> **Note (octobre 2026) :** techonni.com et pieceworth.com redirigent vers ce site. Ce guide garde ce que j'avais construit. Les liens mènent aux études de cas. Zunrel reste le site public.
+
 Sur mes sites, chaque guide répond à **une question**. Sur Zunrel, le titre d'un guide est littéralement la question : « Comment ajouter des variantes (taille, couleur) à un produit Shopify ? ». Cette habitude simplifie toute la recherche de mots-clés : au lieu de chasser des « mots-clés », on récolte des questions. Voici la méthode, et le rôle exact de l'IA.
 
 ## Pourquoi des questions plutôt que des mots-clés
@@ -71,7 +73,7 @@ Pour chaque question retenue, refaites une recherche Google et regardez ce qui s
 
 ## Cas particulier : une niche d'actualité
 
-Sur [Techonni](https://techonni.com), les questions viennent surtout de l'actualité : date de sortie de GTA 6, prix et éditions, version PC, consoles compatibles, espace disque. Les volumes montent d'un coup à chaque annonce. La recherche de mots-clés y ressemble plus à une veille : suivre les annonces officielles et mettre à jour les guides le jour même (voir l'[étude de cas Techonni](/blog/etude-de-cas-techonni/)).
+Sur [Techonni](/blog/etude-de-cas-techonni/), les questions viennent surtout de l'actualité : date de sortie de GTA 6, prix et éditions, version PC, consoles compatibles, espace disque. Les volumes montent d'un coup à chaque annonce. La recherche de mots-clés y ressemble plus à une veille : suivre les annonces officielles et mettre à jour les guides le jour même (voir l'[étude de cas Techonni](/blog/etude-de-cas-techonni/)).
 
 ## Ce que je ne fais pas
 

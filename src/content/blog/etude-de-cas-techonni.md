@@ -9,7 +9,9 @@ updated: 2026-10-04
 order: 18
 ---
 
-[Techonni](https://techonni.com) est mon site le plus récent : des guides **GTA 6 en français**. C'est un cas très différent de mes deux autres sites. Ici, la demande dépend de l'actualité : chaque annonce de Rockstar fait monter les recherches d'un coup. Voici comment le site a été lancé, les règles qui l'encadrent, et le plan pour la suite.
+> **Note (octobre 2026) :** techonni.com et pieceworth.com redirigent vers ce site. Ce guide garde ce que j'avais construit. Les liens mènent aux études de cas. Zunrel reste le site public.
+
+[Techonni](/blog/etude-de-cas-techonni/) est mon site le plus récent : des guides **GTA 6 en français**. C'est un cas très différent de mes deux autres sites. Ici, la demande dépend de l'actualité : chaque annonce de Rockstar fait monter les recherches d'un coup. Voici comment le site a été lancé, les règles qui l'encadrent, et le plan pour la suite.
 
 ## Pourquoi une niche d'actualité
 

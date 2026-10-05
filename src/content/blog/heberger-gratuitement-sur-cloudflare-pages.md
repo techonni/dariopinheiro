@@ -9,7 +9,9 @@ updated: 2026-10-04
 order: 6
 ---
 
-Mes quatre sites sont hébergés sur **Cloudflare Pages** : [Zunrel](https://zunrel.com), [Pieceworth](https://pieceworth.com), [Techonni](https://techonni.com) et ce hub. Le jeu de démonstration [game.zunrel.com](https://game.zunrel.com) aussi, dans un projet à part. Le principe : à chaque fois que je pousse du code sur la branche `main` de GitHub, Cloudflare construit le site et le publie. Voici comment le mettre en place, et pourquoi j'ai quitté Vercel.
+> **Note (octobre 2026) :** techonni.com et pieceworth.com redirigent vers ce site. Ce guide garde ce que j'avais construit. Les liens mènent aux études de cas. Zunrel reste le site public.
+
+Ces sites étaient hébergés sur **Cloudflare Pages** : [Zunrel](https://zunrel.com), [Pieceworth](/blog/etude-de-cas-pieceworth/), [Techonni](/blog/etude-de-cas-techonni/) et ce hub. Le jeu de démonstration [game.zunrel.com](https://game.zunrel.com) aussi, dans un projet à part. Le principe : à chaque fois que je pousse du code sur la branche `main` de GitHub, Cloudflare construit le site et le publie. Voici comment le mettre en place, et pourquoi j'ai quitté Vercel.
 
 ## Pourquoi Cloudflare Pages (et pas Vercel)
 

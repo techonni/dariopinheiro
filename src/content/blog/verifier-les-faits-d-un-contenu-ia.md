@@ -9,7 +9,9 @@ updated: 2026-10-04
 order: 8
 ---
 
-L'IA écrit avec assurance, même quand elle se trompe. Un prix d'il y a deux ans, un menu qui a changé de nom, une règle d'un autre pays : le texte sonne juste, mais il est faux. Sur un site d'affiliation, une erreur de ce type coûte la confiance du lecteur. Voici comment je vérifie les faits sur mes sites.
+> **Note (octobre 2026) :** techonni.com et pieceworth.com redirigent vers ce site. Ce guide garde ce que j'avais construit. Les liens mènent aux études de cas. Zunrel reste le site public.
+
+L'IA écrit avec assurance, même quand elle se trompe. Un prix d'il y a deux ans, un menu qui a changé de nom, une règle d'un autre pays : le texte sonne juste, mais il est faux. Sur un site d'affiliation, une erreur de ce type coûte la confiance du lecteur. Voici comment je vérifie les faits sur ces sites.
 
 ## Ce qu'il faut vérifier
 
@@ -42,8 +44,8 @@ Pour chaque ligne, trouvez la **source primaire** : la page officielle de la mar
 
 Exemples réels de mes sites :
 
-- **[Pieceworth](https://pieceworth.com)** : les faits sur Farfetch viennent de la FAQ, de la page des retours, de la page paiement et des conditions officielles. Ils sont notés dans un fichier dédié, avec la date de lecture (29 septembre 2026).
-- **[Techonni](https://techonni.com)** : chaque guide GTA 6 déclare ses sources dans son en-tête, à commencer par la page officielle de Rockstar Games, et sa date de mise à jour.
+- **[Pieceworth](/blog/etude-de-cas-pieceworth/)** : les faits sur Farfetch viennent de la FAQ, de la page des retours, de la page paiement et des conditions officielles. Ils sont notés dans un fichier dédié, avec la date de lecture (29 septembre 2026).
+- **[Techonni](/blog/etude-de-cas-techonni/)** : chaque guide GTA 6 déclare ses sources dans son en-tête, à commencer par la page officielle de Rockstar Games, et sa date de mise à jour.
 - **[Zunrel](https://zunrel.com)** : les prix ne sont publiés qu'avec une date et une source (les pages officielles des tarifs).
 
 ## Étape 3 : attention aux contradictions entre sources officielles

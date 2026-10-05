@@ -9,7 +9,9 @@ updated: 2026-10-04
 order: 2
 ---
 
-Un site d'affiliation ne gagne de l'argent que si ses liens sont de vrais liens d'affiliation, acceptés par un vrai programme. Ça paraît évident, mais c'est souvent la dernière chose qu'on vérifie. Voici comment je cherche des programmes, avec l'exemple de mes trois sites : un site sur des logiciels (SaaS), un site sur le luxe et un site sur un jeu vidéo.
+> **Note (octobre 2026) :** techonni.com et pieceworth.com redirigent vers ce site. Ce guide garde ce que j'avais construit. Les liens mènent aux études de cas. Zunrel reste le site public.
+
+Un site d'affiliation ne gagne de l'argent que si ses liens sont de vrais liens d'affiliation, acceptés par un vrai programme. Ça paraît évident, mais c'est souvent la dernière chose qu'on vérifie. Voici comment je cherche des programmes, avec l'exemple de ces trois sites : un site sur des logiciels (SaaS), un site sur le luxe et un site sur un jeu vidéo.
 
 ## Les trois façons de trouver un programme
 
@@ -40,7 +42,7 @@ Sovrn Commerce et des services similaires (Skimlinks, par exemple) sont pratique
 
 ## Luxe : l'exemple de Pieceworth
 
-[Pieceworth](https://pieceworth.com) aide à bien acheter le luxe en ligne, avec des guides sur Farfetch en anglais et en français. Ici, le parcours a été moins linéaire :
+[Pieceworth](/blog/etude-de-cas-pieceworth/) aide à bien acheter le luxe en ligne, avec des guides sur Farfetch en anglais et en français. Ici, le parcours a été moins linéaire :
 
 - J'ai d'abord travaillé avec **Impact** (guides sur plusieurs boutiques, pages de boutiques, sélection de produits).
 - Le 29 septembre 2026, j'ai **quitté Impact** et supprimé tout ce qui en dépendait. Ce travail reste dans l'historique Git, mais il n'est plus en ligne.
@@ -50,7 +52,7 @@ La leçon : dans le luxe, les produits et les marques sont nombreux, et un agré
 
 ## Jeux vidéo : l'exemple de Techonni
 
-[Techonni](https://techonni.com) publie des guides GTA 6 en français. À ce jour, **il n'y a pas encore de liens d'affiliation** sur le site. Le plan est simple : n'ajouter des liens (boutiques de jeux, Amazon) que lorsque j'aurai de vrais liens validés, et envisager la publicité seulement quand il y aura du trafic. Pour une niche portée par l'actualité, construire l'audience d'abord est un choix assumé.
+[Techonni](/blog/etude-de-cas-techonni/) publie des guides GTA 6 en français. À ce jour, **il n'y a pas encore de liens d'affiliation** sur le site. Le plan est simple : n'ajouter des liens (boutiques de jeux, Amazon) que lorsque j'aurai de vrais liens validés, et envisager la publicité seulement quand il y aura du trafic. Pour une niche portée par l'actualité, construire l'audience d'abord est un choix assumé.
 
 ## Comment comparer deux programmes
 

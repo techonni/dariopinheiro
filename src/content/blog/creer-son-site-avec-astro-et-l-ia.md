@@ -9,7 +9,9 @@ updated: 2026-10-04
 order: 5
 ---
 
-Tous mes sites tournent sur **Astro** : [Zunrel](https://zunrel.com), [Pieceworth](https://pieceworth.com), [Techonni](https://techonni.com) et ce hub, dariopinheiro.com. Et je ne les écris pas seul : je travaille avec un assistant de code IA (j'utilise Claude Code). Voici pourquoi ce duo fonctionne bien pour des sites d'affiliation, et comment l'organiser pour que l'IA reste fiable.
+> **Note (octobre 2026) :** techonni.com et pieceworth.com redirigent vers ce site. Ce guide garde ce que j'avais construit. Les liens mènent aux études de cas. Zunrel reste le site public.
+
+Tous mes sites tournent sur **Astro** : [Zunrel](https://zunrel.com), [Pieceworth](/blog/etude-de-cas-pieceworth/), [Techonni](/blog/etude-de-cas-techonni/) et ce hub, dariopinheiro.com. Et je ne les écris pas seul : je travaille avec un assistant de code IA (j'utilise Claude Code). Voici pourquoi ce duo fonctionne bien pour des sites d'affiliation, et comment l'organiser pour que l'IA reste fiable.
 
 ## Pourquoi Astro pour un site d'affiliation
 

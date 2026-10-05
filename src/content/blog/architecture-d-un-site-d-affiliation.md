@@ -9,7 +9,9 @@ updated: 2026-10-04
 order: 4
 ---
 
-L'architecture d'un site, c'est la liste de ses pages et la façon dont elles se relient. Pour un site d'affiliation, elle a deux lecteurs : la personne qui cherche une réponse, et Google, qui doit comprendre de quoi parle le site. Voici le plan que j'utilise sur mes trois sites, de la plus simple à la plus complète.
+> **Note (octobre 2026) :** techonni.com et pieceworth.com redirigent vers ce site. Ce guide garde ce que j'avais construit. Les liens mènent aux études de cas. Zunrel reste le site public.
+
+L'architecture d'un site, c'est la liste de ses pages et la façon dont elles se relient. Pour un site d'affiliation, elle a deux lecteurs : la personne qui cherche une réponse, et Google, qui doit comprendre de quoi parle le site. Voici le plan que j'utilise sur ces sites, de la plus simple à la plus complète.
 
 ## Le principe : peu de types de pages, beaucoup de guides
 
@@ -27,11 +29,11 @@ Tout le reste est optionnel, et ne vient qu'une fois que ces bases fonctionnent.
 
 ### Le plus simple : Techonni
 
-[Techonni](https://techonni.com) est le plus récent. Son plan tient en quelques pages : l'accueil (avec un compte à rebours jusqu'à la sortie de GTA 6), la liste des guides, un guide par page sous `/guides/<slug>/`, une page « À propos », des mentions légales, une page 404, un `sitemap.xml` et un `robots.txt`. Chaque guide est un fichier Markdown : **le nom du fichier devient l'URL**. C'est l'architecture que je conseille pour démarrer.
+[Techonni](/blog/etude-de-cas-techonni/) est le plus récent. Son plan tient en quelques pages : l'accueil (avec un compte à rebours jusqu'à la sortie de GTA 6), la liste des guides, un guide par page sous `/guides/<slug>/`, une page « À propos », des mentions légales, une page 404, un `sitemap.xml` et un `robots.txt`. Chaque guide est un fichier Markdown : **le nom du fichier devient l'URL**. C'est l'architecture que je conseille pour démarrer.
 
 ### Bilingue : Pieceworth
 
-[Pieceworth](https://pieceworth.com) a deux langues : l'anglais (lecteurs américains) à la racine, et le français sous `/fr/`. Chaque guide existe dans les deux langues, avec le même identifiant interne et une URL locale (par exemple `/guides/...` et `/fr/guides/...`). On y trouve aussi une page qui explique l'affiliation (`/affiliate-disclosure/` en anglais, une page « affiliation » en français) et, sur toutes les pages sauf l'accueil, **un fil d'Ariane** visible avec ses données structurées.
+[Pieceworth](/blog/etude-de-cas-pieceworth/) a deux langues : l'anglais (lecteurs américains) à la racine, et le français sous `/fr/`. Chaque guide existe dans les deux langues, avec le même identifiant interne et une URL locale (par exemple `/guides/...` et `/fr/guides/...`). On y trouve aussi une page qui explique l'affiliation (`/affiliate-disclosure/` en anglais, une page « affiliation » en français) et, sur toutes les pages sauf l'accueil, **un fil d'Ariane** visible avec ses données structurées.
 
 ### Le plus complet : Zunrel
 
@@ -83,7 +85,7 @@ Un site d'affiliation recommande des achats. Le lecteur et les programmes d'affi
 
 ## Étape 6 : le plan du site
 
-Un `sitemap.xml` liste toutes les URL que Google doit connaître. Mes trois sites le génèrent automatiquement au moment du build (un fichier `src/pages/sitemap.xml.ts` dans Astro), puis je l'envoie une fois dans Google Search Console.
+Un `sitemap.xml` liste toutes les URL que Google doit connaître. Ces sites le généraient automatiquement au moment du build (un fichier `src/pages/sitemap.xml.ts` dans Astro), puis je l'envoie une fois dans Google Search Console.
 
 ## En résumé
 

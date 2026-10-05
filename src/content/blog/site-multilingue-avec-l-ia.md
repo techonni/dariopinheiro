@@ -9,7 +9,9 @@ updated: 2026-10-04
 order: 9
 ---
 
-Traduire un site avec l'IA prend quelques minutes par page. Bien le faire demande un peu plus de réflexion : une traduction mot à mot d'un guide français ne sert à rien à un lecteur américain si les prix sont en euros et les règles européennes. Voici comment j'ai organisé [Zunrel](https://zunrel.com) en trois langues et [Pieceworth](https://pieceworth.com) en deux.
+> **Note (octobre 2026) :** techonni.com et pieceworth.com redirigent vers ce site. Ce guide garde ce que j'avais construit. Les liens mènent aux études de cas. Zunrel reste le site public.
+
+Traduire un site avec l'IA prend quelques minutes par page. Bien le faire demande un peu plus de réflexion : une traduction mot à mot d'un guide français ne sert à rien à un lecteur américain si les prix sont en euros et les règles européennes. Voici comment j'ai organisé [Zunrel](https://zunrel.com) en trois langues et [Pieceworth](/blog/etude-de-cas-pieceworth/) en deux.
 
 ## Étape 1 : choisir une langue ET un public
 

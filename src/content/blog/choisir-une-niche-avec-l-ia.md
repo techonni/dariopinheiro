@@ -9,7 +9,9 @@ updated: 2026-10-04
 order: 1
 ---
 
-Je crée des sites d'affiliation avec l'IA, et j'en ai aujourd'hui trois, chacun dans une niche très différente : des logiciels pour créer des pages et des boutiques ([Zunrel](https://zunrel.com)), l'achat de luxe en ligne ([Pieceworth](https://pieceworth.com)) et un jeu vidéo très attendu, GTA 6 ([Techonni](https://techonni.com)). Ce guide explique comment je m'y prendrais pour choisir une niche aujourd'hui, avec l'IA comme assistant, et surtout ce que l'IA ne peut pas décider à votre place.
+> **Note (octobre 2026) :** techonni.com et pieceworth.com redirigent vers ce site. Ce guide garde ce que j'avais construit. Les liens mènent aux études de cas. Zunrel reste le site public.
+
+Je crée des sites d'affiliation avec l'IA, et j'en avais trois, chacun dans une niche très différente : des logiciels pour créer des pages et des boutiques ([Zunrel](https://zunrel.com)), l'achat de luxe en ligne ([Pieceworth](/blog/etude-de-cas-pieceworth/)) et un jeu vidéo très attendu, GTA 6 ([Techonni](/blog/etude-de-cas-techonni/)). Ce guide explique comment je m'y prendrais pour choisir une niche aujourd'hui, avec l'IA comme assistant, et surtout ce que l'IA ne peut pas décider à votre place.
 
 ## Ce qu'est une « bonne » niche d'affiliation
 

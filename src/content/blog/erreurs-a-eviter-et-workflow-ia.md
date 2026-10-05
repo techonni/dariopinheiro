@@ -98,4 +98,4 @@ Même avec beaucoup d'automatisation, certaines choses restent à moi : les déc
 
 ## En résumé
 
-L'IA permet de construire des sites d'affiliation complets très vite : mes trois sites et ce hub en sont la preuve. Mais elle ne remplace ni les faits vérifiés, ni les décisions, ni la patience. Encadrez-la avec des fichiers d'instructions, des modèles et des scripts ; gardez pour vous les faits, les choix et la relecture. Et si vous voulez suivre la suite, la newsletter est juste en dessous.
+L'IA permet de construire des sites d'affiliation complets très vite : ces trois sites et ce hub en sont la preuve. Mais elle ne remplace ni les faits vérifiés, ni les décisions, ni la patience. Encadrez-la avec des fichiers d'instructions, des modèles et des scripts ; gardez pour vous les faits, les choix et la relecture. Et si vous voulez suivre la suite, la newsletter est juste en dessous.

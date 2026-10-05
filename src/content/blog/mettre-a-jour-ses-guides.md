@@ -9,6 +9,8 @@ updated: 2026-10-04
 order: 19
 ---
 
+> **Note (octobre 2026) :** techonni.com et pieceworth.com redirigent vers ce site. Ce guide garde ce que j'avais construit. Les liens mènent aux études de cas. Zunrel reste le site public.
+
 Un guide d'affiliation vieillit vite. Un prix change, un menu est renommé, une offre d'essai disparaît, un jeu change de date de sortie. Un guide faux est pire qu'une absence de guide : il trompe le lecteur, et il fait perdre la confiance accumulée. Voici la routine que j'ai mise en place pour garder mes sites à jour, sans y passer mes semaines.
 
 ## Pourquoi la fraîcheur compte
@@ -21,9 +23,9 @@ Un guide d'affiliation vieillit vite. Un prix change, un menu est renommé, une 
 
 Chaque guide doit afficher sa date de mise à jour, et chaque fait sensible sa date de vérification :
 
-- sur [Techonni](https://techonni.com), chaque guide a un champ `updated`, affiché en haut (« Mis à jour le… ») ;
+- sur [Techonni](/blog/etude-de-cas-techonni/), chaque guide a un champ `updated`, affiché en haut (« Mis à jour le… ») ;
 - sur [Zunrel](https://zunrel.com), chaque guide a une date de publication et une date de mise à jour, et les prix sont accompagnés de leur date de vérification ;
-- sur [Pieceworth](https://pieceworth.com), les notes sur Farfetch indiquent la date à laquelle les pages officielles ont été lues.
+- sur [Pieceworth](/blog/etude-de-cas-pieceworth/), les notes sur Farfetch indiquent la date à laquelle les pages officielles ont été lues.
 
 La date de mise à jour doit aussi apparaître dans les données structurées (`dateModified`). Ne la changez que si le contenu a vraiment été revu.
 

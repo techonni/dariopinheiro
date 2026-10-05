@@ -9,6 +9,8 @@ updated: 2026-10-04
 order: 13
 ---
 
+> **Note (octobre 2026) :** techonni.com et pieceworth.com redirigent vers ce site. Ce guide garde ce que j'avais construit. Les liens mènent aux études de cas. Zunrel reste le site public.
+
 Pinterest est souvent vu comme un réseau d'images de déco et de recettes. C'est aussi un **moteur de recherche visuel** : les gens y cherchent des idées et des solutions, et une épingle peut envoyer des visites pendant longtemps. Pour des guides « comment faire », c'est une source de trafic logique. Voici comment je l'utilise pour [Zunrel](https://zunrel.com), avec l'IA pour faire le travail répétitif.
 
 ## Pourquoi Pinterest pour des guides
@@ -71,7 +73,7 @@ Sur Zunrel, chaque guide propose un bouton pour l'enregistrer sur Pinterest, ave
 
 ## Les pièges
 
-- **Les épingles qui pointent vers des pages supprimées.** Sur [Pieceworth](https://pieceworth.com), quand j'ai quitté Impact, les guides concernés ont été supprimés, mais les anciennes épingles pointaient encore vers eux. Il faut alors supprimer ces épingles, ou rediriger les anciennes URL.
+- **Les épingles qui pointent vers des pages supprimées.** Sur [Pieceworth](/blog/etude-de-cas-pieceworth/), quand j'ai quitté Impact, les guides concernés ont été supprimés, mais les anciennes épingles pointaient encore vers eux. Il faut alors supprimer ces épingles, ou rediriger les anciennes URL.
 - **Les liens affiliés directs dans les épingles.** Je préfère envoyer vers le guide, qui contient les liens affiliés signalés, plutôt que de mettre un lien affilié directement sur l'épingle. Lisez les règles de Pinterest et de vos programmes.
 - **Publier tout d'un coup.** Mieux vaut un rythme régulier, programmé, que 200 épingles en une journée.
 

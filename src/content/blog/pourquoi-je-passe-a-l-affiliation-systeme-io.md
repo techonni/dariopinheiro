@@ -9,6 +9,8 @@ updated: 2026-10-04
 order: 21
 ---
 
+> **Note (octobre 2026) :** ceci est un chapitre de la route, pas le sujet du site. Je garde deux sites publics : Zunrel, et ce hub.
+
 Je change de cap. Je deviens affilié **systeme.io**, et ce blog va raconter la suite, étape par étape. Je n'ai encore aucun résultat à montrer : je démarre. Justement, c'est le bon moment pour expliquer pourquoi je fais ce choix, ce qui me gênait avant, et ce qui change pour mes sites.
 
 ## Pourquoi je change
@@ -63,7 +65,7 @@ Ce point compte pour mon modèle : quelqu'un peut créer un compte gratuit grâc
 
 ## Ce qui change pour mes sites
 
-Ce choix a des conséquences concrètes sur mes sites. Un changement de cap demande un nettoyage complet, je l'ai appris à mes dépens (voir [les erreurs à éviter](/blog/erreurs-a-eviter-et-workflow-ia/)).
+Ce choix a des conséquences concrètes sur ces sites. Un changement de cap demande un nettoyage complet, je l'ai appris à mes dépens (voir [les erreurs à éviter](/blog/erreurs-a-eviter-et-workflow-ia/)).
 
 ### Pieceworth ferme
 
