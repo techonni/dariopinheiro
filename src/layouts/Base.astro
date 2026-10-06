@@ -23,8 +23,9 @@ const imageUrl = image ? new URL(image, Astro.site).href : undefined;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/images/dario.png" type="image/png" />
-    <link rel="apple-touch-icon" href="/images/dario.png" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="512x512" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Dário Pinheiro" />
     <meta property="og:locale" content="fr_FR" />

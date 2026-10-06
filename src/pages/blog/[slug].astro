@@ -36,7 +36,7 @@ const shareUrl = `https://x.com/intent/post?${new URLSearchParams({ text: post.d
 const seoBase = post.data.seoTitle ?? post.data.title;
 const title = seoBase.length + 17 <= 65 ? `${seoBase} · Dário Pinheiro` : seoBase;
 const letter = "La suite de la route, par e-mail : les sites, ce qui marche, ce qui rate. Pas de spam, désinscription en un clic.";
-const ogImage = post.data.images?.[0]?.url ?? "/images/dario.png";
+const ogImage = post.data.images?.[0]?.url ?? "/images/dario.jpg";
 
 const author = { "@type": "Person", name: "Dário Pinheiro", url: site.href };
 const article = {
@@ -44,7 +44,7 @@ const article = {
   "@type": "Article",
   headline: post.data.title,
   description: post.data.description,
-  image: post.data.images?.map((i) => i.url) ?? [new URL("/images/dario.png", site).href],
+  image: post.data.images?.map((i) => i.url) ?? [new URL("/images/dario.jpg", site).href],
   datePublished: post.data.published.toISOString(),
   dateModified: post.data.updated.toISOString(),
   inLanguage: "fr",
