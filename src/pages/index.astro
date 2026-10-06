@@ -11,7 +11,7 @@ const tagline = "Ni développeur, ni designer, ni gourou. J'aime juste créer de
 
 <Base title="Dário Pinheiro" description={tagline} image="/images/dario.png" wide>
   <div class="home">
-    <div class="home-narrow">
+    <div class="home-narrow narrow">
       <div class="who">
         <img src="/images/dario.png" alt="Dario" width="64" height="64" fetchpriority="high" />
         <div>
@@ -37,7 +37,7 @@ const tagline = "Ni développeur, ni designer, ni gourou. J'aime juste créer de
       ))}
     </div>
 
-    <div class="home-narrow">
+    <div class="home-narrow narrow">
       <NewsletterForm
         id="home"
         title="La lettre"
@@ -49,7 +49,6 @@ const tagline = "Ni développeur, ni designer, ni gourou. J'aime juste créer de
 
 <style>
   .home { padding-top: 8px; }
-  .home-narrow { max-width: 640px; }
   .who {
     display: flex;
     gap: 16px;

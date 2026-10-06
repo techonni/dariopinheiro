@@ -33,7 +33,7 @@ const jsonLd = {
 <Base title={title} description={description} image="/images/dario.png" wide>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
   <div class="blog">
-    <header class="blog-head blog-narrow">
+    <header class="blog-head blog-narrow narrow">
       <p class="eyebrow-plain">Blog</p>
       <h1>Le journal.</h1>
       <p class="lead">
@@ -63,7 +63,7 @@ const jsonLd = {
       </section>
     )}
 
-    <div class="blog-narrow">
+    <div class="blog-narrow narrow">
       <NewsletterForm
         title="La lettre"
         text="La suite de la route, par e-mail : les sites, ce qui marche, ce qui rate. Pas de spam, désinscription en un clic."
@@ -73,7 +73,6 @@ const jsonLd = {
 </Base>
 
 <style>
-  .blog-narrow { max-width: 640px; }
   .blog-head { padding-top: 8px; }
   .blog-head h1 {
     margin-top: 8px;
