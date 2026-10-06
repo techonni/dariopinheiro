@@ -30,7 +30,7 @@ const jsonLd = {
 };
 ---
 
-<Base title={title} description={description} image="/images/dario.png" wide>
+<Base title={title} description={description} image="/images/dario.png">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
   <div class="blog">
     <header class="blog-head blog-narrow narrow">
@@ -73,36 +73,14 @@ const jsonLd = {
 </Base>
 
 <style>
-  .blog-head { padding-top: 8px; }
-  .blog-head h1 {
-    margin-top: 8px;
-    font-size: 40px;
-    letter-spacing: -0.03em;
-  }
-  .blog-section { margin-top: 56px; }
+  .blog { max-width: 520px; margin: 0 auto; }
+  .blog-head { padding-top: 24px; text-align: center; }
+  .blog-head h1 { margin: 6px 0 0; font-size: 30px; font-weight: 500; letter-spacing: -.04em; }
+  .blog-head .lead { margin: 10px auto 0; max-width: 400px; font-size: 16px; line-height: 1.5; }
+  .blog-section { margin-top: 44px; }
   .section-title {
-    margin: 0;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--rule);
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: var(--muted);
+    margin: 0 0 14px; padding: 0; border: 0; text-align: center;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 400; color: #8a8a85;
   }
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px 16px;
-    margin-top: 20px;
-  }
-  @media (min-width: 768px) {
-    .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 20px; }
-  }
-  @media (min-width: 1024px) {
-    .card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 36px 24px; }
-  }
-  @media (max-width: 768px) {
-    .blog-head h1 { font-size: 32px; overflow-wrap: anywhere; }
-  }
+  .card-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 0; }
 </style>

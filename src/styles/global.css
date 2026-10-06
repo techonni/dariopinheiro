@@ -344,3 +344,35 @@ a.row:hover .row-title { text-decoration: underline; }
   }
 }
 
+
+/* ---- Nouveau design (aligné sur la page d'accueil) ---- */
+.page-glow { position: absolute; left: 0; right: 0; top: 0; height: 320px; overflow: hidden; pointer-events: none; z-index: -1; }
+.page-glow i { position: absolute; border-radius: 50%; filter: blur(60px); background: #e9a083; }
+.page-glow i:nth-child(1) { width: 360px; height: 220px; left: -60px; top: -80px; opacity: .9; }
+.page-glow i:nth-child(2) { width: 300px; height: 200px; right: -40px; top: -60px; background: #f4c8b4; opacity: .9; }
+.page-glow i:nth-child(3) { width: 260px; height: 160px; left: 30%; top: -40px; background: #f0b59c; opacity: .7; }
+.page-glow::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, #fff); }
+body { position: relative; }
+
+.site-header { background: transparent; }
+.site-header[data-scrolled] { background: rgba(255,255,255,.94); border-bottom-color: var(--hairline); }
+.brand-mark { border-radius: 50%; object-fit: cover; }
+.brand-name { font-weight: 500; letter-spacing: -.02em; }
+
+.site-footer { text-align: center; }
+.site-footer a { text-decoration: none; color: #8a8a85; }
+
+h1, .blog-head h1, .post h1 { font-weight: 500; letter-spacing: -.04em; }
+.post { text-align: left; }
+.post h1 { font-size: 34px; line-height: 1.1; }
+@media (min-width: 640px) { .blog-head h1, .post h1 { font-size: 40px; } }
+.eyebrow-plain { text-align: inherit; font-weight: 400; font-size: 11px; letter-spacing: .14em; color: #8a8a85; }
+.crumbs { font-size: 12px; color: #8a8a85; }
+.prose img, .prose picture img { border-radius: 14px; }
+.prose code, .prose pre { background: #fbfbfa; border-radius: 12px; }
+.prose blockquote { border-left-color: #e9a083; }
+.post-byline img { border-radius: 50%; }
+.nl-input { border: 1px solid #e6e6e2 !important; background: #fbfbfa !important; border-radius: 999px !important; padding: 0 20px; }
+.nl-button, .btn { background: #1b1b1b !important; }
+.menu-panel { background: #fbfbfa; border-radius: 18px 0 0 18px; }
+.menu-list a { border-bottom-color: #eeeeea; }

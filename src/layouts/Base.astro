@@ -36,6 +36,7 @@ const imageUrl = image ? new URL(image, Astro.site).href : undefined;
     <slot name="head" />
   </head>
   <body>
+    <div class="page-glow" aria-hidden="true"><i></i><i></i><i></i></div>
     <header class="site-header" data-sticky-header>
       <a class="brand" href="/" aria-label="Accueil">
         <img class="brand-mark" src="/images/dario.png" alt="" width="30" height="30" />

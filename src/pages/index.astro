@@ -11,8 +11,6 @@ const tagline = "Ni développeur, ni designer, ni gourou. J'aime juste créer de
 
 <Base title="Dário Pinheiro" description={tagline} image="/images/dario.png">
   <div class="home">
-    <div class="glow" aria-hidden="true"><i></i><i></i><i></i></div>
-
     <header class="profile">
       <div class="avatar">
         <img src="/images/dario.png" alt="Dário Pinheiro" width="112" height="112" fetchpriority="high" />
@@ -83,14 +81,8 @@ const tagline = "Ni développeur, ni designer, ni gourou. J'aime juste créer de
 
 <style>
   .home { position: relative; max-width: 520px; margin: 0 auto; padding: 0 4px 24px; --ease: cubic-bezier(.23,1,.32,1); }
-  .glow { position: absolute; left: 50%; top: -80px; width: 100vw; height: 320px; transform: translateX(-50%); overflow: hidden; pointer-events: none; z-index: -1; }
-  .glow i { position: absolute; border-radius: 50%; filter: blur(60px); background: #e9a083; }
-  .glow i:nth-child(1) { width: 360px; height: 220px; left: -60px; top: -80px; opacity: .9; }
-  .glow i:nth-child(2) { width: 300px; height: 200px; right: -40px; top: -60px; background: #f4c8b4; opacity: .9; }
-  .glow i:nth-child(3) { width: 260px; height: 160px; left: 30%; top: -40px; background: #f0b59c; opacity: .7; }
-  .glow::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, #fff); }
 
-  .profile { text-align: center; padding-top: 72px; }
+  .profile { text-align: center; padding-top: 24px; }
   .avatar { width: 112px; height: 112px; margin: 0 auto 14px; border-radius: 50%; overflow: hidden; border: 3px solid #fff; box-shadow: 0 8px 30px rgba(233,160,131,.35); background: #fff; }
   .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
   h1 { margin: 0; font-size: 30px; font-weight: 500; letter-spacing: -.04em; }

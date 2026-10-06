@@ -25,63 +25,28 @@ const excerpt = getExcerpt(post);
 <style>
   .post-card {
     display: flex;
-    flex-direction: column;
-    height: 100%;
+    flex-direction: row;
+    gap: 14px;
+    align-items: center;
+    height: auto;
+    padding: 10px;
     color: var(--fg);
     text-decoration: none;
+    background: #fbfbfa;
+    border-radius: 18px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 6px 20px rgba(0,0,0,.03);
+    transition: transform .2s cubic-bezier(.23,1,.32,1);
     min-width: 0;
   }
-  .post-card-media {
-    aspect-ratio: 16 / 10;
-    overflow: hidden;
-    background: #f0f0f0;
-    border: 0;
-  }
-  .post-card-media img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  .post-card-body {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-    padding: 14px 0 28px;
-    min-width: 0;
-  }
-  .post-card-title {
-    margin: 0;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-    line-height: 1.35;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-    white-space: normal;
-  }
+  .post-card:active { transform: scale(.98); }
+  @media (hover: hover) and (pointer: fine) { .post-card:hover { transform: translateY(-2px); } }
+  .post-card-media { width: 120px; height: 96px; flex: none; overflow: hidden; border-radius: 12px; background: #f0f0f0; }
+  .post-card-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .post-card-body { display: block; padding: 0; min-width: 0; }
+  .post-card-title { margin: 0; font-size: 15px; font-weight: 500; letter-spacing: -.02em; line-height: 1.3; overflow-wrap: anywhere; }
   .post-card-excerpt {
-    margin: 8px 0 0;
-    font-size: 13px;
-    line-height: 1.45;
-    color: var(--muted);
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    overflow-wrap: anywhere;
+    margin: 4px 0 0; font-size: 13px; line-height: 1.35; color: #8a8a85;
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
   }
-  .post-card-arrow {
-    position: absolute;
-    right: 0;
-    bottom: 6px;
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1;
-  }
-  @media (hover: hover) {
-    .post-card:hover .post-card-arrow { color: var(--fg); }
-  }
+  .post-card-arrow { display: none; }
 </style>
