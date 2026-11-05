@@ -9,12 +9,13 @@ const latest = (journal.length ? journal : await getPosts()).slice(0, 4);
 const tagline = "Ni développeur, ni designer, ni gourou. J'aime juste créer des trucs sur internet.";
 ---
 
-<Base title="Dário Pinheiro" description={tagline} image="/images/dario.jpg">
+<Base title="Dário Pinheiro" description={tagline} image="/apple-touch-icon.png">
   <div class="home">
     <header class="profile">
       <div class="avatar">
-        <img src="/images/dario.png" alt="Dário Pinheiro" width="112" height="112" fetchpriority="high" />
+        <img src="/images/silhouette.svg" alt="Dário Pinheiro" width="112" height="112" fetchpriority="high" />
       </div>
+      <img class="hero-crown" src="/images/crown.svg" alt="" width="44" height="33" />
       <h1>Dário Pinheiro</h1>
       <p class="tag">{tagline}</p>
     </header>
