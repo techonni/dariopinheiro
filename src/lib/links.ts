@@ -3,7 +3,7 @@
 
 export type HubLink = { name: string; text?: string; url: string };
 
-export const socialLinks: HubLink[] = [{ name: "X", text: "@zunrel", url: "https://x.com/zunrel" }].filter((l) => l.url);
+export const socialLinks: HubLink[] = [{ name: "X", text: "@yote0zte", url: "https://x.com/yote0zte" }].filter((l) => l.url);
 
 // Sites vivos. techonni.com e pieceworth.com já redirecionam para cá.
 export const sites: HubLink[] = [

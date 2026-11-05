@@ -43,7 +43,7 @@ C'est inspiré des pages « lien en bio » les plus simples : on doit trouver ce
 
 Mettez l'adresse du hub dans la bio de chaque réseau. Pour savoir d'où viennent les visiteurs, vous pouvez ajouter des paramètres UTM différents par réseau (`?utm_source=x`, `?utm_source=instagram`…), si vous mesurez les visites du hub.
 
-Sur mon hub, c'est le lien vers mon compte X ([@zunrel](https://x.com/zunrel)).
+Sur mon hub, c'est le lien vers mon compte X ([@yote0zte](https://x.com/yote0zte)).
 
 ## Étape 4 : publier régulièrement, sans y passer la journée
 

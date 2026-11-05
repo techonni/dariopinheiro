@@ -32,7 +32,7 @@ const parts = post.rendered?.html ? splitForNewsletter(post.rendered.html) : nul
 const site = Astro.site!;
 const url = new URL(`/blog/${post.id}/`, site).href;
 const minutes = readingMinutes(post);
-const shareUrl = `https://x.com/intent/post?${new URLSearchParams({ text: post.data.title, url, via: "zunrel" }).toString().replace(/\+/g, "%20")}`;
+const shareUrl = `https://x.com/intent/post?${new URLSearchParams({ text: post.data.title, url, via: "yote0zte" }).toString().replace(/\+/g, "%20")}`;
 const seoBase = post.data.seoTitle ?? post.data.title;
 const title = seoBase.length + 17 <= 65 ? `${seoBase} · Dário Pinheiro` : seoBase;
 const letter = "La suite de la route, par e-mail : les sites, ce qui marche, ce qui rate. Pas de spam, désinscription en un clic.";
