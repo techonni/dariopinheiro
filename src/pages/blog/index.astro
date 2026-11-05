@@ -9,7 +9,7 @@ const guides = await getGuidePosts();
 
 const site = Astro.site!;
 const title = "Blog · Dário Pinheiro";
-const description = "Journal personnel et guides : ce que je construis, ce qui marche, ce qui rate.";
+const description = "Ce que je construis, ce qui marche, ce qui rate.";
 
 const allListed = [...journal, ...guides];
 const jsonLd = {
@@ -34,29 +34,16 @@ const jsonLd = {
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
   <div class="blog">
     <header class="blog-head blog-narrow narrow">
-      <p class="eyebrow-plain">Blog</p>
-      <h1>Le journal.</h1>
+      <h1>Blog</h1>
       <p class="lead">
         Ce que j&apos;ai fait ces derniers mois — sites, pivots, échecs et victoires — puis les guides tirés de la route.
       </p>
     </header>
 
-    {journal.length > 0 && (
+    {allListed.length > 0 && (
       <section class="blog-section">
-        <h2 class="section-title">Journal</h2>
         <div class="card-grid">
-          {journal.map((p) => (
-            <PostCard post={p} />
-          ))}
-        </div>
-      </section>
-    )}
-
-    {guides.length > 0 && (
-      <section class="blog-section">
-        <h2 class="section-title">Guides</h2>
-        <div class="card-grid">
-          {guides.map((p) => (
+          {allListed.map((p) => (
             <PostCard post={p} />
           ))}
         </div>
