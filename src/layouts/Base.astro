@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "../styles/dark.css";
 import MenuDrawer from "../components/MenuDrawer.astro";
 
 interface Props {
@@ -40,7 +41,7 @@ const imageUrl = image ? new URL(image, Astro.site).href : undefined;
     <div class="page-glow" aria-hidden="true"><i></i><i></i><i></i></div>
     <header class="site-header" data-sticky-header>
       <a class="brand" href="/" aria-label="Accueil">
-        <img class="brand-mark" src="/images/dario.png" alt="" width="30" height="30" />
+        <img class="brand-mark" src="/images/crown.svg" alt="" width="30" height="30" />
         <span class="brand-name">Dario</span>
       </a>
       <MenuDrawer />
