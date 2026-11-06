@@ -7,8 +7,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .page-glow{display:none!important}
 ::selection{background:#2c4a4a;color:#fff}
 :focus-visible{outline-color:#cfe3e2!important}
-.site-header{background:rgba(11,13,14,.72)!important;color:#f2f4f4}
-.site-header[data-scrolled]{border-bottom-color:#1f2628!important}
+.site-header,.site-header[data-scrolled]{background:#0b0d0e!important;color:#f2f4f4;border-bottom:1px solid #1f2628!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 .brand{color:#f2f4f4!important}
 .brand-mark{width:30px!important;height:23px!important}
 .menu-button{color:#f2f4f4!important}
@@ -46,3 +45,6 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .prose .diagram svg{display:block;max-width:100%;height:auto;margin:0 auto}
 .prose .diagram-caption{margin:10px 0 0;font-size:12px;color:var(--muted);text-align:center}
 .post-disclaimer{margin:16px 0 0;font-size:13px;line-height:1.4;color:var(--muted)}
+
+/* header opaque */
+.site-header{background:#0b0d0e!important;border-bottom:1px solid #1f2628!important}
