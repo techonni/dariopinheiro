@@ -1,17 +1,15 @@
 ---
 import "../styles/global.css";
 import "../styles/dark.css";
-import MenuDrawer from "../components/MenuDrawer.astro";
 
 interface Props {
   title: string;
   description: string;
   ogType?: "website" | "article";
   image?: string;
-  wide?: boolean;
 }
 
-const { title, description, ogType = "website", image, wide = false } = Astro.props;
+const { title, description, ogType = "website", image } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const imageUrl = image ? new URL(image, Astro.site).href : undefined;
 ---
@@ -38,29 +36,18 @@ const imageUrl = image ? new URL(image, Astro.site).href : undefined;
     <slot name="head" />
   </head>
   <body>
-    <div class="page-glow" aria-hidden="true"><i></i><i></i><i></i></div>
     <header class="site-header" data-sticky-header>
       <a class="brand" href="/" aria-label="Accueil">
         <img class="brand-mark" src="/images/crown.svg" alt="" width="30" height="30" />
         <span class="brand-name">Dario</span>
       </a>
-      <MenuDrawer />
     </header>
-    <script is:inline>
-      (function () {
-        var header = document.querySelector("[data-sticky-header]");
-        if (!header) return;
-        var update = function () { header.toggleAttribute("data-scrolled", window.scrollY > 4); };
-        update();
-        window.addEventListener("scroll", update, { passive: true });
-      })();
-    </script>
-    <div class={wide ? "column column-wide" : "column"}>
+    <div class="column">
       <main>
         <slot />
       </main>
       <footer class="site-footer">
-        <p class="small">© {new Date().getFullYear()} Dário Pinheiro. <a href="https://x.com/yote0zte">X · @yote0zte</a></p>
+        <p class="small">© {new Date().getFullYear()} Dário Pinheiro</p>
       </footer>
     </div>
     <script is:inline type="module" defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "27e3335e04134650bc746cdb8b005364"}'></script>
