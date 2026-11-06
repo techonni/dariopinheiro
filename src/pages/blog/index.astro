@@ -5,14 +5,14 @@ import { getPosts, formatDate, readingMinutes } from "../../lib/blog";
 
 const posts = await getPosts();
 const site = Astro.site!;
-const title = "Blog · Phobie sociale · Dário Pinheiro";
+const title = "Blog · Derrière les rideaux · Dário Pinheiro";
 const description =
-  "Une série gratuite en français sur la phobie sociale (trouble d'anxiété sociale), à lire comme un livre, du chapitre 001 au dernier.";
+  "Un récit à la première personne : vivre avec la peur des autres en Flandre, chapitre par chapitre, comme un livre.";
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Blog",
-  name: "Phobie sociale — série gratuite",
+  name: "Derrière les rideaux",
   url: new URL("/blog/", site).href,
   inLanguage: "fr",
   description,
@@ -31,12 +31,9 @@ const jsonLd = {
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
   <div class="blog">
     <header class="blog-head blog-narrow narrow">
-      <h1>Phobie sociale</h1>
+      <h1>Derrière les rideaux</h1>
       <p class="lead">
-        Une série gratuite à lire dans l'ordre, comme un livre. Critères, modèles, exercices de TCC et ressources — sans remplacer un professionnel de santé.
-      </p>
-      <p class="disclaimer">
-        Ceci n'est <strong>pas un avis médical</strong>. Si tu souffres, parle à un médecin, un psychologue ou un service d'urgence. En France : 3114 (prévention du suicide). Au Portugal : SNS 24 — 808 24 24 24.
+        Un récit à lire dans l'ordre. La vie d'une personne qui a peur des autres, en Flandre — la maison, la rue, le bus, les courses, les silences.
       </p>
     </header>
 

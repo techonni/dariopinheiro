@@ -37,7 +37,7 @@ const minutes = readingMinutes(post);
 const shareUrl = `https://x.com/intent/post?${new URLSearchParams({ text: post.data.title, url, via: "yote0zte" }).toString().replace(/\+/g, "%20")}`;
 const seoBase = post.data.seoTitle ?? post.data.title;
 const title = seoBase.length + 17 <= 65 ? `${seoBase} · Dário Pinheiro` : seoBase;
-const letter = "La suite de la série sur la phobie sociale, par e-mail. Pas de spam, désinscription en un clic.";
+const letter = "La suite du récit, par e-mail. Pas de spam, désinscription en un clic.";
 const ogImage = post.data.images?.[0]?.url ?? "/apple-touch-icon.png";
 
 const author = { "@type": "Person", name: "Dário Pinheiro", url: site.href };
@@ -87,7 +87,6 @@ const breadcrumb = {
     {post.data.updated.getTime() !== post.data.published.getTime() && (
       <p class="post-updated">Mis à jour le {formatDate(post.data.updated)}</p>
     )}
-    <p class="post-disclaimer">Texte pédagogique, pas un avis médical. En détresse : France 3114 · Portugal SNS 24 (808 24 24 24).</p>
 
     {parts ? (
       <>
