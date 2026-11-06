@@ -15,14 +15,18 @@ export const categories = [
 
 export async function getAllPosts(): Promise<Post[]> {
   return (await getCollection("blog")).sort((a, b) => {
-    const d = b.data.published.getTime() - a.data.published.getTime();
-    if (d !== 0) return d;
-    return a.data.order - b.data.order;
+    const o = a.data.order - b.data.order;
+    if (o !== 0) return o;
+    return a.data.published.getTime() - b.data.published.getTime();
   });
 }
 
 export async function getPosts(): Promise<Post[]> {
   return (await getAllPosts()).filter((p) => !p.data.archived);
+}
+
+export async function getSeriesPosts(): Promise<Post[]> {
+  return getPosts();
 }
 
 export async function getJournalPosts(): Promise<Post[]> {

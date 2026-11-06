@@ -10,6 +10,7 @@ const blog = defineCollection({
     description: z.string().max(200),
     summary: z.string().max(160).optional(),
     category: z.enum([
+      "Phobie sociale",
       "Journal",
       "Démarrer",
       "Construire",
