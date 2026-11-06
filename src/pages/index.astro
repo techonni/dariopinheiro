@@ -1,19 +1,18 @@
 ---
 import Base from "../layouts/Base.astro";
 import NewsletterForm from "../components/NewsletterForm.astro";
-import { getJournalPosts, getPosts, getCardImage, getExcerpt } from "../lib/blog";
+import { getPosts, getCardImage, getExcerpt } from "../lib/blog";
 import { socialLinks, sites } from "../lib/links";
 
-const journal = await getJournalPosts();
-const latest = (journal.length ? journal : await getPosts()).slice(0, 4);
+const latest = (await getPosts()).slice(0, 4);
 const tagline = "Ni développeur, ni designer, ni gourou. J'aime juste créer des trucs sur internet.";
 ---
 
-<Base title="Dário Pinheiro" description={tagline} image="/apple-touch-icon.png">
+<Base title="Dário Pinheiro" description={tagline} image="/images/pp.jpg">
   <div class="home">
     <header class="profile">
       <div class="avatar">
-        <img src="/images/silhouette.jpg" alt="Dário Pinheiro" width="112" height="112" fetchpriority="high" />
+        <img src="/images/pp.jpg" alt="Dário Pinheiro" width="112" height="112" fetchpriority="high" />
       </div>
       <img class="hero-crown" src="/images/crown.svg" alt="" width="44" height="33" />
       <h1>Dário Pinheiro</h1>
@@ -31,23 +30,10 @@ const tagline = "Ni développeur, ni designer, ni gourou. J'aime juste créer de
       </section>
     )}
 
-    <section class="reveal">
-      <p class="label">Explorer</p>
-      <a class="card" href="/blog/">
-        <div class="thumb t1"></div>
-        <div><h3>Lire le blog</h3><p>Sites, pivots, échecs et petites victoires, racontés à la première personne.</p></div>
-      </a>
-      {sites.map((s) => (
-        <a class="card" href={s.url} rel="noopener">
-          <div class="thumb t2"></div>
-          <div><h3>{s.name}</h3>{s.text && <p>{s.text}</p>}</div>
-        </a>
-      ))}
-    </section>
 
     {latest.length > 0 && (
       <section class="reveal">
-        <div class="head"><b>Mes derniers articles</b><a href="/blog/">Tout voir ›</a></div>
+        <div class="head"><b>La série · Phobie sociale</b><a href="/blog/">Sommaire ›</a></div>
         {latest.map((p) => {
           const img = getCardImage(p);
           const ex = getExcerpt(p);
@@ -66,7 +52,7 @@ const tagline = "Ni développeur, ni designer, ni gourou. J'aime juste créer de
       <NewsletterForm
         id="home"
         title="La lettre"
-        text="La suite de la route, par e-mail : les sites, ce qui marche, ce qui rate. Pas de spam, désinscription en un clic."
+        text="Des notes sur la phobie sociale et la suite de la route, par e-mail. Pas de spam, désinscription en un clic."
       />
     </section>
   </div>

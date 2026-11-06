@@ -8,14 +8,14 @@ export async function getStaticPaths() {
   const all = await getAllPosts();
   const posts = await getPosts();
   return all.map((post) => {
-    const i = posts.includes(post)
-      ? posts.indexOf(post)
-      : posts.filter((p) => p.data.published <= post.data.published).length - 1;
+    const i = posts.findIndex((p) => p.id === post.id);
     return {
       params: { slug: post.id },
       props: {
         post,
-        next: [1, 2, 3].map((k) => posts[(((i + k) % posts.length) + posts.length) % posts.length]).filter(Boolean),
+        prev: i > 0 ? posts[i - 1] : null,
+        next: i >= 0 && i < posts.length - 1 ? posts[i + 1] : null,
+        more: posts.filter((p) => p.id !== post.id).slice(0, 3),
       },
     };
   });
@@ -23,10 +23,12 @@ export async function getStaticPaths() {
 
 interface Props {
   post: Post;
-  next: Post[];
+  prev: Post | null;
+  next: Post | null;
+  more: Post[];
 }
 
-const { post, next } = Astro.props;
+const { post, prev, next, more } = Astro.props;
 const { Content } = await render(post);
 const parts = post.rendered?.html ? splitForNewsletter(post.rendered.html) : null;
 const site = Astro.site!;
@@ -35,7 +37,7 @@ const minutes = readingMinutes(post);
 const shareUrl = `https://x.com/intent/post?${new URLSearchParams({ text: post.data.title, url, via: "yote0zte" }).toString().replace(/\+/g, "%20")}`;
 const seoBase = post.data.seoTitle ?? post.data.title;
 const title = seoBase.length + 17 <= 65 ? `${seoBase} · Dário Pinheiro` : seoBase;
-const letter = "La suite de la route, par e-mail : les sites, ce qui marche, ce qui rate. Pas de spam, désinscription en un clic.";
+const letter = "La suite de la série sur la phobie sociale, par e-mail. Pas de spam, désinscription en un clic.";
 const ogImage = post.data.images?.[0]?.url ?? "/apple-touch-icon.png";
 
 const author = { "@type": "Person", name: "Dário Pinheiro", url: site.href };
@@ -44,7 +46,7 @@ const article = {
   "@type": "Article",
   headline: post.data.title,
   description: post.data.description,
-  image: post.data.images?.map((i) => i.url) ?? [new URL("/apple-touch-icon.png", site).href],
+  image: post.data.images?.map((i) => i.url) ?? [new URL("/images/pp.jpg", site).href],
   datePublished: post.data.published.toISOString(),
   dateModified: post.data.updated.toISOString(),
   inLanguage: "fr",
@@ -85,6 +87,7 @@ const breadcrumb = {
     {post.data.updated.getTime() !== post.data.published.getTime() && (
       <p class="post-updated">Mis à jour le {formatDate(post.data.updated)}</p>
     )}
+    <p class="post-disclaimer">Texte pédagogique, pas un avis médical. En détresse : France 3114 · Portugal SNS 24 (808 24 24 24).</p>
 
     {parts ? (
       <>
@@ -105,21 +108,36 @@ const breadcrumb = {
 
   <NewsletterForm id="end" title="La lettre" text={letter} />
 
-  {next.length > 0 && (
-    <section class="next">
-      <h2 class="section-title">À lire ensuite</h2>
-      <ul class="next-list">
-        {next.map((p) => (
-          <li>
-            <a href={`/blog/${p.id}/`}>
-              <span>{p.data.title}</span>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-      <p class="all-posts"><a class="btn" href="/blog/">Tous les articles →</a></p>
-    </section>
+  {(prev || next) && (
+    <nav class="chapnav" aria-label="Chapitres">
+    {prev && (
+      <a class="chapnav-link" href={`/blog/${prev.id}/`}>
+        <span class="chapnav-label">← Précédent</span>
+        <span class="chapnav-title">{prev.data.title}</span>
+      </a>
+    )}
+    {next && (
+      <a class="chapnav-link chapnav-next" href={`/blog/${next.id}/`}>
+        <span class="chapnav-label">Suivant →</span>
+        <span class="chapnav-title">{next.data.title}</span>
+      </a>
+    )}
+  </nav>
+
+  <section class="next">
+    <h2 class="section-title">Sommaire</h2>
+    <p class="next-note"><a href="/blog/">Voir toute la série →</a></p>
+    <ul class="next-list">
+      {more.map((p) => (
+        <li>
+          <a href={`/blog/${p.id}/`}>
+            <span>{p.data.title}</span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
   )}
 </Base>
 
@@ -178,4 +196,15 @@ const breadcrumb = {
   @media (max-width: 600px) {
     .post h1 { font-size: 28px; }
   }
+
+  .chapnav { display: grid; gap: 10px; margin: 48px 0 24px; }
+  @media (min-width: 640px) { .chapnav { grid-template-columns: 1fr 1fr; } }
+  .chapnav-link {
+    display: grid; gap: 4px; padding: 14px; border-radius: 14px; text-decoration: none; color: inherit;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  }
+  .chapnav-next { text-align: right; }
+  .chapnav-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+  .chapnav-title { font-size: 15px; font-weight: 500; line-height: 1.35; }
+  .next-note { margin: 0 0 12px; font-size: 14px; }
 </style>
